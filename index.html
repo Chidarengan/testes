@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficha de Personagem</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background-color: #f8f2e4; 
+            color: #3d3d3d; 
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            color: #5a4435;
+            text-align: center;
+            font-size: 1.8em;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 0; 
+            box-shadow: none;
+            border: 1px solid #5a4435; 
+        }
+        
+        .row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+        
+        .field {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+        }
+        
+        .field label {
+            font-weight: bold;
+            color: #5a4435;
+            min-width: fit-content;
+        }
+        
+        .underline {
+            border-bottom: 1px solid #5a4435; 
+            min-width: 120px;
+            height: 20px;
+            display: inline-block;
+        }
+        
+        .underline-small {
+            border-bottom: 1px solid #5a4435; 
+            height: 20px;
+            display: block;
+            width: 50%;
+        }
+        
+        .circle {
+            width: 12px;
+            height: 12px;
+            border: 2px solid #5a4435; 
+            border-radius: 50%;
+            display: inline-block;
+        }
+        
+        .divider {
+            border-top: 1px solid #9e8a7e; 
+            margin: 20px 0;
+        }
+        
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 20px 0 15px 0;
+            color: #5a4435;
+            text-transform: uppercase;
+        }
+        
+        .attributes {
+            display: flex;
+            gap: 15px;
+            flex-wrap: nowrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .attr {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            flex: 1;
+        }
+
+        .attr label {
+            font-weight: bold;
+            color: #5a4435;
+        }
+        
+        .combat-stats {
+            display: flex;
+            flex-wrap: wrap; 
+            gap: 1px; 
+            align-items: flex-end; 
+            margin-bottom: 10px; 
+        }
+
+        .combat-stats-row { 
+            display: flex;
+            width: 100%; 
+            gap: 25px; 
+            align-items: center;
+        }
+        
+        .skills-container {
+            display: flex;
+            gap: 40px; 
+            align-items: flex-start;
+        }
+
+        .skills-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        /* --- ESTRUTURA ATUALIZADA PARA CONTROLE TOTAL DAS PERÍCIAS --- */
+        .skill {
+            display: flex;
+            align-items: center;
+        }
+
+        .skill-name {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            width: 58%; /* <-- CONTROLE AQUI a posição horizontal da linha de preenchimento */
+        }
+
+        .skill-value {
+            flex-grow: 1; /* Ocupa todo o resto do espaço */
+        }
+
+        .skill label {
+           font-weight: normal;
+           color: #3d3d3d;
+        }
+        
+        @media print {
+            body {
+                background-color: white;
+            }
+            .container {
+                box-shadow: none;
+                padding: 0;
+                border: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>FICHA DE PERSONAGEM</h1>
+        <div class="divider"></div>
+
+        <div class="row">
+            <div class="field">
+                <label>Nome:</label>
+            </div>
+            <div class="field">
+                <label>Classe:</label>
+            </div>
+            <div class="field">
+                <label>Raça:</label>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="field">
+                <label>Level:</label>
+            </div>
+            <div class="field">
+                <label>Jogador:</label>
+            </div>
+            <div class="field">
+                <label>Exp:</label>
+            </div>
+        </div>
+        
+        <div class="divider"></div>
+        
+        <div class="section-title">ATRIBUTOS</div>
+        <div class="attributes">
+            <div class="attr">
+                <span class="circle"></span>
+                <label>For:</label>
+                <span class="underline-small"></span>
+            </div>
+            <div class="attr">
+                <span class="circle"></span>
+                <label>Des:</label>
+                <span class="underline-small"></span>
+            </div>
+            <div class="attr">
+                <span class="circle"></span>
+                <label>Con:</label>
+                <span class="underline-small"></span>
+            </div>
+            <div class="attr">
+                <span class="circle"></span>
+                <label>Int:</label>
+                <span class="underline-small"></span>
+            </div>
+            <div class="attr">
+                <span class="circle"></span>
+                <label>Sab:</label>
+                <span class="underline-small"></span>
+            </div>
+            <div class="attr">
+                <span class="circle"></span>
+                <label>Car:</label>
+                <span class="underline-small"></span>
+            </div>
+        </div>
+        
+        <div class="divider"></div>
+        
+        <div class="combat-stats">
+            <div class="field">
+                <label>Prof:</label>
+                <span class="underline-small"></span> </div>
+            <div class="field">
+                <label>CA:</label>
+                <span class="underline-small"></span> </div>
+            <div class="field">
+                <label>Mov:</label>
+                <span class="underline-small"></span> </div>
+            <div class="field">
+                <label>Ini:</label>
+                <span class="underline-small"></span> </div>
+            <div class="field">
+                <label>Dvida:</label>
+                <span class="underline-small"></span> </div>
+            <div class="field">
+                <label>MagDC:</label> <span class="underline-small"></span> </div>
+        </div>
+        <div class="combat-stats-row">
+            <div class="field">
+                <label>Vida:</label>
+            </div>
+        </div>
+        
+        <div class="divider"></div>
+         <div class="section-title">
+            <strong>Inspiração:</strong> <span class="circle"></span> 
+        </div>
+        <div class="section-title">
+            <strong>Save de morte:</strong> Sucesso: <span class="circle"></span> <span class="circle"></span> <span class="circle"></span> / Falha: <span class="circle"></span> <span class="circle"></span> <span class="circle"></span>
+        </div>
+        
+        <div class="divider"></div>
+        
+        <div class="section-title">PERÍCIAS</div>
+
+        <div class="skills-container">
+            <div class="skills-column">
+                <div class="skill">
+                    <div class="skill-name">
+                        <span class="circle"></span>
+                        <label>Atletismo (For)</label>
+                    </div>
+                    <div class="skill-value">
+                        <span class="underline-small"></span>
+                    </div>
+                </div>
+                <div class="skill">
+                    <div class="skill-name">
+                        <span class="circle"></span>
+                        <label>Acrobacia (Dex)</label>
+                    </div>
+                    <div class="skill-value">
+                        <span class="underline-small"></span>
+                    </div>
+                </div>
+                <div class="skill">
+                    <div class="skill-name">
+                        <span class="circle"></span>
+                        <label>Furtividade (Dex)</label>
+                    </div>
+                    <div class="skill-value">
+                        <span class="underline-small"></span>
+                    </div>
+                </div>
+                <div class="skill">
+                    <div class="skill-name">
+                        <span class="circle"></span>
+                        <label>Prestidigitação (Dex)</label>
+                    </div>
+                    <div class="skill-value">
+                        <span class="underline-small"></span>
+                    </div>
+                </div>
+                <div class="skill">
+                    <div class="skill-name">
+                        <span class="circle"></span>
+                        <label>Arcanismo (Int)</label>
+                    </div>
+                    <div class="skill-value">
+                        <span class="underline-small"></span>
+                    </div>
+                </div>
+                <div class="skill">
+                    <div class="skill-name">
+                        <span class="circle"></span>
+                        <label>História (Int)</label>
+                    </div>
+                    <div class="skill-value">
+                        <span class="underline-small"></span>
+                    </div>
+                </div>
+                <div class="skill">
+                    <div class="skill-name">
+                        <span class="circle"></span>
+                        <label>Investigação (Int)</label>
+                    </div>
+                    <div class="skill-value">
+                        <span class="underline-small"></span>
+                    </div>
+                </div>
+                <div class="skill">
+                    <div class="skill-name">
+                        <span class="circle"></span>
+                        <label>Natureza (Int)</label>
+                    </div>
+                    <div class="skill-value">
+                        <span class="underline-small"></span>
+                    </div>
+                </div>
+                <div class="skill">
+                    <div class="skill-name">
+                        <span class="circle"></span>
+                        <label>Religião (Int)</label>
+                    </div>
+                    <div class="skill-value">
+                        <span class="underline-small"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skills-column">
+                <div class="skill">
+                    <div class="skill-name">
+                        <span class="circle"></span>
+                        <label>Intuição (Sab)</label>
+                    </div>
+                    <div class="skill-value">
+                        <span class="underline-small"></span>
+                    </div>
+                </div>
+                <div class="skill">
+                    <div class="skill-name">
+                        <span class="circle"></span>
+                        <label>Lidar com Animais (Sab)</label>
+                    </div>
+                    <div class="skill-value">
+                        <span class="underline-small"></span>
+                    </div>
+                </div>
+                <div class="skill">
+                    <div class="skill-name">
+                        <span class="circle"></span>
+                        <label>Medicina (Sab)</label>
+                    </div>
+                    <div class="skill-value">
+                        <span class="underline-small"></span>
+                    </div>
+                </div>
+                <div class="skill">
+                    <div class="skill-name">
+                        <span class="circle"></span>
+                        <label>Percepção (Sab)</label>
+                    </div>
+                    <div class="skill-value">
+                        <span class="underline-small"></span>
+                    </div>
+                </div>
+                <div class="skill">
+                    <div class="skill-name">
+                        <span class="circle"></span>
+                        <label>Sobrevivência (Sab)</label>
+                    </div>
+                    <div class="skill-value">
+                        <span class="underline-small"></span>
+                    </div>
+                </div>
+                <div class="skill">
+                    <div class="skill-name">
+                        <span class="circle"></span>
+                        <label>Atuação (Car)</label>
+                    </div>
+                    <div class="skill-value">
+                        <span class="underline-small"></span>
+                    </div>
+                </div>
+                <div class="skill">
+                    <div class="skill-name">
+                        <span class="circle"></span>
+                        <label>Enganação (Car)</label>
+                    </div>
+                    <div class="skill-value">
+                        <span class="underline-small"></span>
+                    </div>
+                </div>
+                <div class="skill">
+                    <div class="skill-name">
+                        <span class="circle"></span>
+                        <label>Intimidação (Car)</label>
+                    </div>
+                    <div class="skill-value">
+                        <span class="underline-small"></span>
+                    </div>
+                </div>
+                <div class="skill">
+                    <div class="skill-name">
+                        <span class="circle"></span>
+                        <label>Persuasão (Car)</label>
+                    </div>
+                    <div class="skill-value">
+                        <span class="underline-small"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

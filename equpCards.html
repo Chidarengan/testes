@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipamentos Iniciais de Classes</title>
+    <!-- Não está usando Tailwind CSS nesta versão. -->
+    <style>
+        /* Estilos globais e de corpo */
+        body {
+            font-family: 'Times New Roman', Times, serif; /* Fonte serifada para estilo clássico da imagem */
+            background-color: #f0ead6; /* Fundo mais próximo do papel envelhecido do livro */
+            margin: 0;
+            padding: 1.2rem; /* Padding geral reduzido para otimizar espaço */
+            display: flex;
+            flex-direction: column; /* Organiza os elementos verticalmente */
+            align-items: center; /* Centraliza o conteúdo principal */
+            min-height: 100vh; /* Ocupa a altura total da viewport */
+            box-sizing: border-box;
+            color: #333; /* Cor do texto mais escura e clássica */
+            line-height: 1.2; /* Linha padrão para corpo para maior compactação */
+        }
+
+        /* Estilo para o texto introdutório comum */
+        .intro-text {
+            background-color: #fdfdf5; /* Cor mais clara para o bloco de texto, como uma folha de papel */
+            padding: 0.8rem 1.2rem; /* Padding reduzido */
+            margin-bottom: 1.5rem; /* Espaçamento abaixo do texto ajustado */
+            width: 100%;
+            max-width: 1050px; /* Largura máxima ajustada para caber melhor 4 colunas */
+            box-sizing: border-box;
+            text-align: center;
+            font-size: 1rem; /* Tamanho da fonte ligeiramente menor */
+            line-height: 1.5; /* Espaçamento entre linhas ajustado */
+            border: 1px solid #c9c9c9; /* Borda sutil para delimitar */
+            border-radius: 5px; /* Bordas circulares de 5px */
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave para dar profundidade de livro */
+        }
+
+        .intro-text .section-title {
+            font-weight: bold;
+            font-size: 1.2rem; /* Tamanho da fonte para "EQUIPAMENTO" ajustado e destacado */
+            margin-bottom: 0.5rem; /* Margem inferior ajustada */
+            text-transform: uppercase;
+            color: #5a4f41; /* Cor mais escura e terrosa para o título da seção */
+            letter-spacing: 0.05em; /* Espaçamento entre letras para o título da seção */
+        }
+
+        /* Container para os cards, usando Grid para layout responsivo */
+        .cards-container {
+            display: grid;
+            /* Layout com 4 colunas para telas grandes, 2 para médio e 1 para pequeno */
+            grid-template-columns: repeat(4, minmax(200px, 1fr)); /* 4 colunas mais compactas */
+            gap: 0.8rem; /* Espaçamento entre os cards reduzido */
+            width: 100%;
+            max-width: 1050px; /* Largura máxima para a grade de cards ajustada */
+        }
+
+        /* Estilo para cada card individual de classe */
+        .card {
+            background-color: #fdfdf5; /* Cor de fundo do card, similar ao bloco de texto */
+            border: 1px solid #c9c9c9; /* Borda mais visível, combinando com o intro-text */
+            border-radius: 5px; /* Bordas circulares de 5px */
+            box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.08); /* Sombra sutil para cada card */
+            padding: 0.9rem; /* Padding interno do card reduzido */
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column; /* Conteúdo do card em coluna */
+            min-height: 160px; /* Altura mínima reduzida para otimizar espaço */
+            justify-content: flex-start; /* Alinha o conteúdo ao topo */
+            transition: all 0.2s ease-in-out; /* Transição suave para hover */
+        }
+
+        .card:hover {
+            transform: translateY(-2px); /* Efeito de elevação sutil ao passar o mouse, menos intenso */
+            box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.12); /* Sombra mais sutil no hover */
+        }
+
+        .card h2 {
+            font-family: 'Georgia', serif; /* Fonte diferente para o título da classe, mais formal */
+            font-size: 1.2rem; /* Tamanho do título da classe ajustado */
+            font-weight: bold;
+            color: #4a3e31; /* Cor mais escura e terrosa para o título da classe */
+            margin-top: 0;
+            margin-bottom: 0.6rem; /* Margem inferior ajustada */
+            padding-bottom: 0.4rem; /* Padding inferior ajustado */
+            border-bottom: 2px solid #b5a990; /* Linha mais grossa e cor de pergaminho para separador */
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .card ul {
+            list-style: none; /* Removendo marcadores padrão para um visual mais limpo */
+            padding: 0; /* Remove padding padrão */
+            margin: 0;
+            flex-grow: 1; /* Permite que a lista cresça para preencher o espaço */
+        }
+
+        .card ul li {
+            position: relative; /* Para posicionar o marcador personalizado */
+            font-size: 0.9rem; /* Tamanho da fonte ajustado */
+            line-height: 1.4; /* Espaçamento entre linhas ajustado */
+            color: #555;
+            margin-bottom: 0.3rem; /* Espaçamento entre os itens da lista ajustado */
+            padding-left: 1.2rem; /* Espaço para o marcador personalizado ajustado */
+        }
+        
+        .card ul li::before {
+            content: '•'; /* Marcador de lista personalizado (ponto) */
+            color: #7b6f5d; /* Cor do marcador em tom de pergaminho */
+            font-size: 0.9em; /* Tamanho do marcador ajustado */
+            position: absolute;
+            left: 0;
+            top: 0.15em; /* Ajusta a posição vertical do marcador */
+            line-height: 1;
+        }
+
+        /* Media queries para responsividade */
+        @media (max-width: 1080px) { /* Ajusta o ponto de quebra para 3 colunas */
+            .cards-container {
+                grid-template-columns: repeat(3, minmax(200px, 1fr)); /* 3 colunas em telas menores */
+                max-width: 800px; /* Largura máxima para 3 colunas */
+            }
+            .intro-text {
+                max-width: 800px;
+            }
+        }
+
+        @media (max-width: 768px) { /* Ajusta o ponto de quebra para 2 colunas */
+            .cards-container {
+                grid-template-columns: repeat(2, minmax(180px, 1fr)); /* 2 colunas em telas menores */
+                gap: 0.7rem; /* Reduz o gap em telas menores */
+                max-width: 600px;
+            }
+            .card {
+                padding: 0.8rem; /* Reduz o padding do card */
+                min-height: auto; /* Remove altura mínima em telas menores */
+            }
+            .card h2 {
+                font-size: 1.1rem; /* Reduz o tamanho do título */
+            }
+            .card ul li {
+                font-size: 0.85rem; /* Reduz o tamanho da fonte da lista */
+            }
+            body {
+                padding: 1rem; /* Reduz o padding geral em telas pequenas */
+            }
+            .intro-text {
+                padding: 0.7rem 1rem;
+                margin-bottom: 1rem;
+                font-size: 0.9rem;
+                max-width: 600px;
+            }
+        }
+
+        @media (max-width: 580px) { /* Ajusta o ponto de quebra para 1 coluna */
+            .cards-container {
+                grid-template-columns: 1fr; /* Uma única coluna em telas muito pequenas */
+                gap: 0.6rem; /* Espaçamento mínimo */
+                max-width: 320px;
+            }
+            body {
+                padding: 0.8rem;
+            }
+            .card {
+                padding: 0.7rem;
+            }
+            .intro-text {
+                max-width: 320px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Texto introdutório comum, fora dos cards individuais -->
+    <div class="intro-text">
+        <div class="section-title">EQUIPAMENTO</div>
+        <p>Você começa com o seguinte equipamento, além do equipamento concedido pelo seu antecedente:</p>
+    </div>
+
+    <!-- Container para todos os cards de classes -->
+    <div class="cards-container">
+        <!-- Card para BÁRBARO -->
+        <div class="card">
+            <h2>BÁRBARO</h2>
+            <ul>
+                <li>(a) um machado grande ou (b) qualquer arma marcial corpo-a-corpo</li>
+                <li>(a) dois machados de mão ou (b) qualquer arma simples</li>
+                <li>Um pacote de aventureiro e quatro azagaias</li>
+            </ul>
+        </div>
+
+        <!-- Card para BARDO -->
+        <div class="card">
+            <h2>BARDO</h2>
+            <ul>
+                <li>(a) uma rapieira, (b) uma espada longa ou (c) qualquer arma simples</li>
+                <li>(a) um pacote de diplomata ou (b) um pacote de artista</li>
+                <li>(a) um alaúde ou (b) qualquer outro instrumento musical</li>
+                <li>Armadura de couro e uma adaga</li>
+            </ul>
+        </div>
+
+        <!-- Card para BRUXO -->
+        <div class="card">
+            <h2>BRUXO</h2>
+            <ul>
+                <li>(a) uma besta leve e 20 virotes ou (b) qualquer arma simples</li>
+                <li>(a) uma bolsa de componentes ou (b) um foco arcano</li>
+                <li>(a) um pacote de estudioso ou (b) um pacote de explorador</li>
+                <li>Armadura de couro, qualquer arma simples e duas adagas</li>
+            </ul>
+        </div>
+
+        <!-- Card para CLÉRIGO -->
+        <div class="card">
+            <h2>CLÉRIGO</h2>
+            <ul>
+                <li>(a) uma maça ou (b) um martelo de guerra (se for proficiente)</li>
+                <li>(a) Brunea, (b) armadura de couro ou (c) cota de malha (se for proficiente)</li>
+                <li>(a) um besta leve e 20 virotes ou (b) qualquer arma simples</li>
+                <li>(a) um pacote de sacerdote ou (b) um pacote de aventureiro</li>
+                <li>Um escudo e um símbolo sagrado</li>
+            </ul>
+        </div>
+
+        <!-- Card para DRUIDA -->
+        <div class="card">
+            <h2>DRUIDA</h2>
+            <ul>
+                <li>(a) um escudo de madeira ou (b) qualquer arma simples</li>
+                <li>(a) uma cimitarra ou (b) qualquer arma corpo-a-corpo</li>
+                <li>(a) um pacote de estudioso ou (b) um pacote de explorador</li>
+                <li>Armadura de couro, um pacote de aventureiro e um foco druídico</li>
+            </ul>
+        </div>
+
+        <!-- Card para FEITICEIRO -->
+        <div class="card">
+            <h2>FEITICEIRO</h2>
+            <ul>
+                <li>(a) uma besta leve e 20 virotes ou (b) qualquer arma simples</li>
+                <li>(a) uma bolsa de componentes ou (b) um foco arcano</li>
+                <li>(a) um pacote de explorador ou (b) um pacote de aventureiro</li>
+            </ul>
+        </div>
+
+        <!-- Card para GUERREIRO -->
+        <div class="card">
+            <h2>GUERREIRO</h2>
+            <ul>
+                <li>(a) cota de malha ou (b) gibão de pelos, arco longo e 20 flechas</li>
+                <li>(a) uma arma marcial e um escudo ou (b) duas armas marciais</li>
+                <li>(a) uma besta leve e 20 virotes ou (b) duas machadas de arremesso</li>
+                <li>(a) um pacote de aventureiro ou (b) um pacote de explorador</li>
+            </ul>
+        </div>
+
+        <!-- Card para LADINO -->
+        <div class="card">
+            <h2>LADINO</h2>
+            <ul>
+                <li>(a) uma rapieira ou (b) uma espada longa</li>
+                <li>(a) um arco curto e uma aljava com 20 flechas ou (b) uma espada curta</li>
+                <li>(a) um pacote de assaltante ou (b) um pacote de aventureiro ou (c) um pacote de explorador</li>
+                <li>Armadura de couro, duas adagas e ferramentas de ladrão</li>
+            </ul>
+        </div>
+
+        <!-- Card para MAGO -->
+        <div class="card">
+            <h2>MAGO</h2>
+            <ul>
+                <li>(a) um bordão ou (b) uma adaga</li>
+                <li>(a) uma bolsa de componentes ou (b) um foco arcano</li>
+                <li>(a) um pacote de estudioso ou (b) um pacote de explorador</li>
+                <li>Um grimório</li>
+            </ul>
+        </div>
+
+        <!-- Card para MONGE -->
+        <div class="card">
+            <h2>MONGE</h2>
+            <ul>
+                <li>(a) uma espada curta ou (b) qualquer arma simples</li>
+                <li>(a) um pacote de explorador ou (b) um pacote de aventureiro</li>
+                <li>10 dardos</li>
+            </ul>
+        </div>
+
+        <!-- Card para PALADINO -->
+        <div class="card">
+            <h2>PALADINO</h2>
+            <ul>
+                <li>(a) uma arma marcial e um escudo ou (b) duas armas marciais</li>
+                <li>(a) cinco azagaias ou (b) qualquer arma simples corpo-a-corpo</li>
+                <li>(a) um pacote de sacerdote ou (b) um pacote de aventureiro</li>
+                <li>Cota de malha e um símbolo sagrado</li>
+            </ul>
+        </div>
+
+        <!-- Card para RANGER -->
+        <div class="card">
+            <h2>RANGER</h2>
+            <ul>
+                <li>(a) brunea ou (b) armadura de couro</li>
+                <li>(a) duas espadas curtas ou (b) duas armas simples corpo-a-corpo</li>
+                <li>(a) um pacote de explorador ou (b) um pacote de aventureiro</li>
+                <li>Um arco longo e uma aljava com 20 flechas</li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+</html>
