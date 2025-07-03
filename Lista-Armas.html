@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lista de Armas</title>
+<style>
+  /* --- Estilos Gerais --- */
+  body {
+    background-color: #f3e9d2; /* Cor de fundo similar a pergaminho */
+    color: #4a3f35; /* Cor do texto principal, um marrom escuro */
+    font-family: 'Georgia', serif; /* Uma fonte com serifa para um visual mais clássico */
+    padding: 20px;
+    line-height: 1.6;
+  }
+
+  /* --- Container Principal --- */
+  .container {
+    max-width: 900px;
+    margin: auto;
+    background-color: #faf3e0; /* Um tom mais claro para a área de conteúdo */
+    padding: 20px 30px;
+    border: 1px solid #dcd0b8;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra suave para profundidade */
+  }
+
+  /* --- Títulos --- */
+  h1 {
+    text-align: center;
+    color: #8c3b3b; /* Cor de destaque, um vermelho escuro/vinho */
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    border-bottom: 3px double #8c3b3b;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+  }
+
+  h2 {
+    color: #8c3b3b;
+    border-bottom: 1px solid #c8a087; /* Uma borda sutil para separar seções */
+    padding-bottom: 8px;
+    margin-top: 40px;
+    font-size: 1.5em;
+  }
+
+  /* --- Lista de Armas --- */
+  .weapon-list {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .weapon-list li {
+    background-color: #fefcf5; /* Fundo do item ligeiramente diferente */
+    margin-bottom: 10px;
+    padding: 15px 20px;
+    border-left: 5px solid #8c3b3b;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Garante que quebre a linha em telas menores */
+    border-radius: 0 5px 5px 0;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    gap: 10px;
+  }
+
+  .weapon-list li:hover {
+    transform: translateX(5px);
+    box-shadow: 2px 4px 8px rgba(0,0,0,0.08);
+  }
+
+  /* --- Detalhes da Arma --- */
+  .weapon-name {
+    font-weight: bold;
+    flex-grow: 1; /* Permite que o nome ocupe o espaço disponível */
+    flex-basis: 200px; /* Base de largura para o nome */
+    font-size: 1.1em;
+  }
+
+  .weapon-details {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espaço entre os detalhes */
+    flex-basis: auto; /* Base de largura para os detalhes */
+    justify-content: flex-end;
+    flex-wrap: wrap;
+  }
+  
+  .weapon-damage {
+    background-color: #4a3f35;
+    color: #f3e9d2;
+    padding: 3px 8px;
+    border-radius: 5px;
+    font-weight: bold;
+    min-width: 45px;
+    text-align: center;
+    font-size: 0.9em;
+  }
+
+  .damage-type {
+    font-style: italic;
+    color: #6d5d4d; /* Um tom de marrom mais suave */
+  }
+
+  .property {
+    background-color: #c8a087; /* Cor de destaque para a propriedade */
+    color: #f3e9d2;
+    padding: 3px 8px;
+    border-radius: 12px; /* Bordas mais arredondadas */
+    font-size: 0.8em;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+  
+  .property.special {
+      background-color: #a26b5c; /* Cor diferente para propriedades especiais */
+  }
+
+  /* --- Responsividade --- */
+  @media (max-width: 768px) {
+    .weapon-list li {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .weapon-details {
+      justify-content: flex-start;
+      width: 100%;
+    }
+    h1 {
+      font-size: 1.8em;
+    }
+    h2 {
+      font-size: 1.3em;
+    }
+  }
+
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Armas (Weapons)</h1>
+
+  <h2>Armas Simples Corpo a Corpo (Simple Melee Weapons)</h2>
+  <ul class="weapon-list">
+    <li>
+      <span class="weapon-name">Clava (Club)</span>
+      <span class="weapon-details">
+        <span class="weapon-damage">1d4</span>
+        <span class="damage-type">Contusão</span>
+        <span class="property">Leve</span>
+      </span>
+    </li>
+    <li>
+      <span class="weapon-name">Adaga (Dagger)</span>
+      <span class="weapon-details">
+        <span class="weapon-damage">1d4</span>
+        <span class="damage-type">Perfurante</span>
+        <span class="property">Leve</span>
+        <span class="property special">(Destreza)</span>
+        <span class="property special">Arremesso (20/60)</span>
+      </span>
+    </li>
+    <li>
+      <span class="weapon-name">Martelo Leve (Light Hammer)</span>
+      <span class="weapon-details">
+        <span class="weapon-damage">1d4</span>
+        <span class="damage-type">Contusão</span>
+        <span class="property">Leve</span>
+        <span class="property special">Arremesso (20/60)</span>
+      </span>
+    </li>
+    <li>
+      <span class="weapon-name">Lança (Spear)</span>
+      <span class="weapon-details">
+        <span class="weapon-damage">1d6 / 1d8</span>
+        <span class="damage-type">Perfurante</span>
+        <span class="property special">Versátil</span>
+        <span class="property special">Arremesso (20/60)</span>
+      </span>
+    </li>
+    <li>
+      <span class="weapon-name">Maça (Mace)</span>
+      <span class="weapon-details">
+        <span class="weapon-damage">1d6</span>
+        <span class="damage-type">Contusão</span>
+      </span>
+    </li>
+    <li>
+      <span class="weapon-name">Foice (Sickle)</span>
+      <span class="weapon-details">
+        <span class="weapon-damage">1d4</span>
+        <span class="damage-type">Cortante</span>
+        <span class="property">Leve</span>
+      </span>
+    </li>
+    <li>
+      <span class="weapon-name">Machadinha (Handaxe)</span>
+      <span class="weapon-details">
+        <span class="weapon-damage">1d6</span>
+        <span class="damage-type">Cortante</span>
+        <span class="property">Leve</span>
+        <span class="property special">Arremesso (20/60)</span>
+      </span>
+    </li>
+    <li>
+      <span class="weapon-name">Azagaia (Javelin)</span>
+      <span class="weapon-details">
+        <span class="weapon-damage">1d6</span>
+        <span class="damage-type">Perfurante</span>
+        <span class="property special">Arremesso (30/120)</span>
+      </span>
+    </li>
+    <li>
+      <span class="weapon-name">Bordão (Quarterstaff)</span>
+      <span class="weapon-details">
+        <span class="weapon-damage">1d6 / 1d8</span>
+        <span class="damage-type">Contusão</span>
+        <span class="property special">Versátil</span>
+      </span>
+    </li>
+    <li>
+      <span class="weapon-name">Clava Grande (Greatclub)</span>
+      <span class="weapon-details">
+        <span class="weapon-damage">1d8</span>
+        <span class="damage-type">Contusão</span>
+        <span class="property">Duas Mãos</span>
+      </span>
+    </li>
+  </ul>
+
+  <h2>Armas Marciais Corpo a Corpo (Martial Melee Weapons)</h2>
+  <ul class="weapon-list">
+    <li>
+      <span class="weapon-name">Cimitarra (Scimitar)</span>
+      <span class="weapon-details">
+        <span class="weapon-damage">1d6</span>
+        <span class="damage-type">Cortante</span>
+        <span class="property">Leve</span>
+        <span class="property special">(Destreza)</span>
+      </span>
+    </li>
+    <li>
+      <span class="weapon-name">Espada Curta (Shortsword)</span>
+      <span class="weapon-details">
+        <span class="weapon-damage">1d6</span>
+        <span class="damage-type">Perfurante</span>
+        <span class="property">Leve</span>
+        <span class="property special">(Destreza)</span>
+      </span>
+    </li>
+    <li>
+      <span class="weapon-name">Rapieira (Rapier)</span>
+      <span class="weapon-details">
+        <span class="weapon-damage">1d8</span>
+        <span class="damage-type">Perfurante</span>
+        <span class="property special">(Destreza)</span>
+      </span>
+    </li>
+    <li>
+      <span class="weapon-name">Mangual (Flail)</span>
+      <span class="weapon-details">
+        <span class="weapon-damage">1d8</span>
+        <span class="damage-type">Contusão</span>
+      </span>
+    </li>
+    <li>
+      <span class="weapon-name">Estrela da Manhã (Morningstar)</span>
+      <span class="weapon-details">
+        <span class="weapon-damage">1d8</span>
+        <span class="damage-type">Perfurante</span>
+      </span>
+    </li>
+    <li>
+      <span class="weapon-name">Machado de Batalha (Battleaxe)</span>
+      <span class="weapon-details">
+        <span class="weapon-damage">1d8 / 1d10</span>
+        <span class="damage-type">Cortante</span>
+        <span class="property special">Versátil</span>
+      </span>
+    </li>
+    <li>
+      <span class="weapon-name">Martelo de Guerra (Warhammer)</span>
+      <span class="weapon-details">
+        <span class="weapon-damage">1d8 / 1d10</span>
+        <span class="damage-type">Contusão</span>
+        <span class="property special">Versátil</span>
+      </span>
+    </li>
+    <li>
+      <span class="weapon-name">Espada Longa (Longsword)</span>
+      <span class="weapon-details">
+        <span class="weapon-damage">1d8 / 1d10</span>
+        <span class="damage-type">Cortante</span>
+        <span class="property special">Versátil</span>
+      </span>
+    </li>
+     <li>
+      <span class="weapon-name">Malho (Maul)</span>
+      <span class="weapon-details">
+        <span class="weapon-damage">2d6</span>
+        <span class="damage-type">Contusão</span>
+        <span class="property">Duas Mãos</span>
+      </span>
+    </li>
+    <li>
+      <span class="weapon-name">Espada Grande (Greatsword)</span>
+      <span class="weapon-details">
+        <span class="weapon-damage">2d6</span>
+        <span class="damage-type">Cortante</span>
+        <span class="property">Duas Mãos</span>
+      </span>
+    </li>
+     <li>
+      <span class="weapon-name">Glaive/Alabarda (Glaive/Halb.)</span>
+      <span class="weapon-details">
+        <span class="weapon-damage">1d10</span>
+        <span class="damage-type">Cortante</span>
+        <span class="property">Duas Mãos</span>
+        <span class="property special">Alcance</span>
+      </span>
+    </li>
+    <li>
+      <span class="weapon-name">Pique (Pike)</span>
+      <span class="weapon-details">
+        <span class="weapon-damage">1d10</span>
+        <span class="damage-type">Perfurante</span>
+        <span class="property">Duas Mãos</span>
+        <span class="property special">Alcance</span>
+      </span>
+    </li>
+    <li>
+      <span class="weapon-name">Lança de Montaria (Lance)</span>
+      <span class="weapon-details">
+        <span class="weapon-damage">1d12</span>
+        <span class="damage-type">Perfurante</span>
+        <span class="property special">Alcance</span>
+      </span>
+    </li>
+    <li>
+      <span class="weapon-name">Machado Grande (Greataxe)</span>
+      <span class="weapon-details">
+        <span class="weapon-damage">1d12</span>
+        <span class="damage-type">Cortante</span>
+        <span class="property">Duas Mãos</span>
+      </span>
+    </li>
+  </ul>
+
+  <h2>Armas Simples à Distância (Simple Ranged Weapons)</h2>
+  <ul class="weapon-list">
+    <li>
+      <span class="weapon-name">Arco Curto (Shortbow)</span>
+      <span class="weapon-details">
+        <span class="weapon-damage">1d6</span>
+        <span class="damage-type">Perfurante</span>
+        <span class="property">Duas Mãos</span>
+        <span class="property special">Alcance (80/320)</span>
+      </span>
+    </li>
+    <li>
+      <span class="weapon-name">Besta Leve (Crossbow, Light)</span>
+      <span class="weapon-details">
+        <span class="weapon-damage">1d8</span>
+        <span class="damage-type">Perfurante</span>
+        <span class="property">Duas Mãos</span>
+        <span class="property special">Alcance (80/320)</span>
+      </span>
+    </li>
+  </ul>
+
+  <h2>Armas Marciais à Distância (Martial Ranged Weapons)</h2>
+  <ul class="weapon-list">
+    <li>
+      <span class="weapon-name">Besta de Mão (Crossbow, Hand)</span>
+      <span class="weapon-details">
+        <span class="weapon-damage">1d6</span>
+        <span class="damage-type">Perfurante</span>
+        <span class="property">Leve</span>
+        <span class="property special">Alcance (30/120)</span>
+      </span>
+    </li>
+    <li>
+      <span class="weapon-name">Besta Pesada (Crossbow, Heavy)</span>
+      <span class="weapon-details">
+        <span class="weapon-damage">1d10</span>
+        <span class="damage-type">Perfurante</span>
+        <span class="property">Duas Mãos</span>
+        <span class="property special">Alcance (100/400)</span>
+      </span>
+    </li>
+    <li>
+      <span class="weapon-name">Arco Longo (Longbow)</span>
+      <span class="weapon-details">
+        <span class="weapon-damage">1d8</span>
+        <span class="damage-type">Perfurante</span>
+        <span class="property">Duas Mãos</span>
+        <span class="property special">Alcance (150/600)</span>
+      </span>
+    </li>
+  </ul>
+
+</div>
+
+</body>
+</html>

@@ -160,7 +160,7 @@
             transition: max-height 0.5s ease-out, opacity 0.5s ease-out, margin-bottom 0.5s ease-out;
         }
         .collapsible-content.open {
-            max-height: 1000px; /* Um valor grande o suficiente para a tabela/conteúdo expandir */
+            max-height: 3000px; /* Um valor grande o suficiente para a tabela/conteúdo expandir (ajustado para Lista-Armas) */
             opacity: 1;
             margin-bottom: 20px; /* Restaura a margem quando aberta */
         }
@@ -307,6 +307,13 @@
         #tableOfContents .sub-item a {
             font-size: 0.95em; /* Ajusta o tamanho da fonte dos links dos subtítulos */
             font-weight: normal;
+        }
+        /* Estilo para o iframe da lista de armas */
+        #weaponListIframe {
+            width: 100%;
+            height: 600px; /* Altura padrão, será ajustada por JS */
+            border: none;
+            overflow: hidden;
         }
 
 
@@ -756,21 +763,16 @@
             </table>
             <h4 id="dano-armas">7.6. Dano das Armas (d4 a d12):</h4>
             <p>Se precisar saber o dado de dano de alguma arma:</p>
-            <table class="equipment-table">
-                <thead>
-                    <tr>
-                        <th>Dado de Dano</th>
-                        <th>Armas Comuns (Exemplos)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>1d4</td><td>Adaga, Clava, Foice, Besta de Mão, Dardo, Funda, Azagaia</td></tr>
-                    <tr><td>1d6</td><td>Arco Curto, Bastão, Besta Leve, Cimitarrra, Espada Curta, Machadinha, Maça Leve, Trident</td></tr>
-                    <tr><td>1d8</td><td>Arco Longo, Florete, Lança Longa, Maça Estrela, Machado de Batalha, Picareta de Guerra, Espada Longa</td></tr>
-                    <tr><td>1d10</td><td>Alabarda, Mangual Pesado, Picareta de Guerra, Glaive, Grande Machado, Grande Espada, Martelo de Guerra, Chicote</td></tr>
-                    <tr><td>1d12</td><td>Machado Grande, Espada de Duas Mãos</td></tr>
-                </tbody>
-            </table>
+            <div class="toggle-button-container">
+                <button id="toggleWeaponListButton" class="toggle-button">
+                    <svg id="toggleWeaponListIcon" class="toggle-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24px" height="24px">
+                        <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+                    </svg>
+                </button>
+            </div>
+            <div id="weaponListContent" class="collapsible-content closed-display-none">
+                <iframe src="Lista-Armas.html" style="width:100%; height:auto; border:none;" id="weaponListIframe"></iframe>
+            </div>
             <p>Verifique o texto da arma, pode ter mais informações.</p>
 
             <h3 id="ferramentas-kits">7.7. Ferramentas e Kits</h3>
@@ -865,6 +867,9 @@
 
             // Configura o toggle para o Índice
             setupCollapsible('toggleIndexButton', 'indexContent', 'toggleIndexIcon');
+
+            // Configura o toggle para a Lista de Armas
+            setupCollapsible('toggleWeaponListButton', 'weaponListContent', 'toggleWeaponListIcon');
 
 
             // Lógica para a Calculadora de Pontos de Vida (PV)
@@ -968,6 +973,30 @@
                     equipCardsIframe.onload();
                 }
             }
+
+            // Script para ajustar a altura do iframe dinamicamente (Lista-Armas.html)
+            const weaponListIframe = document.getElementById('weaponListIframe');
+            if (weaponListIframe) { // Verifica se o iframe existe
+                weaponListIframe.onload = function() {
+                    try {
+                        const iframeDoc = weaponListIframe.contentWindow.document;
+                        const body = iframeDoc.body;
+                        const html = iframeDoc.documentElement;
+                        const height = Math.max( body.scrollHeight, body.offsetHeight,
+                                                  html.clientHeight, html.scrollHeight, html.offsetHeight );
+                        weaponListIframe.style.height = height + 'px';
+                        weaponListIframe.style.overflow = 'hidden'; // Garante que o scrollbar do iframe seja removido
+                    } catch (e) {
+                        console.warn("Não foi possível ajustar a altura do iframe da lista de armas devido a restrições de segurança (CORS).", e);
+                        weaponListIframe.style.height = '600px'; // Altura de fallback se o ajuste dinâmico falhar
+                    }
+                };
+                // Caso o iframe já esteja carregado quando o script é executado
+                if (weaponListIframe.contentWindow && weaponListIframe.contentWindow.document.readyState === 'complete') {
+                    weaponListIframe.onload();
+                }
+            }
+
 
             // Lógica para rolagem suave ao clicar nos links do índice
             document.querySelectorAll('#indexContent a').forEach(anchor => {
