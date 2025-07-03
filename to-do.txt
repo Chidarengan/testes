@@ -1,2 +1,4 @@
 na ficha fazer algo a respeito da linha enorme
-mudar oDvida para D-vida
+teu stat de conjuracao
+tirar o lvl up do formato de tabela
+efeitos de armas (light, reach, etc)
