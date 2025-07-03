@@ -2,3 +2,8 @@ na ficha fazer algo a respeito da linha enorme
 teu stat de conjuracao
 tirar o lvl up do formato de tabela
 efeitos de armas (light, reach, etc)
+melhorar o indice (colocar pra esquerda?)
+editar os botoes dos titulos pra encolherem
+colocar utf 8 em algum canto
+tema escuro
+voce pode tirar um print dessa parte pressionando ao mesmo tempo o botao windows+shift+s. (selecione a parte da tela que voce quer tirar o print)
