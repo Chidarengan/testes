@@ -1,0 +1,191 @@
+/* ficha.css */
+/* Estilos para a página Ficha.html */
+
+body {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    line-height: 1.6;
+    background-color: #f8f2e4;
+    color: #3d3d3d;
+}
+
+h1 {
+    font-family: 'Cinzel', serif;
+    color: #5a4435;
+    text-align: center;
+    font-size: 1.8em;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 30px;
+    border: 1px solid #5a4435;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    align-items: flex-end;
+    gap: 20px;
+}
+
+.field {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    flex: 1;
+}
+
+.field label {
+    font-weight: bold;
+    color: #5a4435;
+    min-width: fit-content;
+    padding-bottom: 2px;
+}
+
+.text-input {
+    border: none;
+    border-bottom: 1px solid #5a4435;
+    background-color: transparent;
+    width: 100%;
+    font-size: 1em;
+    padding: 2px 0;
+}
+
+.text-input:focus {
+    outline: none;
+    border-bottom: 2px solid #5a4435;
+}
+
+.circle {
+    width: 12px;
+    height: 12px;
+    border: 2px solid #5a4435;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    flex-shrink: 0;
+}
+
+.circle.filled {
+    background-color: #5a4435;
+}
+
+.divider {
+    border-top: 1px solid #9e8a7e;
+    margin: 25px 0;
+}
+
+.section-title {
+    font-family: 'Cinzel', serif;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 20px 0 15px 0;
+    color: #5a4435;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.attributes {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.attr {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-basis: calc(16.66% - 15px);
+    min-width: 80px;
+}
+
+.attr label {
+    font-weight: bold;
+    color: #5a4435;
+}
+
+.attr .text-input {
+    width: 40px;
+}
+
+.combat-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: flex-end;
+    margin-bottom: 10px;
+}
+
+.combat-stats .field {
+    min-width: 60px;
+}
+
+.skills-container {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.skills-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.skill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.skill label {
+   font-weight: normal;
+   color: #3d3d3d;
+   white-space: nowrap;
+}
+
+.skill .text-input {
+    width: 40px;
+}
+
+@media print {
+    body {
+        background-color: white;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        box-shadow: none;
+        padding: 0;
+        border: none;
+    }
+    .text-input {
+        border-bottom: 1px solid #000;
+    }
+}
+
+@media (max-width: 768px) {
+    .row, .combat-stats, .skills-container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+    .attributes {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .attr {
+        flex-basis: 100%;
+    }
+}

@@ -1,0 +1,18 @@
+/* global.css */
+/* Estilos globais para o projeto. */
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0; /* Remove a margem padrão */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fonte padrão */
+  line-height: 1.6;
+  background-color: #f4f4f4;
+  color: #333;
+}

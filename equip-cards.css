@@ -1,0 +1,159 @@
+/* equip-cards.css */
+/* Estilos para a página equipCards.html */
+
+body {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #f0ead6;
+    margin: 0;
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+    color: #333;
+    line-height: 1.2;
+}
+
+.intro-text {
+    background-color: #fdfdf5;
+    padding: 0.8rem 1.2rem;
+    margin-bottom: 1.5rem;
+    width: 100%;
+    max-width: 1050px;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 1rem;
+    line-height: 1.5;
+    border: 1px solid #c9c9c9;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.intro-text .section-title {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    color: #5a4f41;
+    letter-spacing: 0.05em;
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(200px, 1fr));
+    gap: 0.8rem;
+    width: 100%;
+    max-width: 1050px;
+}
+
+.card {
+    background-color: #fdfdf5;
+    border: 1px solid #c9c9c9;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.08);
+    padding: 0.9rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    min-height: 160px;
+    justify-content: flex-start;
+    transition: all 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+.card h2 {
+    font-family: 'Georgia', serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #4a3e31;
+    margin: 0 0 0.6rem 0;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid #b5a990;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+}
+
+.card ul li {
+    position: relative;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: #555;
+    margin-bottom: 0.3rem;
+    padding-left: 1.2rem;
+}
+
+.card ul li::before {
+    content: '•';
+    color: #7b6f5d;
+    font-size: 0.9em;
+    position: absolute;
+    left: 0;
+    top: 0.15em;
+    line-height: 1;
+}
+
+@media (max-width: 1080px) {
+    .cards-container {
+        grid-template-columns: repeat(3, minmax(200px, 1fr));
+        max-width: 800px;
+    }
+    .intro-text {
+        max-width: 800px;
+    }
+}
+
+@media (max-width: 768px) {
+    .cards-container {
+        grid-template-columns: repeat(2, minmax(180px, 1fr));
+        gap: 0.7rem;
+        max-width: 600px;
+    }
+    .card {
+        padding: 0.8rem;
+        min-height: auto;
+    }
+    .card h2 {
+        font-size: 1.1rem;
+    }
+    .card ul li {
+        font-size: 0.85rem;
+    }
+    body {
+        padding: 1rem;
+    }
+    .intro-text {
+        padding: 0.7rem 1rem;
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
+        max-width: 600px;
+    }
+}
+
+@media (max-width: 580px) {
+    .cards-container {
+        grid-template-columns: 1fr;
+        gap: 0.6rem;
+        max-width: 320px;
+    }
+    body {
+        padding: 0.8rem;
+    }
+    .card {
+        padding: 0.7rem;
+    }
+    .intro-text {
+        max-width: 320px;
+    }
+}
