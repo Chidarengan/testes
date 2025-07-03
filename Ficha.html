@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficha de Personagem Interativa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos gerais do corpo da página */
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            line-height: 1.6;
+            background-color: #f8f2e4; 
+            color: #3d3d3d; 
+        }
+
+        /* Título principal da ficha */
+        h1 {
+            font-family: 'Cinzel', serif;
+            color: #5a4435;
+            text-align: center;
+            font-size: 1.8em;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        
+        /* Container principal da ficha */
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border: 1px solid #5a4435; 
+        }
+        
+        /* Layout de linha para agrupar campos */
+        .row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            align-items: flex-end; /* Alinha os itens na base */
+            gap: 20px;
+        }
+        
+        /* Estilo para cada campo individual */
+        .field {
+            display: flex;
+            align-items: flex-end; /* Alinha o label e o input na base */
+            gap: 8px;
+            flex: 1;
+        }
+        
+        .field label {
+            font-weight: bold;
+            color: #5a4435;
+            min-width: fit-content;
+            padding-bottom: 2px; /* Ajuste fino para alinhar com o input */
+        }
+        
+        /* Estilo para os inputs de texto para parecerem uma linha */
+        .text-input {
+            border: none;
+            border-bottom: 1px solid #5a4435; 
+            background-color: transparent;
+            width: 100%;
+            font-size: 1em;
+            padding: 2px 0;
+        }
+
+        .text-input:focus {
+            outline: none;
+            border-bottom: 2px solid #5a4435;
+        }
+
+        /* Círculos clicáveis */
+        .circle {
+            width: 12px;
+            height: 12px;
+            border: 2px solid #5a4435; 
+            border-radius: 50%;
+            display: inline-block;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+            flex-shrink: 0; /* Impede que o círculo encolha */
+        }
+
+        /* Estilo do círculo quando preenchido */
+        .circle.filled {
+            background-color: #5a4435;
+        }
+        
+        /* Divisor de seções */
+        .divider {
+            border-top: 1px solid #9e8a7e; 
+            margin: 25px 0;
+        }
+        
+        /* Título de cada seção */
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 20px 0 15px 0;
+            color: #5a4435;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        /* Container dos atributos */
+        .attributes {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha em telas menores */
+            justify-content: space-between;
+        }
+        
+        /* Cada item de atributo (círculo, label, input) */
+        .attr {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-basis: calc(16.66% - 15px); /* Distribui igualmente, considerando o gap */
+            min-width: 80px; /* Largura mínima para evitar quebra de layout */
+        }
+
+        .attr label {
+            font-weight: bold;
+            color: #5a4435;
+        }
+
+        .attr .text-input {
+            width: 40px; /* Largura fixa para os inputs de atributo */
+        }
+        
+        /* Container para os status de combate */
+        .combat-stats {
+            display: flex;
+            flex-wrap: wrap; 
+            gap: 20px; 
+            align-items: flex-end; 
+            margin-bottom: 10px; 
+        }
+
+        .combat-stats .field {
+            min-width: 60px; /* Largura mínima para cada stat */
+        }
+        
+        /* Container para as perícias */
+        .skills-container {
+            display: flex;
+            gap: 40px; 
+            align-items: flex-start;
+        }
+
+        .skills-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        /* Cada item de perícia */
+        .skill {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .skill label {
+           font-weight: normal;
+           color: #3d3d3d;
+           white-space: nowrap; /* Impede que o nome da perícia quebre */
+        }
+        
+        .skill .text-input {
+            width: 40px;
+        }
+
+        /* Ajustes para impressão */
+        @media print {
+            body {
+                background-color: white;
+                margin: 0;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 0;
+                border: none;
+            }
+            .text-input {
+                border-bottom: 1px solid #000;
+            }
+        }
+
+        /* Responsividade para telas menores */
+        @media (max-width: 768px) {
+            .row, .combat-stats, .skills-container {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 15px;
+            }
+            .attributes {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .attr {
+                flex-basis: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>FICHA DE PERSONAGEM</h1>
+        <div class="divider"></div>
+
+        <!-- Informações Básicas do Personagem -->
+        <div class="row">
+            <div class="field">
+                <label for="char-name">Nome:</label>
+                <input type="text" id="char-name" class="text-input">
+            </div>
+            <div class="field">
+                <label for="char-class">Classe:</label>
+                <input type="text" id="char-class" class="text-input">
+            </div>
+            <div class="field">
+                <label for="char-race">Raça:</label>
+                <input type="text" id="char-race" class="text-input">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="field">
+                <label for="char-level">Level:</label>
+                <input type="text" id="char-level" class="text-input">
+            </div>
+            <div class="field">
+                <label for="player-name">Jogador:</label>
+                <input type="text" id="player-name" class="text-input">
+            </div>
+            <div class="field">
+                <label for="char-exp">Exp:</label>
+                <input type="text" id="char-exp" class="text-input">
+            </div>
+        </div>
+        
+        <div class="divider"></div>
+        
+        <!-- Atributos -->
+        <div class="section-title">ATRIBUTOS</div>
+        <div class="attributes">
+            <div class="attr">
+                <span class="circle"></span>
+                <label for="attr-for">For:</label>
+                <input type="text" id="attr-for" class="text-input">
+            </div>
+            <div class="attr">
+                <span class="circle"></span>
+                <label for="attr-des">Des:</label>
+                <input type="text" id="attr-des" class="text-input">
+            </div>
+            <div class="attr">
+                <span class="circle"></span>
+                <label for="attr-con">Con:</label>
+                <input type="text" id="attr-con" class="text-input">
+            </div>
+            <div class="attr">
+                <span class="circle"></span>
+                <label for="attr-int">Int:</label>
+                <input type="text" id="attr-int" class="text-input">
+            </div>
+            <div class="attr">
+                <span class="circle"></span>
+                <label for="attr-sab">Sab:</label>
+                <input type="text" id="attr-sab" class="text-input">
+            </div>
+            <div class="attr">
+                <span class="circle"></span>
+                <label for="attr-car">Car:</label>
+                <input type="text" id="attr-car" class="text-input">
+            </div>
+        </div>
+        
+        <div class="divider"></div>
+        
+        <!-- Status de Combate -->
+        <div class="combat-stats">
+            <div class="field">
+                <label for="stat-prof">Prof:</label>
+                <input type="text" id="stat-prof" class="text-input">
+            </div>
+            <div class="field">
+                <label for="stat-ca">CA:</label>
+                <input type="text" id="stat-ca" class="text-input">
+            </div>
+            <div class="field">
+                <label for="stat-mov">Mov:</label>
+                <input type="text" id="stat-mov" class="text-input">
+            </div>
+            <div class="field">
+                <label for="stat-ini">Ini:</label>
+                <input type="text" id="stat-ini" class="text-input">
+            </div>
+            <div class="field">
+                <label for="stat-dvida">Dvida:</label>
+                <input type="text" id="stat-dvida" class="text-input">
+            </div>
+            <div class="field">
+                <label for="stat-magdc">MagDC:</label>
+                <input type="text" id="stat-magdc" class="text-input">
+            </div>
+        </div>
+        <div class="row">
+             <div class="field">
+                <label for="stat-vida">Vida:</label>
+                <input type="text" id="stat-vida" class="text-input">
+            </div>
+        </div>
+        
+        <div class="divider"></div>
+
+        <!-- Inspiração e Saves de Morte -->
+        <div class="section-title">
+            Inspiração: <span class="circle"></span> 
+        </div>
+        <div class="section-title">
+            Save de morte: Sucesso: <span class="circle"></span> <span class="circle"></span> <span class="circle"></span> / Falha: <span class="circle"></span> <span class="circle"></span> <span class="circle"></span>
+        </div>
+        
+        <div class="divider"></div>
+        
+        <!-- Perícias -->
+        <div class="section-title">PERÍCIAS</div>
+        <div class="skills-container">
+            <div class="skills-column">
+                <div class="skill"><span class="circle"></span><label for="skill-atletismo">Atletismo (For)</label><input type="text" id="skill-atletismo" class="text-input"></div>
+                <div class="skill"><span class="circle"></span><label for="skill-acrobacia">Acrobacia (Dex)</label><input type="text" id="skill-acrobacia" class="text-input"></div>
+                <div class="skill"><span class="circle"></span><label for="skill-furtividade">Furtividade (Dex)</label><input type="text" id="skill-furtividade" class="text-input"></div>
+                <div class="skill"><span class="circle"></span><label for="skill-prestidigitacao">Prestidigitação (Dex)</label><input type="text" id="skill-prestidigitacao" class="text-input"></div>
+                <div class="skill"><span class="circle"></span><label for="skill-arcanismo">Arcanismo (Int)</label><input type="text" id="skill-arcanismo" class="text-input"></div>
+                <div class="skill"><span class="circle"></span><label for="skill-historia">História (Int)</label><input type="text" id="skill-historia" class="text-input"></div>
+                <div class="skill"><span class="circle"></span><label for="skill-investigacao">Investigação (Int)</label><input type="text" id="skill-investigacao" class="text-input"></div>
+                <div class="skill"><span class="circle"></span><label for="skill-natureza">Natureza (Int)</label><input type="text" id="skill-natureza" class="text-input"></div>
+                <div class="skill"><span class="circle"></span><label for="skill-religiao">Religião (Int)</label><input type="text" id="skill-religiao" class="text-input"></div>
+            </div>
+            <div class="skills-column">
+                <div class="skill"><span class="circle"></span><label for="skill-intuicao">Intuição (Sab)</label><input type="text" id="skill-intuicao" class="text-input"></div>
+                <div class="skill"><span class="circle"></span><label for="skill-animais">Lidar com Animais (Sab)</label><input type="text" id="skill-animais" class="text-input"></div>
+                <div class="skill"><span class="circle"></span><label for="skill-medicina">Medicina (Sab)</label><input type="text" id="skill-medicina" class="text-input"></div>
+                <div class="skill"><span class="circle"></span><label for="skill-percepcao">Percepção (Sab)</label><input type="text" id="skill-percepcao" class="text-input"></div>
+                <div class="skill"><span class="circle"></span><label for="skill-sobrevivencia">Sobrevivência (Sab)</label><input type="text" id="skill-sobrevivencia" class="text-input"></div>
+                <div class="skill"><span class="circle"></span><label for="skill-atuacao">Atuação (Car)</label><input type="text" id="skill-atuacao" class="text-input"></div>
+                <div class="skill"><span class="circle"></span><label for="skill-enganacao">Enganação (Car)</label><input type="text" id="skill-enganacao" class="text-input"></div>
+                <div class="skill"><span class="circle"></span><label for="skill-intimidacao">Intimidação (Car)</label><input type="text" id="skill-intimidacao" class="text-input"></div>
+                <div class="skill"><span class="circle"></span><label for="skill-persuasao">Persuasão (Car)</label><input type="text" id="skill-persuasao" class="text-input"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Adiciona a funcionalidade de clique a todos os elementos com a classe 'circle'
+        document.addEventListener('DOMContentLoaded', function() {
+            const circles = document.querySelectorAll('.circle');
+            
+            circles.forEach(circle => {
+                // Função para alternar o preenchimento
+                const toggleFill = () => {
+                    circle.classList.toggle('filled');
+                };
+
+                // Adiciona evento de clique
+                circle.addEventListener('click', toggleFill);
+
+                // Adiciona acessibilidade via teclado (Enter ou Espaço)
+                circle.setAttribute('tabindex', '0'); // Torna o círculo focável
+                circle.setAttribute('role', 'button'); // Define a função como um botão
+                circle.addEventListener('keydown', function(event) {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault(); // Impede o comportamento padrão (ex: rolar a página com espaço)
+                        toggleFill();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

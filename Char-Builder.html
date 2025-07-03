@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,252 +14,520 @@
         }
         .race-option:hover, .class-option:hover {
             filter: brightness(110%);
+            transform: translateY(-2px);
         }
         .selected {
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.7);
+            transform: scale(1.02);
         }
         .feature-card {
             transition: all 0.2s ease;
         }
         .feature-card:hover {
             transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+        
+        /* Estilos para impressão */
+        @media print {
+            body {
+                background-color: white;
+            }
+            .no-print {
+                display: none;
+            }
+            .print-container {
+                display: block !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                box-shadow: none !important;
+                border: 2px solid #e2e8f0;
+            }
+             .print-only-sheet {
+                box-shadow: none !important;
+                border: none !important;
+            }
         }
     </style>
 </head>
 <body class="bg-gray-100 min-h-screen">
     <div class="container mx-auto px-4 py-8 max-w-6xl">
-        <!-- Header -->
-        <header class="text-center mb-12">
+        <header class="text-center mb-12 no-print">
             <h1 class="text-4xl font-bold text-gray-800 mb-2">Dungeons & Dragons 5e</h1>
             <h2 class="text-3xl font-semibold text-amber-700">Character Builder</h2>
-            <p class="text-gray-600 mt-4">Build your perfect adventurer with this interactive character sheet</p>
+            <p class="text-gray-600 mt-4">Construa seu aventureiro perfeito com esta ficha interativa.</p>
         </header>
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <!-- Character Creation Steps -->
-            <div class="lg:col-span-2 space-y-8">
-                <!-- Step 1: Character Basics -->
+            <div class="lg:col-span-2 space-y-8 no-print">
                 <div class="bg-white rounded-lg shadow-md p-6">
                     <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
                         <span class="bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3">1</span>
-                        Character Basics
+                        Informações Básicas
                     </h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <label class="block text-gray-700 mb-2">Character Name</label>
+                            <label class="block text-gray-700 mb-2">Nome do Personagem</label>
                             <input type="text" id="charName" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                         </div>
                         <div>
-                            <label class="block text-gray-700 mb-2">Background</label>
+                            <label class="block text-gray-700 mb-2">Antecedente (Background)</label>
                             <select id="background" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                                <option value="">Select Background</option>
-                                <option value="acolyte">Acolyte</option>
-                                <option value="charlatan">Charlatan</option>
-                                <option value="criminal">Criminal</option>
-                                <option value="entertainer">Entertainer</option>
-                                <option value="folk-hero">Folk Hero</option>
-                                <option value="guild-artisan">Guild Artisan</option>
-                                <option value="hermit">Hermit</option>
-                                <option value="noble">Noble</option>
-                                <option value="outlander">Outlander</option>
-                                <option value="sage">Sage</option>
-                                <option value="sailor">Sailor</option>
-                                <option value="soldier">Soldier</option>
-                                <option value="urchin">Urchin</option>
+                                <option value="">Selecione...</option>
+                                <option value="acolyte">Acólito</option>
+                                <option value="charlatan">Charlatão</option>
+                                <option value="criminal">Criminoso</option>
+                                <option value="entertainer">Artista</option>
+                                <option value="folk-hero">Herói do Povo</option>
+                                <option value="guild-artisan">Artesão de Guilda</option>
+                                <option value="hermit">Eremita</option>
+                                <option value="noble">Nobre</option>
+                                <option value="outlander">Forasteiro</option>
+                                <option value="sage">Sábio</option>
+                                <option value="sailor">Marinheiro</option>
+                                <option value="soldier">Soldado</option>
+                                <option value="urchin">Órfão</option>
                             </select>
                         </div>
                         <div>
-                            <label class="block text-gray-700 mb-2">Alignment</label>
+                            <label class="block text-gray-700 mb-2">Tendência (Alignment)</label>
                             <select id="alignment" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                                <option value="">Select Alignment</option>
-                                <option value="lawful-good">Lawful Good</option>
-                                <option value="neutral-good">Neutral Good</option>
-                                <option value="chaotic-good">Chaotic Good</option>
-                                <option value="lawful-neutral">Lawful Neutral</option>
-                                <option value="neutral">True Neutral</option>
-                                <option value="chaotic-neutral">Chaotic Neutral</option>
-                                <option value="lawful-evil">Lawful Evil</option>
-                                <option value="neutral-evil">Neutral Evil</option>
-                                <option value="chaotic-evil">Chaotic Evil</option>
+                                 <option value="">Selecione...</option>
+                                 <option value="lawful-good">Leal e Bom</option>
+                                 <option value="neutral-good">Neutro e Bom</option>
+                                 <option value="chaotic-good">Caótico e Bom</option>
+                                 <option value="lawful-neutral">Leal e Neutro</option>
+                                 <option value="neutral">Neutro</option>
+                                 <option value="chaotic-neutral">Caótico e Neutro</option>
+                                 <option value="lawful-evil">Leal e Mau</option>
+                                 <option value="neutral-evil">Neutro e Mau</option>
+                                 <option value="chaotic-evil">Caótico e Mau</option>
                             </select>
                         </div>
                         <div>
-                            <label class="block text-gray-700 mb-2">Level (1-20)</label>
+                            <label class="block text-gray-700 mb-2">Nível (1-20)</label>
                             <input type="number" id="level" min="1" max="20" value="1" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                         </div>
                     </div>
                 </div>
 
-                <!-- Step 2: Race Selection -->
                 <div class="bg-white rounded-lg shadow-md p-6">
                     <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
                         <span class="bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3">2</span>
-                        Choose Your Race
+                        Escolha sua Raça
                     </h3>
                     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4" id="raceSelection">
-                        <!-- Races will be populated by JavaScript -->
-                    </div>
+                        </div>
                 </div>
 
-                <!-- Step 3: Class Selection -->
                 <div class="bg-white rounded-lg shadow-md p-6">
                     <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
                         <span class="bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3">3</span>
-                        Choose Your Class
+                        Escolha sua Classe
                     </h3>
                     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4" id="classSelection">
-                        <!-- Classes will be populated by JavaScript -->
-                    </div>
+                        </div>
                 </div>
 
-                <!-- Step 4: Ability Scores -->
                 <div class="bg-white rounded-lg shadow-md p-6">
                     <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
                         <span class="bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3">4</span>
-                        Assign Ability Scores
+                        Distribua os Pontos de Habilidade
                     </h3>
-                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4" id="abilityScores">
-                        <div class="ability-score bg-blue-50 p-4 rounded-lg text-center">
-                            <h4 class="font-semibold text-blue-700">Strength (STR)</h4>
-                            <div class="flex items-center justify-center mt-2">
-                                <button class="score-btn bg-blue-100 hover:bg-blue-200 w-8 h-8 rounded-full" onclick="modifyScore('str', -1)" disabled>-</button>
-                                <span class="score-value mx-4 text-2xl font-bold" id="str-score">10</span>
-                                <button class="score-btn bg-blue-100 hover:bg-blue-200 w-8 h-8 rounded-full" onclick="modifyScore('str', 1)">+</button>
-                            </div>
-                            <div class="mt-1 text-gray-600">Modifier: <span id="str-mod">+0</span></div>
-                        </div>
-                        <div class="ability-score bg-green-50 p-4 rounded-lg text-center">
-                            <h4 class="font-semibold text-green-700">Dexterity (DEX)</h4>
-                            <div class="flex items-center justify-center mt-2">
-                                <button class="score-btn bg-green-100 hover:bg-green-200 w-8 h-8 rounded-full" onclick="modifyScore('dex', -1)" disabled>-</button>
-                                <span class="score-value mx-4 text-2xl font-bold" id="dex-score">10</span>
-                                <button class="score-btn bg-green-100 hover:bg-green-200 w-8 h-8 rounded-full" onclick="modifyScore('dex', 1)">+</button>
-                            </div>
-                            <div class="mt-1 text-gray-600">Modifier: <span id="dex-mod">+0</span></div>
-                        </div>
-                        <div class="ability-score bg-purple-50 p-4 rounded-lg text-center">
-                            <h4 class="font-semibold text-purple-700">Constitution (CON)</h4>
-                            <div class="flex items-center justify-center mt-2">
-                                <button class="score-btn bg-purple-100 hover:bg-purple-200 w-8 h-8 rounded-full" onclick="modifyScore('con', -1)" disabled>-</button>
-                                <span class="score-value mx-4 text-2xl font-bold" id="con-score">10</span>
-                                <button class="score-btn bg-purple-100 hover:bg-purple-200 w-8 h-8 rounded-full" onclick="modifyScore('con', 1)">+</button>
-                            </div>
-                            <div class="mt-1 text-gray-600">Modifier: <span id="con-mod">+0</span></div>
-                        </div>
-                        <div class="ability-score bg-yellow-50 p-4 rounded-lg text-center">
-                            <h4 class="font-semibold text-yellow-700">Intelligence (INT)</h4>
-                            <div class="flex items-center justify-center mt-2">
-                                <button class="score-btn bg-yellow-100 hover:bg-yellow-200 w-8 h-8 rounded-full" onclick="modifyScore('int', -1)" disabled>-</button>
-                                <span class="score-value mx-4 text-2xl font-bold" id="int-score">10</span>
-                                <button class="score-btn bg-yellow-100 hover:bg-yellow-200 w-8 h-8 rounded-full" onclick="modifyScore('int', 1)">+</button>
-                            </div>
-                            <div class="mt-1 text-gray-600">Modifier: <span id="int-mod">+0</span></div>
-                        </div>
-                        <div class="ability-score bg-red-50 p-4 rounded-lg text-center">
-                            <h4 class="font-semibold text-red-700">Wisdom (WIS)</h4>
-                            <div class="flex items-center justify-center mt-2">
-                                <button class="score-btn bg-red-100 hover:bg-red-200 w-8 h-8 rounded-full" onclick="modifyScore('wis', -1)" disabled>-</button>
-                                <span class="score-value mx-4 text-2xl font-bold" id="wis-score">10</span>
-                                <button class="score-btn bg-red-100 hover:bg-red-200 w-8 h-8 rounded-full" onclick="modifyScore('wis', 1)">+</button>
-                            </div>
-                            <div class="mt-1 text-gray-600">Modifier: <span id="wis-mod">+0</span></div>
-                        </div>
-                        <div class="ability-score bg-indigo-50 p-4 rounded-lg text-center">
-                            <h4 class="font-semibold text-indigo-700">Charisma (CHA)</h4>
-                            <div class="flex items-center justify-center mt-2">
-                                <button class="score-btn bg-indigo-100 hover:bg-indigo-200 w-8 h-8 rounded-full" onclick="modifyScore('cha', -1)" disabled>-</button>
-                                <span class="score-value mx-4 text-2xl font-bold" id="cha-score">10</span>
-                                <button class="score-btn bg-indigo-100 hover:bg-indigo-200 w-8 h-8 rounded-full" onclick="modifyScore('cha', 1)">+</button>
-                            </div>
-                            <div class="mt-1 text-gray-600">Modifier: <span id="cha-mod">+0</span></div>
-                        </div>
-                    </div>
+                     <div class="grid grid-cols-2 md:grid-cols-3 gap-4" id="abilityScores">
+                         <div class="ability-score bg-blue-50 p-4 rounded-lg text-center">
+                             <h4 class="font-semibold text-blue-700">Força (STR)</h4>
+                             <div class="flex items-center justify-center mt-2">
+                                 <button class="score-btn bg-blue-100 hover:bg-blue-200 w-8 h-8 rounded-full font-bold" onclick="modifyScore('str', -1)" data-ability="str">-</button>
+                                 <span class="score-value mx-4 text-2xl font-bold" id="str-score">8</span>
+                                 <button class="score-btn bg-blue-100 hover:bg-blue-200 w-8 h-8 rounded-full font-bold" onclick="modifyScore('str', 1)" data-ability="str">+</button>
+                             </div>
+                             <div class="mt-1 text-gray-600">Modificador: <span id="str-mod">-1</span></div>
+                         </div>
+                         <div class="ability-score bg-green-50 p-4 rounded-lg text-center">
+                             <h4 class="font-semibold text-green-700">Destreza (DEX)</h4>
+                             <div class="flex items-center justify-center mt-2">
+                                 <button class="score-btn bg-green-100 hover:bg-green-200 w-8 h-8 rounded-full font-bold" onclick="modifyScore('dex', -1)" data-ability="dex">-</button>
+                                 <span class="score-value mx-4 text-2xl font-bold" id="dex-score">8</span>
+                                 <button class="score-btn bg-green-100 hover:bg-green-200 w-8 h-8 rounded-full font-bold" onclick="modifyScore('dex', 1)" data-ability="dex">+</button>
+                             </div>
+                             <div class="mt-1 text-gray-600">Modifier: <span id="dex-mod">-1</span></div>
+                         </div>
+                         <div class="ability-score bg-purple-50 p-4 rounded-lg text-center">
+                             <h4 class="font-semibold text-purple-700">Constituição (CON)</h4>
+                             <div class="flex items-center justify-center mt-2">
+                                 <button class="score-btn bg-purple-100 hover:bg-purple-200 w-8 h-8 rounded-full font-bold" onclick="modifyScore('con', -1)" data-ability="con">-</button>
+                                 <span class="score-value mx-4 text-2xl font-bold" id="con-score">8</span>
+                                 <button class="score-btn bg-purple-100 hover:bg-purple-200 w-8 h-8 rounded-full font-bold" onclick="modifyScore('con', 1)" data-ability="con">+</button>
+                             </div>
+                             <div class="mt-1 text-gray-600">Modifier: <span id="con-mod">-1</span></div>
+                         </div>
+                         <div class="ability-score bg-yellow-50 p-4 rounded-lg text-center">
+                             <h4 class="font-semibold text-yellow-700">Inteligência (INT)</h4>
+                             <div class="flex items-center justify-center mt-2">
+                                 <button class="score-btn bg-yellow-100 hover:bg-yellow-200 w-8 h-8 rounded-full font-bold" onclick="modifyScore('int', -1)" data-ability="int">-</button>
+                                 <span class="score-value mx-4 text-2xl font-bold" id="int-score">8</span>
+                                 <button class="score-btn bg-yellow-100 hover:bg-yellow-200 w-8 h-8 rounded-full font-bold" onclick="modifyScore('int', 1)" data-ability="int">+</button>
+                             </div>
+                             <div class="mt-1 text-gray-600">Modifier: <span id="int-mod">-1</span></div>
+                         </div>
+                         <div class="ability-score bg-red-50 p-4 rounded-lg text-center">
+                             <h4 class="font-semibold text-red-700">Sabedoria (WIS)</h4>
+                             <div class="flex items-center justify-center mt-2">
+                                 <button class="score-btn bg-red-100 hover:bg-red-200 w-8 h-8 rounded-full font-bold" onclick="modifyScore('wis', -1)" data-ability="wis">-</button>
+                                 <span class="score-value mx-4 text-2xl font-bold" id="wis-score">8</span>
+                                 <button class="score-btn bg-red-100 hover:bg-red-200 w-8 h-8 rounded-full font-bold" onclick="modifyScore('wis', 1)" data-ability="wis">+</button>
+                             </div>
+                             <div class="mt-1 text-gray-600">Modifier: <span id="wis-mod">-1</span></div>
+                         </div>
+                         <div class="ability-score bg-indigo-50 p-4 rounded-lg text-center">
+                             <h4 class="font-semibold text-indigo-700">Carisma (CHA)</h4>
+                             <div class="flex items-center justify-center mt-2">
+                                 <button class="score-btn bg-indigo-100 hover:bg-indigo-200 w-8 h-8 rounded-full font-bold" onclick="modifyScore('cha', -1)" data-ability="cha">-</button>
+                                 <span class="score-value mx-4 text-2xl font-bold" id="cha-score">8</span>
+                                 <button class="score-btn bg-indigo-100 hover:bg-indigo-200 w-8 h-8 rounded-full font-bold" onclick="modifyScore('cha', 1)" data-ability="cha">+</button>
+                             </div>
+                             <div class="mt-1 text-gray-600">Modifier: <span id="cha-mod">-1</span></div>
+                         </div>
+                     </div>
                     <div class="mt-4 bg-gray-100 p-4 rounded-lg">
                         <div class="flex items-center">
-                            <span class="font-medium">Points Remaining:</span>
-                            <span class="ml-2 text-xl font-bold" id="points-remaining">27</span>
+                            <span class="font-medium">Pontos Restantes:</span>
+                            <span class="ml-2 text-xl font-bold text-blue-600" id="points-remaining">27</span>
                         </div>
-                        <div class="text-sm text-gray-600 mt-1">Distribute 27 points across your abilities following point buy rules.</div>
+                        <div class="text-sm text-gray-600 mt-1">Distribua 27 pontos. Aumentar um atributo de 13 para 14 ou de 14 para 15 custa 2 pontos. Outros aumentos custam 1 ponto.</div>
                     </div>
                 </div>
 
-                <!-- Step 5: Equipment & Features -->
                 <div class="bg-white rounded-lg shadow-md p-6">
                     <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
                         <span class="bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3">5</span>
-                        Equipment & Features
+                        Equipamentos & Habilidades
                     </h3>
                     <div class="space-y-4" id="equipmentFeatures">
-                        <p class="text-gray-600">Select your class and race first to see available equipment and features.</p>
+                        <p class="text-gray-600">Selecione sua raça e classe para ver equipamentos e habilidades disponíveis.</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Character Sheet Preview -->
-            <div class="lg:col-span-1">
-                <div class="bg-white rounded-lg shadow-md p-6 sticky top-4">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Character Preview</h3>
+            <div class="lg:col-span-1 print-container">
+                <div class="bg-white rounded-lg shadow-md p-6 sticky top-8 print-only-sheet">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Pré-visualização do Personagem</h3>
                     <div class="bg-yellow-50 border-2 border-amber-200 rounded-lg p-4">
                         <div class="flex justify-between items-center border-b border-amber-300 pb-2 mb-3">
-                            <h2 class="text-2xl font-bold text-gray-800" id="preview-name">Unnamed Hero</h2>
-                            <span class="bg-amber-200 text-amber-800 px-3 py-1 rounded-full text-sm font-medium" id="preview-level">Level 1</span>
+                            <h2 class="text-2xl font-bold text-gray-800" id="preview-name">Herói Sem Nome</h2>
+                            <span class="bg-amber-200 text-amber-800 px-3 py-1 rounded-full text-sm font-medium" id="preview-level">Nível 1</span>
                         </div>
                         <div class="grid grid-cols-2 gap-4 mb-4">
                             <div>
-                                <span class="text-gray-500 text-sm">Race</span>
-                                <p class="font-medium" id="preview-race">-</p>
+                                <span class="text-gray-500 text-sm">Raça</span>
+                                <p class="font-medium capitalize" id="preview-race">-</p>
                             </div>
                             <div>
-                                <span class="text-gray-500 text-sm">Class</span>
-                                <p class="font-medium" id="preview-class">-</p>
+                                <span class="text-gray-500 text-sm">Classe</span>
+                                <p class="font-medium capitalize" id="preview-class">-</p>
                             </div>
                             <div>
-                                <span class="text-gray-500 text-sm">Background</span>
-                                <p class="font-medium" id="preview-background">-</p>
+                                <span class="text-gray-500 text-sm">Antecedente</span>
+                                <p class="font-medium capitalize" id="preview-background">-</p>
                             </div>
                             <div>
-                                <span class="text-gray-500 text-sm">Alignment</span>
-                                <p class="font-medium" id="preview-alignment">-</p>
+                                <span class="text-gray-500 text-sm">Tendência</span>
+                                <p class="font-medium capitalize" id="preview-alignment">-</p>
                             </div>
                         </div>
                         <div class="space-y-2">
-                            <h4 class="font-semibold text-gray-700 border-b border-amber-200">Ability Scores</h4>
+                            <h4 class="font-semibold text-gray-700 border-b border-amber-200">Pontos de Habilidade</h4>
                             <div class="grid grid-cols-3 gap-2 text-sm">
-                                <div>STR <span class="font-medium" id="preview-str">10 (+0)</span></div>
-                                <div>DEX <span class="font-medium" id="preview-dex">10 (+0)</span></div>
-                                <div>CON <span class="font-medium" id="preview-con">10 (+0)</span></div>
-                                <div>INT <span class="font-medium" id="preview-int">10 (+0)</span></div>
-                                <div>WIS <span class="font-medium" id="preview-wis">10 (+0)</span></div>
-                                <div>CHA <span class="font-medium" id="preview-cha">10 (+0)</span></div>
+                                <div>FOR <span class="font-bold text-lg" id="preview-str">8 (-1)</span></div>
+                                <div>DES <span class="font-bold text-lg" id="preview-dex">8 (-1)</span></div>
+                                <div>CON <span class="font-bold text-lg" id="preview-con">8 (-1)</span></div>
+                                <div>INT <span class="font-bold text-lg" id="preview-int">8 (-1)</span></div>
+                                <div>SAB <span class="font-bold text-lg" id="preview-wis">8 (-1)</span></div>
+                                <div>CAR <span class="font-bold text-lg" id="preview-cha">8 (-1)</span></div>
                             </div>
                         </div>
-                        <div class="mt-4">
-                            <h4 class="font-semibold text-gray-700 border-b border-amber-200">Features & Traits</h4>
-                            <div class="text-sm space-y-1 mt-2" id="preview-features">
-                                <p class="text-gray-600 italic">Select your race and class to see features</p>
-                            </div>
-                        </div>
+                         <div class="mt-4">
+                             <h4 class="font-semibold text-gray-700 border-b border-amber-200">Habilidades & Traços</h4>
+                             <div class="text-sm space-y-1 mt-2" id="preview-features">
+                                 <p class="text-gray-600 italic">Selecione sua raça e classe para ver as habilidades.</p>
+                             </div>
+                         </div>
                     </div>
-                    <div class="mt-6">
-                        <button onclick="saveCharacter()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition duration-300">
-                            Save Character
-                        </button>
-                        <button onclick="printCharacter()" class="w-full mt-2 bg-white hover:bg-gray-100 text-gray-800 font-medium py-3 px-4 border border-gray-300 rounded-lg transition duration-300">
-                            Print Character Sheet
-                        </button>
-                    </div>
+                     <div class="mt-6 no-print">
+                         <button onclick="saveCharacter()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition duration-300">
+                             Salvar Personagem (JSON)
+                         </button>
+                         <button onclick="printCharacter()" class="w-full mt-2 bg-white hover:bg-gray-100 text-gray-800 font-medium py-3 px-4 border border-gray-300 rounded-lg transition duration-300">
+                             Imprimir Ficha
+                         </button>
+                     </div>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        // Core data
+        // --- DADOS DO JOGO (D&D 5e SRD) ---
         const races = {
-            "human": { name: "Human", description: "Versatile and ambitious, with +1 to all abilities" },
-            "elf": { name: "Elf", description: "Graceful and mystical, with Darkvision and +2 DEX" },
-            "dwarf": { name: "Dwarf", description: "Sturdy and tough, with Darkvision and +2 CON" },
-            "halfling": { name: "Halfling", description: "Lucky and nimble, with +2 DEX and Lucky trait" },
-            "dragonborn": { name: "Dragonborn", description: "Draconic ancestry with breath weapon and +2 STR" },
-            "gnome": { name: "Gnome", description: "Inventive and intelligent, with +2 INT" },
-            "half-elf": { name: "Half-
+            "human": { name: "Humano", description: "+1 em todos os atributos.", ability_bonus: { str: 1, dex: 1, con: 1, int: 1, wis: 1, cha: 1 }, features: ["Versatilidade"] },
+            "elf": { name: "Elfo", description: "+2 em Destreza, Visão no Escuro.", ability_bonus: { dex: 2 }, features: ["Visão no Escuro", "Ancestral Feérico", "Transe"] },
+            "dwarf": { name: "Anão", description: "+2 em Constituição, Visão no Escuro.", ability_bonus: { con: 2 }, features: ["Visão no Escuro", "Resiliência Anã", "Treinamento de Combate Anão"] },
+            "halfling": { name: "Halfling", description: "+2 em Destreza, Sorte.", ability_bonus: { dex: 2 }, features: ["Sorte", "Bravura", "Agilidade Halfling"] },
+            "dragonborn": { name: "Draconato", description: "+2 em Força, +1 em Carisma.", ability_bonus: { str: 2, cha: 1 }, features: ["Ancestral Dracônico", "Arma de Sopro", "Resistência a Dano"] },
+            "gnome": { name: "Gnomo", description: "+2 em Inteligência, Visão no Escuro.", ability_bonus: { int: 2 }, features: ["Visão no Escuro", "Esperteza Gnômica"] },
+            "half-elf": { name: "Meio-Elfo", description: "+2 em Carisma, +1 em dois outros.", ability_bonus: { cha: 2 }, features: ["Ancestral Feérico", "Versatilidade em Perícia (Escolha 2)"] },
+            "half-orc": { name: "Meio-Orc", description: "+2 em Força, +1 em Constituição.", ability_bonus: { str: 2, con: 1 }, features: ["Visão no Escuro", "Ameaçador", "Resistência Implacável", "Ataques Selvagens"] },
+            "tiefling": { name: "Tiefling", description: "+2 em Carisma, +1 em Inteligência.", ability_bonus: { cha: 2, int: 1 }, features: ["Visão no Escuro", "Resistência Infernal", "Legado Infernal"] }
+        };
+
+        const classes = {
+            "barbarian": { name: "Bárbaro", hit_die: "d12", primary_ability: ["Força"], saving_throws: ["Força", "Constituição"], features: ["Fúria", "Defesa sem Armadura"], equipment: ["Machado grande ou arma marcial", "Dois machados de mão ou arma simples", "Pacote de explorador e quatro azagaias"] },
+            "bard": { name: "Bardo", hit_die: "d8", primary_ability: ["Carisma"], saving_throws: ["Destreza", "Carisma"], features: ["Inspiração de Bardo", "Magias de Bardo"], equipment: ["Rapieira, espada longa ou arma simples", "Pacote de diplomata ou pacote de artista", "Alaúde ou outro instrumento musical"] },
+            "cleric": { name: "Clérigo", hit_die: "d8", primary_ability: ["Sabedoria"], saving_throws: ["Sabedoria", "Carisma"], features: ["Domínio Divino", "Canalizar Divindade"], equipment: ["Maça ou martelo de guerra (se proficiente)", "Armadura de escamas, de couro ou cota de malha (se proficiente)", "Pacote de sacerdote ou pacote de explorador"] },
+            "druid": { name: "Druida", hit_die: "d8", primary_ability: ["Sabedoria"], saving_throws: ["Inteligência", "Sabedoria"], features: ["Linguagem Druídica", "Magias de Druida"], equipment: ["Escudo de madeira ou arma simples", "Cimitarra ou arma corpo a corpo simples", "Pacote de estudioso ou pacote de explorador"] },
+            "fighter": { name: "Guerreiro", hit_die: "d10", primary_ability: ["Força", "Destreza"], saving_throws: ["Força", "Constituição"], features: ["Estilo de Luta", "Retomar o Fôlego"], equipment: ["Cota de malha ou armadura de couro, arco longo e 20 flechas", "Arma marcial e um escudo ou duas armas marciais", "Pacote de masmorra ou pacote de explorador"] },
+            "monk": { name: "Monge", hit_die: "d8", primary_ability: ["Destreza", "Sabedoria"], saving_throws: ["Força", "Destreza"], features: ["Defesa sem Armadura", "Artes Marciais"], equipment: ["Espada curta ou arma simples", "Pacote de masmorra ou pacote de explorador", "10 dardos"] },
+            "paladin": { name: "Paladino", hit_die: "d10", primary_ability: ["Força", "Carisma"], saving_throws: ["Sabedoria", "Carisma"], features: ["Sentido Divino", "Cura pelas Mãos"], equipment: ["Arma marcial e um escudo ou duas armas marciais", "Cinco azagaias ou arma corpo a corpo simples", "Pacote de sacerdote ou pacote de explorador"] },
+            "ranger": { name: "Ranger", hit_die: "d10", primary_ability: ["Destreza", "Sabedoria"], saving_throws: ["Força", "Destreza"], features: ["Inimigo Favorito", "Explorador Natural"], equipment: ["Armadura de escamas ou armadura de couro", "Duas espadas curtas ou duas armas corpo a corpo simples", "Pacote de masmorra ou pacote de explorador"] },
+            "rogue": { name: "Ladino", hit_die: "d8", primary_ability: ["Destreza"], saving_throws: ["Destreza", "Inteligência"], features: ["Especialização", "Ataque Furtivo", "Gírias de Ladrão"], equipment: ["Rapieira ou espada curta", "Arco curto e aljava com 20 flechas ou espada curta", "Pacote de assaltante, pacote de masmorra ou pacote de explorador"] },
+            "sorcerer": { name: "Feiticeiro", hit_die: "d6", primary_ability: ["Carisma"], saving_throws: ["Constituição", "Carisma"], features: ["Origem da Feitiçaria", "Magias de Feiticeiro"], equipment: ["Besta leve e 20 virotes ou arma simples", "Bolsa de componentes ou foco arcano", "Pacote de masmorra ou pacote de explorador"] },
+            "warlock": { name: "Bruxo", hit_die: "d8", primary_ability: ["Carisma"], saving_throws: ["Sabedoria", "Carisma"], features: ["Patrono do Outro Mundo", "Mágica do Pacto"], equipment: ["Besta leve e 20 virotes ou arma simples", "Bolsa de componentes ou foco arcano", "Pacote de estudioso ou pacote de masmorra"] },
+            "wizard": { name: "Mago", hit_die: "d6", primary_ability: ["Inteligência"], saving_throws: ["Inteligência", "Sabedoria"], features: ["Recuperação Arcana", "Magias de Mago"], equipment: ["Cajado ou adaga", "Bolsa de componentes ou foco arcano", "Pacote de estudioso ou pacote de explorador"] }
+        };
+
+        const pointBuyCost = { 8:0, 9:1, 10:2, 11:3, 12:4, 13:5, 14:7, 15:9 };
+
+        // --- ESTADO DO PERSONAGEM ---
+        let character = {
+            name: "",
+            level: 1,
+            race: null,
+            class: null,
+            background: "",
+            alignment: "",
+            ability_scores: { str: 8, dex: 8, con: 8, int: 8, wis: 8, cha: 8 },
+            points_remaining: 27
+        };
+
+        // --- FUNÇÕES DE LÓGICA ---
+
+        function getModifier(score) {
+            return Math.floor((score - 10) / 2);
+        }
+
+        function updatePreview() {
+            // Basics
+            document.getElementById('preview-name').textContent = character.name || 'Herói Sem Nome';
+            document.getElementById('preview-level').textContent = `Nível ${character.level}`;
+            document.getElementById('preview-race').textContent = character.race ? races[character.race].name : '-';
+            document.getElementById('preview-class').textContent = character.class ? classes[character.class].name : '-';
+            
+            const backgroundSelect = document.getElementById('background');
+            document.getElementById('preview-background').textContent = character.background ? backgroundSelect.options[backgroundSelect.selectedIndex].text : '-';
+            
+            const alignmentSelect = document.getElementById('alignment');
+            document.getElementById('preview-alignment').textContent = character.alignment ? alignmentSelect.options[alignmentSelect.selectedIndex].text : '-';
+
+
+            // Ability Scores with racial bonus
+            const finalScores = { ...character.ability_scores };
+            if (character.race && races[character.race]) {
+                const bonuses = races[character.race].ability_bonus;
+                for (const stat in bonuses) {
+                    finalScores[stat] += bonuses[stat];
+                }
+            }
+            
+            for (const stat in finalScores) {
+                const score = finalScores[stat];
+                const mod = getModifier(score);
+                const modString = mod >= 0 ? `+${mod}` : mod;
+                document.getElementById(`preview-${stat}`).innerHTML = `${score} (${modString})`;
+            }
+            
+            // Features
+            updateFeaturesAndEquipment();
+        }
+
+        function updateAbilityScoreUI() {
+            let totalCost = 0;
+            for (const stat in character.ability_scores) {
+                const score = character.ability_scores[stat];
+                const mod = getModifier(score);
+                const modString = mod >= 0 ? `+${mod}` : mod;
+                
+                document.getElementById(`${stat}-score`).textContent = score;
+                document.getElementById(`${stat}-mod`).textContent = modString;
+                
+                totalCost += pointBuyCost[score];
+                
+                // Update buttons
+                const buttons = document.querySelectorAll(`button[data-ability="${stat}"]`);
+                buttons[0].disabled = (score <= 8); // Disable minus
+                buttons[1].disabled = (score >= 15 || character.points_remaining < (pointBuyCost[score + 1] - pointBuyCost[score])); // Disable plus
+            }
+            character.points_remaining = 27 - totalCost;
+            document.getElementById('points-remaining').textContent = character.points_remaining;
+            
+            // Re-check all plus buttons after points update
+            for (const stat in character.ability_scores) {
+                 const score = character.ability_scores[stat];
+                 const plusButton = document.querySelector(`button[data-ability="${stat}"][onclick*="1"]`);
+                 if(score < 15) {
+                    const costToIncrease = pointBuyCost[score+1] - pointBuyCost[score];
+                    plusButton.disabled = (character.points_remaining < costToIncrease);
+                 }
+            }
+        }
+
+        function modifyScore(stat, amount) {
+            const currentScore = character.ability_scores[stat];
+            const newScore = currentScore + amount;
+            
+            if (newScore < 8 || newScore > 15) return;
+
+            const costChange = pointBuyCost[newScore] - pointBuyCost[currentScore];
+
+            if (amount > 0 && character.points_remaining < costChange) {
+                return; // Not enough points
+            }
+
+            character.ability_scores[stat] = newScore;
+            updateAbilityScoreUI();
+            updatePreview();
+        }
+
+        function selectOption(type, key) {
+            // Remove 'selected' class from all options of this type
+            document.querySelectorAll(`.${type}-option`).forEach(el => el.classList.remove('selected'));
+            
+            // Add 'selected' class to the clicked option
+            document.querySelector(`[data-key="${key}"]`).classList.add('selected');
+
+            character[type] = key;
+            updatePreview();
+        }
+        
+        function updateFeaturesAndEquipment() {
+            const container = document.getElementById('equipmentFeatures');
+            const previewContainer = document.getElementById('preview-features');
+            container.innerHTML = '';
+            previewContainer.innerHTML = '';
+
+            let featuresHtml = '';
+            let previewFeaturesHtml = '';
+
+            if (character.race) {
+                const raceData = races[character.race];
+                featuresHtml += `<div class="feature-card bg-gray-50 p-4 rounded-lg">
+                    <h4 class="font-semibold text-lg text-gray-800">${raceData.name} Features</h4>
+                    <ul class="list-disc list-inside mt-2 text-gray-700">`;
+                raceData.features.forEach(feat => {
+                    featuresHtml += `<li>${feat}</li>`;
+                    previewFeaturesHtml += `<p class="text-gray-800"><span class="font-semibold">${feat}</span> (Racial)</p>`;
+                });
+                featuresHtml += `</ul></div>`;
+            }
+
+            if (character.class) {
+                const classData = classes[character.class];
+                featuresHtml += `<div class="feature-card bg-gray-50 p-4 rounded-lg mt-4">
+                    <h4 class="font-semibold text-lg text-gray-800">${classData.name} Features (Level 1)</h4>
+                    <p class="text-sm text-gray-600">Dado de Vida: ${classData.hit_die}, Testes de Resistência: ${classData.saving_throws.join(', ')}</p>
+                    <ul class="list-disc list-inside mt-2 text-gray-700">`;
+                classData.features.forEach(feat => {
+                    featuresHtml += `<li>${feat}</li>`;
+                    previewFeaturesHtml += `<p class="text-gray-800"><span class="font-semibold">${feat}</span> (Class)</p>`;
+                });
+                featuresHtml += `</ul></div>`;
+                
+                featuresHtml += `<div class="feature-card bg-gray-50 p-4 rounded-lg mt-4">
+                    <h4 class="font-semibold text-lg text-gray-800">Equipamento Inicial</h4>
+                    <ul class="list-disc list-inside mt-2 text-gray-700">`;
+                classData.equipment.forEach(item => featuresHtml += `<li>${item}</li>`);
+                featuresHtml += `</ul></div>`;
+            }
+
+            if (!featuresHtml) {
+                 container.innerHTML = '<p class="text-gray-600">Selecione sua raça e classe para ver equipamentos e habilidades disponíveis.</p>';
+                 previewContainer.innerHTML = '<p class="text-gray-600 italic">Selecione sua raça e classe para ver as habilidades.</p>';
+            } else {
+                container.innerHTML = featuresHtml;
+                previewContainer.innerHTML = previewFeaturesHtml;
+            }
+        }
+        
+        function saveCharacter() {
+            const finalCharacter = { ...character };
+            // Add final calculated scores
+            const finalScores = { ...character.ability_scores };
+            if (character.race && races[character.race]) {
+                const bonuses = races[character.race].ability_bonus;
+                for (const stat in bonuses) {
+                    finalScores[stat] += bonuses[stat];
+                }
+            }
+            finalCharacter.final_scores = finalScores;
+            
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(finalCharacter, null, 2));
+            const downloadAnchorNode = document.createElement('a');
+            downloadAnchorNode.setAttribute("href", dataStr);
+            downloadAnchorNode.setAttribute("download", `${character.name || 'character'}.json`);
+            document.body.appendChild(downloadAnchorNode);
+            downloadAnchorNode.click();
+            downloadAnchorNode.remove();
+        }
+
+        function printCharacter() {
+            window.print();
+        }
+
+
+        // --- INICIALIZAÇÃO ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const raceContainer = document.getElementById('raceSelection');
+            for (const key in races) {
+                const race = races[key];
+                raceContainer.innerHTML += `
+                    <div class="race-option cursor-pointer bg-gray-100 p-3 rounded-lg text-center transition duration-200" data-key="${key}" onclick="selectOption('race', '${key}')">
+                        <h4 class="font-semibold">${race.name}</h4>
+                        <p class="text-xs text-gray-600">${race.description}</p>
+                    </div>`;
+            }
+
+            const classContainer = document.getElementById('classSelection');
+            for (const key in classes) {
+                const charClass = classes[key];
+                classContainer.innerHTML += `
+                     <div class="class-option cursor-pointer bg-gray-100 p-3 rounded-lg text-center transition duration-200" data-key="${key}" onclick="selectOption('class', '${key}')">
+                        <h4 class="font-semibold">${charClass.name}</h4>
+                        <p class="text-xs text-gray-600">Dado de Vida: ${charClass.hit_die}</p>
+                    </div>`;
+            }
+
+            // Add event listeners for basic info
+            document.getElementById('charName').addEventListener('input', (e) => {
+                character.name = e.target.value;
+                updatePreview();
+            });
+            document.getElementById('level').addEventListener('input', (e) => {
+                character.level = e.target.value;
+                updatePreview();
+            });
+            document.getElementById('background').addEventListener('change', (e) => {
+                character.background = e.target.value;
+                updatePreview();
+            });
+            document.getElementById('alignment').addEventListener('change', (e) => {
+                character.alignment = e.target.value;
+                updatePreview();
+            });
+            
+            // Initial UI setup
+            updateAbilityScoreUI();
+            updatePreview();
+        });
+    </script>
+</body>
+</html>
