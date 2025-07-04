@@ -303,15 +303,16 @@ ol {
     font-weight: normal;
 }
 
-#weaponListIframe, #fichaIframe, #equipCardsIframe {
+/* Estilos para os iframes */
+iframe {
     width: 100%;
     border: none;
-    overflow: hidden;
+    overflow: hidden; /* weaponListIframe { height: 600px; } */
 }
 
-#weaponListIframe { height: 600px; }
-#fichaIframe { height: 1100px; }
-#equipCardsIframe { height: auto; }
+#fichaIframe {
+    height: 1100px;
+} /* #equipCardsIframe { height: auto; } */ /* A altura de equipCardsIframe e weaponListIframe é definida dinamicamente via JS */
 
 .back-to-top {
     display: block;

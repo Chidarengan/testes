@@ -103,6 +103,17 @@ document.addEventListener('DOMContentLoaded', function() {
     adjustIframeHeight('equipCardsIframe');
     adjustIframeHeight('weaponListIframe');
 
+      // LÓGICA ESPECIAL: Ajusta a altura do iframe de armas QUANDO ele se torna visível.
+    // Isso corrige o problema do iframe não aparecer quando está dentro de um container "collapsible".
+    const weaponToggleButton = document.getElementById('toggleWeaponListButton');
+    if (weaponToggleButton) {
+        weaponToggleButton.addEventListener('click', () => {
+            // Um pequeno delay para permitir que o CSS comece a transição e o elemento se torne visível.
+            setTimeout(() => {
+                adjustIframeHeight('weaponListIframe');
+            }, 10); 
+        });
+    }
 
     // --- LÓGICA PARA ROLAGEM SUAVE (SMOOTH SCROLL) ---
     document.querySelectorAll('#tableOfContents a, .back-to-top').forEach(anchor => {
