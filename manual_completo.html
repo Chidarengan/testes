@@ -8,7 +8,60 @@
     
     <style>
 /* global.css */
-/* Estilos globais para o projeto. */
+/* Estilos globais para o projeto, incluindo variáveis de tema e fontes. */
+
+/* Importa uma fonte temática do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+
+:root {
+  --font-primary: 'Lora', serif;
+  --font-secondary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  /* Tema Claro (Padrão - Estilo Pergaminho) */
+  --background-color: #d7c7a9; /* Fundo de madeira/mesa */
+  --text-color: #3a2e1f;
+  --container-bg: #fdf9f3; /* Cor de pergaminho */
+  --table-bg: #f5efde; /* Novo tom para tabelas */
+  --header-color: #8c3b00;
+  --header-border-color: #c89f62;
+  --primary-accent-color: #8c3b00;
+  --table-header-bg: #eaddc7;
+  --note-bg: #f5f0e8;
+  --note-border: #c89f62;
+  --example-bg: #e6f7ff;
+  --example-border: #3399ff;
+  --button-bg: #8c3b00;
+  --button-hover-bg: #6b2d00;
+  --button-text-color: #fff;
+  --link-color: #8c3b00;
+  --link-hover-color: #b04a00;
+  --border-color: #d1bba2;
+  --card-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-theme {
+  /* Tema Escuro */
+  --background-color: #1e1a14; /* Fundo de madeira escura */
+  --text-color: #dcdcdc;
+  --container-bg: #2a241c; /* Cor de pergaminho escuro */
+  --table-bg: #312c23; /* Novo tom para tabelas (escuro) */
+  --header-color: #e8cda9;
+  --header-border-color: #8c6f4c;
+  --primary-accent-color: #e8cda9;
+  --table-header-bg: #3a3329;
+  --note-bg: #312b22;
+  --note-border: #8c6f4c;
+  --example-bg: #1f2937;
+  --example-border: #3b82f6;
+  --button-bg: #e8cda9;
+  --button-hover-bg: #fff;
+  --button-text-color: #3a2e1f;
+  --link-color: #e8cda9;
+  --link-hover-color: #fff;
+  --border-color: #4a4135;
+  --card-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+}
+
 
 html {
   box-sizing: border-box;
@@ -19,58 +72,103 @@ html {
 }
 
 body {
-  margin: 0; /* Remove a margem padrão */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fonte padrão */
-  line-height: 1.6;
-  background-color: #f4f4f4;
-  color: #333;
+  margin: 0;
+  font-family: var(--font-primary);
+  line-height: 1.7;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Botão de Tema */
+.theme-toggle-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: var(--container-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    font-size: 22px;
+    box-shadow: var(--card-shadow);
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s, transform 0.2s;
+}
+
+.theme-toggle-button:hover {
+    transform: scale(1.1);
 }
 
 /* index.css */
-/* Estilos específicos para a página index.html */
+/* Estilos específicos para a página index.html com o novo tema de "cards". */
 
 body {
     padding: 20px;
+    background-image: url('https://www.transparenttextures.com/patterns/wood-pattern.png'); /* Textura sutil de madeira */
 }
 
+/* O container principal agora é transparente, servindo apenas para limitar a largura */
 .container {
     max-width: 900px;
     margin: auto;
-    background: #fff;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    background: transparent;
+    padding: 0;
+    box-shadow: none;
 }
 
-h1, h2, h3 {
-    color: #5a2e00;
-    border-bottom: 2px solid #deb887;
-    padding-bottom: 5px;
-    margin-top: 25px;
+/* Cada seção agora parece um "card" ou "pergaminho" */
+.section {
+    background: var(--container-bg);
+    padding: 25px 35px;
+    border-radius: 5px;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border-color);
+    margin-bottom: 35px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+h1, h2, h3, h4 {
+    color: var(--header-color);
+    border-bottom: 2px solid var(--header-border-color);
+    padding-bottom: 10px;
+    margin-top: 20px;
+    font-family: var(--font-primary);
+    font-weight: 700; /* Deixa os títulos mais fortes */
 }
 
 h1 {
     text-align: center;
     border-bottom: none;
-    color: #8b4513;
-    font-size: 2.5em;
-    margin-bottom: 30px;
+    color: var(--primary-accent-color);
+    font-size: 3em; /* Aumentado */
+    margin-bottom: 20px;
+    padding-bottom: 0;
 }
 
 h2 {
-    font-size: 1.8em;
+    font-size: 2.2em; /* Aumentado */
 }
 
 h3 {
-    font-size: 1.4em;
+    font-size: 1.8em; /* Aumentado */
 }
 
-p {
-    margin-bottom: 10px;
+h4 {
+    font-size: 1.5em; /* Aumentado */
+}
+
+p, li {
+    font-size: 1.15em; /* Aumentado */
 }
 
 ul {
-    list-style-type: disc;
+    list-style-type: square;
     margin-left: 20px;
     margin-bottom: 10px;
 }
@@ -81,14 +179,14 @@ ol {
     margin-bottom: 10px;
 }
 
-.section {
-    margin-bottom: 25px;
-}
-
+/* Estilo unificado para todas as tabelas */
 .attribute-table, .proficiency-table, .equipment-table, .attribute-descriptions, .experience-table, .armor-table, .don-doff-table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    overflow: hidden; /* Garante que o border-radius funcione nas tabelas */
 }
 
 .attribute-table th, .attribute-table td,
@@ -98,83 +196,79 @@ ol {
 .don-doff-table th, .don-doff-table td,
 .attribute-descriptions th, .attribute-descriptions td,
 .experience-table th, .experience-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
+    border: 1px solid var(--border-color);
+    padding: 12px;
     text-align: left;
 }
 
 .attribute-table th, .proficiency-table th, .equipment-table th,
 .armor-table th, .don-doff-table th, .attribute-descriptions th, .experience-table th {
-    background-color: #f2f2f2;
-    color: #5a2e00;
+    background-color: var(--table-header-bg);
+    color: var(--header-color);
+    font-weight: bold;
 }
 
 .attribute-descriptions td {
     vertical-align: top;
 }
 
+/* Remove o fundo alternado para um visual mais limpo */
 .attribute-descriptions tbody tr:nth-child(odd) {
-    background-color: #f9f9f9;
+    background-color: transparent;
+}
+body.dark-theme .attribute-descriptions tbody tr:nth-child(odd) {
+    background-color: rgba(255,255,255,0.02);
 }
 
+
+.note, .example, .info-note {
+    padding: 15px 20px;
+    margin: 20px 0;
+    border-radius: 4px;
+    border-left: 5px solid;
+}
 .note {
-    background-color: #fff8e1;
-    border-left: 5px solid #ffd700;
-    padding: 10px 15px;
-    margin: 15px 0;
-    border-radius: 4px;
+    background-color: var(--note-bg);
+    border-color: var(--note-border);
 }
-
-.example {
-    background-color: #e6f7ff;
-    border-left: 5px solid #3399ff;
-    padding: 10px 15px;
-    margin: 15px 0;
-    border-radius: 4px;
+.example, .info-note {
+    background-color: var(--example-bg);
+    border-color: var(--example-border);
+    color: var(--text-color);
 }
-
 .info-note {
-    background-color: #e6f7ff;
-    border-left: 5px solid #3399ff;
-    padding: 10px 15px;
-    margin: 15px 0;
-    border-radius: 4px;
-    color: #0056b3;
     font-style: italic;
 }
 
-.toggle-button-container {
-    text-align: center;
-    margin-top: 10px;
-    margin-bottom: 20px;
-}
-
+/* --- ESTILOS CORRIGIDOS E REINTEGRADOS --- */
 .toggle-button {
-    background-color: #deb887;
-    border: none;
+    background-color: var(--header-border-color);
+    border: 1px solid var(--border-color);
     cursor: pointer;
-    padding: 8px 12px;
+    padding: 8px;
     border-radius: 8px;
     transition: background-color 0.2s ease, transform 0.2s ease;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
-
 .toggle-button:hover {
-    background-color: #c2a078;
-    transform: translateY(-1px);
+    background-color: var(--primary-accent-color);
 }
-
 .toggle-icon {
-    display: inline-block;
-    transition: transform 0.3s ease;
-    vertical-align: middle;
-    color: #5a2e00;
+    fill: var(--header-color);
+    transition: fill 0.2s, transform 0.3s ease;
+    width: 24px;
+    height: 24px;
 }
-
+.toggle-button:hover .toggle-icon {
+    fill: #fff;
+}
 .toggle-icon.rotated {
     transform: rotate(180deg);
 }
-
+/* Regras para conteúdo expansível (essencial para a funcionalidade) */
 .collapsible-content {
     max-height: 0;
     opacity: 0;
@@ -182,181 +276,83 @@ ol {
     margin-bottom: 0;
     transition: max-height 0.5s ease-out, opacity 0.5s ease-out, margin-bottom 0.5s ease-out;
 }
-
 .collapsible-content.open {
-    max-height: 3000px;
+    max-height: 3000px; /* Um valor alto para acomodar qualquer conteúdo */
     opacity: 1;
     margin-bottom: 20px;
 }
-
 .collapsible-content.closed-display-none {
     display: none;
 }
+/* --- FIM DA CORREÇÃO --- */
 
-.experience-table {
-    width: 50%;
-    margin: 20px auto;
-}
-
-.experience-table th, .experience-table td {
-    text-align: center;
-}
-
-.calculator-title {
-    text-align: center;
-    color: #5a2e00;
-    font-size: 1.5em;
-    margin-top: 30px;
-    margin-bottom: 15px;
-    padding-bottom: 5px;
-    border-bottom: 2px solid #deb887;
-}
 
 .hp-calculator {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
+    background-color: transparent;
+    border: 1px dashed var(--border-color);
     padding: 15px;
-    border-radius: 8px;
-    margin-top: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    align-items: flex-end;
-    justify-content: center;
 }
-
-.hp-calculator label {
-    font-weight: bold;
-    margin-bottom: 5px;
-    width: 100%;
-}
-
-.hp-calculator div {
-    flex: 1;
-    min-width: 120px;
-}
-
 .hp-calculator input[type="number"],
 .hp-calculator select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+    background-color: var(--background-color);
 }
-
 .hp-calculator button {
-    background-color: #5a2e00;
-    color: #fff;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
+    background-color: var(--button-bg);
+    color: var(--button-text-color);
 }
-
 .hp-calculator button:hover {
-    background-color: #8b4513;
+    background-color: var(--button-hover-bg);
 }
-
 .hp-calculator #hpResult {
-    margin-top: 15px;
-    font-size: 1.2em;
-    font-weight: bold;
-    color: #5a2e00;
-    width: 100%;
-    text-align: center;
-    background-color: #e0f2f7;
-    padding: 10px;
-    border-radius: 4px;
-}
-
-.armor-table, .don-doff-table {
-    text-align: center;
+    background-color: var(--note-bg);
+    border: 1px solid var(--border-color);
 }
 
 .armor-category-header {
-    background-color: #deb887;
-    color: #5a2e00;
+    background-color: var(--table-header-bg);
+    color: var(--header-color);
     font-weight: bold;
     text-align: left;
 }
 
-#tableOfContents {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-}
-
-#tableOfContents h2 {
-    font-size: 1.5em;
-    margin-top: 0;
-    margin-bottom: 15px;
-}
-
-#tableOfContents ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    text-align: center;
-}
-
-#tableOfContents ul li {
-    margin-bottom: 8px;
-}
-
 #tableOfContents ul li a {
-    color: #5a2e00;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.1em;
-    transition: color 0.2s ease;
+    color: var(--link-color);
+    font-weight: normal;
 }
-
 #tableOfContents ul li a:hover {
-    color: #8b4513;
-    text-decoration: underline;
+    color: var(--link-hover-color);
 }
 
-#tableOfContents .sub-item {
-    margin-left: 0;
-    font-size: 1em;
-    font-weight: normal;
-}
-
-#tableOfContents .sub-item a {
-    font-size: 0.95em;
-    font-weight: normal;
-}
-
-/* Estilos para os iframes */
 iframe {
     width: 100%;
-    border: none;
-    overflow: hidden; /* weaponListIframe { height: 600px; } */
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    overflow: hidden;
 }
 
 #fichaIframe {
     height: 1100px;
-} /* #equipCardsIframe { height: auto; } */ /* A altura de equipCardsIframe e weaponListIframe é definida dinamicamente via JS */
+}
 
 .back-to-top {
     display: block;
     width: fit-content;
-    margin: 30px auto 10px auto;
-    padding: 10px 20px;
-    background-color: #5a2e00;
-    color: #fff;
+    margin: 40px auto 20px auto;
+    padding: 12px 25px;
+    background-color: var(--button-bg);
+    color: var(--button-text-color);
     text-decoration: none;
     border-radius: 5px;
-    transition: background-color 0.2s ease;
+    transition: all 0.2s ease;
+    box-shadow: var(--card-shadow);
+    font-family: var(--font-primary);
+    font-weight: bold;
+}
+.back-to-top:hover {
+    background-color: var(--button-hover-bg);
+    transform: translateY(-2px);
 }
 
-.back-to-top:hover {
-    background-color: #8b4513;
-}
 </style>
 </head>
 <body>
@@ -416,19 +412,361 @@ iframe {
         <div class="section" id="info-basicas">
             <h2>1. Informações Básicas do Personagem</h2>
             <!-- O iframe carrega a ficha do personagem. -->
-            <iframe srcdoc="<!DOCTYPE html>
-<html lang=&quot;pt-BR&quot;>
-<head>
-    <meta charset=&quot;UTF-8&quot;>
-    <meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
-    <title>Ficha de Personagem Interativa</title>
-    <link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;>
-    <link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin>
-    <link href=&quot;https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap&quot; rel=&quot;stylesheet&quot;>
-    <link rel=&quot;stylesheet&quot; href=&quot;../../assets/css/global.css&quot;>
-    <link rel=&quot;stylesheet&quot; href=&quot;ficha.css&quot;>
-</head>
-<body>
+            <iframe srcdoc="
+            <!DOCTYPE html>
+            <html lang=&quot;pt-BR&quot;>
+                <head>
+                    <meta charset=&quot;UTF-8&quot;>
+                    <meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+                    <style>/* global.css */
+/* Estilos globais para o projeto, incluindo variáveis de tema e fontes. */
+
+/* Importa uma fonte temática do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+
+:root {
+  --font-primary: 'Lora', serif;
+  --font-secondary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  /* Tema Claro (Padrão - Estilo Pergaminho) */
+  --background-color: #d7c7a9; /* Fundo de madeira/mesa */
+  --text-color: #3a2e1f;
+  --container-bg: #fdf9f3; /* Cor de pergaminho */
+  --table-bg: #f5efde; /* Novo tom para tabelas */
+  --header-color: #8c3b00;
+  --header-border-color: #c89f62;
+  --primary-accent-color: #8c3b00;
+  --table-header-bg: #eaddc7;
+  --note-bg: #f5f0e8;
+  --note-border: #c89f62;
+  --example-bg: #e6f7ff;
+  --example-border: #3399ff;
+  --button-bg: #8c3b00;
+  --button-hover-bg: #6b2d00;
+  --button-text-color: #fff;
+  --link-color: #8c3b00;
+  --link-hover-color: #b04a00;
+  --border-color: #d1bba2;
+  --card-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-theme {
+  /* Tema Escuro */
+  --background-color: #1e1a14; /* Fundo de madeira escura */
+  --text-color: #dcdcdc;
+  --container-bg: #2a241c; /* Cor de pergaminho escuro */
+  --table-bg: #312c23; /* Novo tom para tabelas (escuro) */
+  --header-color: #e8cda9;
+  --header-border-color: #8c6f4c;
+  --primary-accent-color: #e8cda9;
+  --table-header-bg: #3a3329;
+  --note-bg: #312b22;
+  --note-border: #8c6f4c;
+  --example-bg: #1f2937;
+  --example-border: #3b82f6;
+  --button-bg: #e8cda9;
+  --button-hover-bg: #fff;
+  --button-text-color: #3a2e1f;
+  --link-color: #e8cda9;
+  --link-hover-color: #fff;
+  --border-color: #4a4135;
+  --card-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-primary);
+  line-height: 1.7;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Botão de Tema */
+.theme-toggle-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: var(--container-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    font-size: 22px;
+    box-shadow: var(--card-shadow);
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s, transform 0.2s;
+}
+
+.theme-toggle-button:hover {
+    transform: scale(1.1);
+}
+
+/* index.css */
+/* Estilos específicos para a página index.html com o novo tema de &quot;cards&quot;. */
+
+body {
+    padding: 20px;
+    background-image: url('https://www.transparenttextures.com/patterns/wood-pattern.png'); /* Textura sutil de madeira */
+}
+
+/* O container principal agora é transparente, servindo apenas para limitar a largura */
+.container {
+    max-width: 900px;
+    margin: auto;
+    background: transparent;
+    padding: 0;
+    box-shadow: none;
+}
+
+/* Cada seção agora parece um &quot;card&quot; ou &quot;pergaminho&quot; */
+.section {
+    background: var(--container-bg);
+    padding: 25px 35px;
+    border-radius: 5px;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border-color);
+    margin-bottom: 35px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+h1, h2, h3, h4 {
+    color: var(--header-color);
+    border-bottom: 2px solid var(--header-border-color);
+    padding-bottom: 10px;
+    margin-top: 20px;
+    font-family: var(--font-primary);
+    font-weight: 700; /* Deixa os títulos mais fortes */
+}
+
+h1 {
+    text-align: center;
+    border-bottom: none;
+    color: var(--primary-accent-color);
+    font-size: 3em; /* Aumentado */
+    margin-bottom: 20px;
+    padding-bottom: 0;
+}
+
+h2 {
+    font-size: 2.2em; /* Aumentado */
+}
+
+h3 {
+    font-size: 1.8em; /* Aumentado */
+}
+
+h4 {
+    font-size: 1.5em; /* Aumentado */
+}
+
+p, li {
+    font-size: 1.15em; /* Aumentado */
+}
+
+ul {
+    list-style-type: square;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+ol {
+    list-style-type: decimal;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+/* Estilo unificado para todas as tabelas */
+.attribute-table, .proficiency-table, .equipment-table, .attribute-descriptions, .experience-table, .armor-table, .don-doff-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    overflow: hidden; /* Garante que o border-radius funcione nas tabelas */
+}
+
+.attribute-table th, .attribute-table td,
+.proficiency-table th, .proficiency-table td,
+.equipment-table th, .equipment-table td,
+.armor-table th, .armor-table td,
+.don-doff-table th, .don-doff-table td,
+.attribute-descriptions th, .attribute-descriptions td,
+.experience-table th, .experience-table td {
+    border: 1px solid var(--border-color);
+    padding: 12px;
+    text-align: left;
+}
+
+.attribute-table th, .proficiency-table th, .equipment-table th,
+.armor-table th, .don-doff-table th, .attribute-descriptions th, .experience-table th {
+    background-color: var(--table-header-bg);
+    color: var(--header-color);
+    font-weight: bold;
+}
+
+.attribute-descriptions td {
+    vertical-align: top;
+}
+
+/* Remove o fundo alternado para um visual mais limpo */
+.attribute-descriptions tbody tr:nth-child(odd) {
+    background-color: transparent;
+}
+body.dark-theme .attribute-descriptions tbody tr:nth-child(odd) {
+    background-color: rgba(255,255,255,0.02);
+}
+
+
+.note, .example, .info-note {
+    padding: 15px 20px;
+    margin: 20px 0;
+    border-radius: 4px;
+    border-left: 5px solid;
+}
+.note {
+    background-color: var(--note-bg);
+    border-color: var(--note-border);
+}
+.example, .info-note {
+    background-color: var(--example-bg);
+    border-color: var(--example-border);
+    color: var(--text-color);
+}
+.info-note {
+    font-style: italic;
+}
+
+/* --- ESTILOS CORRIGIDOS E REINTEGRADOS --- */
+.toggle-button {
+    background-color: var(--header-border-color);
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.toggle-button:hover {
+    background-color: var(--primary-accent-color);
+}
+.toggle-icon {
+    fill: var(--header-color);
+    transition: fill 0.2s, transform 0.3s ease;
+    width: 24px;
+    height: 24px;
+}
+.toggle-button:hover .toggle-icon {
+    fill: #fff;
+}
+.toggle-icon.rotated {
+    transform: rotate(180deg);
+}
+/* Regras para conteúdo expansível (essencial para a funcionalidade) */
+.collapsible-content {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    margin-bottom: 0;
+    transition: max-height 0.5s ease-out, opacity 0.5s ease-out, margin-bottom 0.5s ease-out;
+}
+.collapsible-content.open {
+    max-height: 3000px; /* Um valor alto para acomodar qualquer conteúdo */
+    opacity: 1;
+    margin-bottom: 20px;
+}
+.collapsible-content.closed-display-none {
+    display: none;
+}
+/* --- FIM DA CORREÇÃO --- */
+
+
+.hp-calculator {
+    background-color: transparent;
+    border: 1px dashed var(--border-color);
+    padding: 15px;
+}
+.hp-calculator input[type=&quot;number&quot;],
+.hp-calculator select {
+    background-color: var(--background-color);
+}
+.hp-calculator button {
+    background-color: var(--button-bg);
+    color: var(--button-text-color);
+}
+.hp-calculator button:hover {
+    background-color: var(--button-hover-bg);
+}
+.hp-calculator #hpResult {
+    background-color: var(--note-bg);
+    border: 1px solid var(--border-color);
+}
+
+.armor-category-header {
+    background-color: var(--table-header-bg);
+    color: var(--header-color);
+    font-weight: bold;
+    text-align: left;
+}
+
+#tableOfContents ul li a {
+    color: var(--link-color);
+    font-weight: normal;
+}
+#tableOfContents ul li a:hover {
+    color: var(--link-hover-color);
+}
+
+iframe {
+    width: 100%;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+#fichaIframe {
+    height: 1100px;
+}
+
+.back-to-top {
+    display: block;
+    width: fit-content;
+    margin: 40px auto 20px auto;
+    padding: 12px 25px;
+    background-color: var(--button-bg);
+    color: var(--button-text-color);
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.2s ease;
+    box-shadow: var(--card-shadow);
+    font-family: var(--font-primary);
+    font-weight: bold;
+}
+.back-to-top:hover {
+    background-color: var(--button-hover-bg);
+    transform: translateY(-2px);
+}
+</style>
+                </head>
+                <body>
+                    
     <div class=&quot;container&quot;>
         <h1>FICHA DE PERSONAGEM</h1>
         <div class=&quot;divider&quot;></div>
@@ -579,9 +917,26 @@ iframe {
 
     <script src=&quot;../../assets/js/global.js&quot;></script>
     <script src=&quot;ficha.js&quot;></script>
-</body>
-</html>
-" id="fichaIframe"></iframe>
+
+                    
+        <script>
+            window.addEventListener('message', function(event) {
+                if (event.data && typeof event.data.theme !== 'undefined') {
+                    const theme = event.data.theme;
+                    if (theme === 'dark-theme') {
+                        document.body.classList.add('dark-theme');
+                    } else {
+                        document.body.classList.remove('dark-theme');
+                    }
+                }
+            });
+            // Avisa à página principal que o iframe está pronto para receber o tema.
+            window.parent.postMessage({ status: 'iframeReady' }, '*');
+        </script>
+    
+                </body>
+            </html>
+        " id="fichaIframe"></iframe>
             <ul>
                 <li>Preencha seu <strong>Nome do Personagem</strong>, <strong>Classe</strong>, <strong>Raça</strong> e <strong>Nível</strong>.</li>
                 <li>Em <strong>Jogador</strong>, escreva seu próprio nome.</li>
@@ -864,16 +1219,361 @@ iframe {
             <h3 id="equipamento-classe">7.1. Equipamento por Classe</h3>
             <p>Consulte a tabela para o equipamento inicial da sua classe.</p>
                 <!-- O iframe carrega o equip-cards.html -->
-            <iframe srcdoc="<!DOCTYPE html>
-<html lang=&quot;pt-BR&quot;>
-<head>
-    <meta charset=&quot;UTF-8&quot;>
-    <meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
-    <title>Equipamentos Iniciais de Classes</title>
-    <link rel=&quot;stylesheet&quot; href=&quot;../../assets/css/global.css&quot;>
-    <link rel=&quot;stylesheet&quot; href=&quot;equip-cards.css&quot;>
-</head>
-<body>
+            <iframe srcdoc="
+            <!DOCTYPE html>
+            <html lang=&quot;pt-BR&quot;>
+                <head>
+                    <meta charset=&quot;UTF-8&quot;>
+                    <meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+                    <style>/* global.css */
+/* Estilos globais para o projeto, incluindo variáveis de tema e fontes. */
+
+/* Importa uma fonte temática do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+
+:root {
+  --font-primary: 'Lora', serif;
+  --font-secondary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  /* Tema Claro (Padrão - Estilo Pergaminho) */
+  --background-color: #d7c7a9; /* Fundo de madeira/mesa */
+  --text-color: #3a2e1f;
+  --container-bg: #fdf9f3; /* Cor de pergaminho */
+  --table-bg: #f5efde; /* Novo tom para tabelas */
+  --header-color: #8c3b00;
+  --header-border-color: #c89f62;
+  --primary-accent-color: #8c3b00;
+  --table-header-bg: #eaddc7;
+  --note-bg: #f5f0e8;
+  --note-border: #c89f62;
+  --example-bg: #e6f7ff;
+  --example-border: #3399ff;
+  --button-bg: #8c3b00;
+  --button-hover-bg: #6b2d00;
+  --button-text-color: #fff;
+  --link-color: #8c3b00;
+  --link-hover-color: #b04a00;
+  --border-color: #d1bba2;
+  --card-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-theme {
+  /* Tema Escuro */
+  --background-color: #1e1a14; /* Fundo de madeira escura */
+  --text-color: #dcdcdc;
+  --container-bg: #2a241c; /* Cor de pergaminho escuro */
+  --table-bg: #312c23; /* Novo tom para tabelas (escuro) */
+  --header-color: #e8cda9;
+  --header-border-color: #8c6f4c;
+  --primary-accent-color: #e8cda9;
+  --table-header-bg: #3a3329;
+  --note-bg: #312b22;
+  --note-border: #8c6f4c;
+  --example-bg: #1f2937;
+  --example-border: #3b82f6;
+  --button-bg: #e8cda9;
+  --button-hover-bg: #fff;
+  --button-text-color: #3a2e1f;
+  --link-color: #e8cda9;
+  --link-hover-color: #fff;
+  --border-color: #4a4135;
+  --card-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-primary);
+  line-height: 1.7;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Botão de Tema */
+.theme-toggle-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: var(--container-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    font-size: 22px;
+    box-shadow: var(--card-shadow);
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s, transform 0.2s;
+}
+
+.theme-toggle-button:hover {
+    transform: scale(1.1);
+}
+
+/* index.css */
+/* Estilos específicos para a página index.html com o novo tema de &quot;cards&quot;. */
+
+body {
+    padding: 20px;
+    background-image: url('https://www.transparenttextures.com/patterns/wood-pattern.png'); /* Textura sutil de madeira */
+}
+
+/* O container principal agora é transparente, servindo apenas para limitar a largura */
+.container {
+    max-width: 900px;
+    margin: auto;
+    background: transparent;
+    padding: 0;
+    box-shadow: none;
+}
+
+/* Cada seção agora parece um &quot;card&quot; ou &quot;pergaminho&quot; */
+.section {
+    background: var(--container-bg);
+    padding: 25px 35px;
+    border-radius: 5px;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border-color);
+    margin-bottom: 35px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+h1, h2, h3, h4 {
+    color: var(--header-color);
+    border-bottom: 2px solid var(--header-border-color);
+    padding-bottom: 10px;
+    margin-top: 20px;
+    font-family: var(--font-primary);
+    font-weight: 700; /* Deixa os títulos mais fortes */
+}
+
+h1 {
+    text-align: center;
+    border-bottom: none;
+    color: var(--primary-accent-color);
+    font-size: 3em; /* Aumentado */
+    margin-bottom: 20px;
+    padding-bottom: 0;
+}
+
+h2 {
+    font-size: 2.2em; /* Aumentado */
+}
+
+h3 {
+    font-size: 1.8em; /* Aumentado */
+}
+
+h4 {
+    font-size: 1.5em; /* Aumentado */
+}
+
+p, li {
+    font-size: 1.15em; /* Aumentado */
+}
+
+ul {
+    list-style-type: square;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+ol {
+    list-style-type: decimal;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+/* Estilo unificado para todas as tabelas */
+.attribute-table, .proficiency-table, .equipment-table, .attribute-descriptions, .experience-table, .armor-table, .don-doff-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    overflow: hidden; /* Garante que o border-radius funcione nas tabelas */
+}
+
+.attribute-table th, .attribute-table td,
+.proficiency-table th, .proficiency-table td,
+.equipment-table th, .equipment-table td,
+.armor-table th, .armor-table td,
+.don-doff-table th, .don-doff-table td,
+.attribute-descriptions th, .attribute-descriptions td,
+.experience-table th, .experience-table td {
+    border: 1px solid var(--border-color);
+    padding: 12px;
+    text-align: left;
+}
+
+.attribute-table th, .proficiency-table th, .equipment-table th,
+.armor-table th, .don-doff-table th, .attribute-descriptions th, .experience-table th {
+    background-color: var(--table-header-bg);
+    color: var(--header-color);
+    font-weight: bold;
+}
+
+.attribute-descriptions td {
+    vertical-align: top;
+}
+
+/* Remove o fundo alternado para um visual mais limpo */
+.attribute-descriptions tbody tr:nth-child(odd) {
+    background-color: transparent;
+}
+body.dark-theme .attribute-descriptions tbody tr:nth-child(odd) {
+    background-color: rgba(255,255,255,0.02);
+}
+
+
+.note, .example, .info-note {
+    padding: 15px 20px;
+    margin: 20px 0;
+    border-radius: 4px;
+    border-left: 5px solid;
+}
+.note {
+    background-color: var(--note-bg);
+    border-color: var(--note-border);
+}
+.example, .info-note {
+    background-color: var(--example-bg);
+    border-color: var(--example-border);
+    color: var(--text-color);
+}
+.info-note {
+    font-style: italic;
+}
+
+/* --- ESTILOS CORRIGIDOS E REINTEGRADOS --- */
+.toggle-button {
+    background-color: var(--header-border-color);
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.toggle-button:hover {
+    background-color: var(--primary-accent-color);
+}
+.toggle-icon {
+    fill: var(--header-color);
+    transition: fill 0.2s, transform 0.3s ease;
+    width: 24px;
+    height: 24px;
+}
+.toggle-button:hover .toggle-icon {
+    fill: #fff;
+}
+.toggle-icon.rotated {
+    transform: rotate(180deg);
+}
+/* Regras para conteúdo expansível (essencial para a funcionalidade) */
+.collapsible-content {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    margin-bottom: 0;
+    transition: max-height 0.5s ease-out, opacity 0.5s ease-out, margin-bottom 0.5s ease-out;
+}
+.collapsible-content.open {
+    max-height: 3000px; /* Um valor alto para acomodar qualquer conteúdo */
+    opacity: 1;
+    margin-bottom: 20px;
+}
+.collapsible-content.closed-display-none {
+    display: none;
+}
+/* --- FIM DA CORREÇÃO --- */
+
+
+.hp-calculator {
+    background-color: transparent;
+    border: 1px dashed var(--border-color);
+    padding: 15px;
+}
+.hp-calculator input[type=&quot;number&quot;],
+.hp-calculator select {
+    background-color: var(--background-color);
+}
+.hp-calculator button {
+    background-color: var(--button-bg);
+    color: var(--button-text-color);
+}
+.hp-calculator button:hover {
+    background-color: var(--button-hover-bg);
+}
+.hp-calculator #hpResult {
+    background-color: var(--note-bg);
+    border: 1px solid var(--border-color);
+}
+
+.armor-category-header {
+    background-color: var(--table-header-bg);
+    color: var(--header-color);
+    font-weight: bold;
+    text-align: left;
+}
+
+#tableOfContents ul li a {
+    color: var(--link-color);
+    font-weight: normal;
+}
+#tableOfContents ul li a:hover {
+    color: var(--link-hover-color);
+}
+
+iframe {
+    width: 100%;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+#fichaIframe {
+    height: 1100px;
+}
+
+.back-to-top {
+    display: block;
+    width: fit-content;
+    margin: 40px auto 20px auto;
+    padding: 12px 25px;
+    background-color: var(--button-bg);
+    color: var(--button-text-color);
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.2s ease;
+    box-shadow: var(--card-shadow);
+    font-family: var(--font-primary);
+    font-weight: bold;
+}
+.back-to-top:hover {
+    background-color: var(--button-hover-bg);
+    transform: translateY(-2px);
+}
+</style>
+                </head>
+                <body>
+                    
 
     <!-- Texto introdutório comum, fora dos cards individuais -->
     <div class=&quot;intro-text&quot;>
@@ -1010,8 +1710,26 @@ iframe {
         </div>
     </div>
 
-</body>
-</html>" id="equipCardsIframe"></iframe>
+
+                    
+        <script>
+            window.addEventListener('message', function(event) {
+                if (event.data && typeof event.data.theme !== 'undefined') {
+                    const theme = event.data.theme;
+                    if (theme === 'dark-theme') {
+                        document.body.classList.add('dark-theme');
+                    } else {
+                        document.body.classList.remove('dark-theme');
+                    }
+                }
+            });
+            // Avisa à página principal que o iframe está pronto para receber o tema.
+            window.parent.postMessage({ status: 'iframeReady' }, '*');
+        </script>
+    
+                </body>
+            </html>
+        " id="equipCardsIframe"></iframe>
 
             <h3 id="proficiencia-armaduras-armas">7.2. Proficiência em Armaduras e Armas</h3>
             <p>Sua CA será calculada com base na sua armadura e modificador de Destreza (em alguns casos). Abaixo, as proficiências gerais:</p>
@@ -1106,16 +1824,361 @@ iframe {
                 </button>
             </div>
             <div id="weaponListContent" class="collapsible-content closed-display-none">
-                <iframe srcdoc="<!DOCTYPE html>
-<html lang=&quot;pt-br&quot;>
-<head>
-<meta charset=&quot;UTF-8&quot;>
-<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
-<title>Lista de Armas</title>
-<link rel=&quot;stylesheet&quot; href=&quot;../../assets/css/global.css&quot;>
-<link rel=&quot;stylesheet&quot; href=&quot;lista-armas.css&quot;>
-</head>
-<body>
+                <iframe srcdoc="
+            <!DOCTYPE html>
+            <html lang=&quot;pt-BR&quot;>
+                <head>
+                    <meta charset=&quot;UTF-8&quot;>
+                    <meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+                    <style>/* global.css */
+/* Estilos globais para o projeto, incluindo variáveis de tema e fontes. */
+
+/* Importa uma fonte temática do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+
+:root {
+  --font-primary: 'Lora', serif;
+  --font-secondary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  /* Tema Claro (Padrão - Estilo Pergaminho) */
+  --background-color: #d7c7a9; /* Fundo de madeira/mesa */
+  --text-color: #3a2e1f;
+  --container-bg: #fdf9f3; /* Cor de pergaminho */
+  --table-bg: #f5efde; /* Novo tom para tabelas */
+  --header-color: #8c3b00;
+  --header-border-color: #c89f62;
+  --primary-accent-color: #8c3b00;
+  --table-header-bg: #eaddc7;
+  --note-bg: #f5f0e8;
+  --note-border: #c89f62;
+  --example-bg: #e6f7ff;
+  --example-border: #3399ff;
+  --button-bg: #8c3b00;
+  --button-hover-bg: #6b2d00;
+  --button-text-color: #fff;
+  --link-color: #8c3b00;
+  --link-hover-color: #b04a00;
+  --border-color: #d1bba2;
+  --card-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-theme {
+  /* Tema Escuro */
+  --background-color: #1e1a14; /* Fundo de madeira escura */
+  --text-color: #dcdcdc;
+  --container-bg: #2a241c; /* Cor de pergaminho escuro */
+  --table-bg: #312c23; /* Novo tom para tabelas (escuro) */
+  --header-color: #e8cda9;
+  --header-border-color: #8c6f4c;
+  --primary-accent-color: #e8cda9;
+  --table-header-bg: #3a3329;
+  --note-bg: #312b22;
+  --note-border: #8c6f4c;
+  --example-bg: #1f2937;
+  --example-border: #3b82f6;
+  --button-bg: #e8cda9;
+  --button-hover-bg: #fff;
+  --button-text-color: #3a2e1f;
+  --link-color: #e8cda9;
+  --link-hover-color: #fff;
+  --border-color: #4a4135;
+  --card-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-primary);
+  line-height: 1.7;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Botão de Tema */
+.theme-toggle-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: var(--container-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    font-size: 22px;
+    box-shadow: var(--card-shadow);
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s, transform 0.2s;
+}
+
+.theme-toggle-button:hover {
+    transform: scale(1.1);
+}
+
+/* index.css */
+/* Estilos específicos para a página index.html com o novo tema de &quot;cards&quot;. */
+
+body {
+    padding: 20px;
+    background-image: url('https://www.transparenttextures.com/patterns/wood-pattern.png'); /* Textura sutil de madeira */
+}
+
+/* O container principal agora é transparente, servindo apenas para limitar a largura */
+.container {
+    max-width: 900px;
+    margin: auto;
+    background: transparent;
+    padding: 0;
+    box-shadow: none;
+}
+
+/* Cada seção agora parece um &quot;card&quot; ou &quot;pergaminho&quot; */
+.section {
+    background: var(--container-bg);
+    padding: 25px 35px;
+    border-radius: 5px;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border-color);
+    margin-bottom: 35px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+h1, h2, h3, h4 {
+    color: var(--header-color);
+    border-bottom: 2px solid var(--header-border-color);
+    padding-bottom: 10px;
+    margin-top: 20px;
+    font-family: var(--font-primary);
+    font-weight: 700; /* Deixa os títulos mais fortes */
+}
+
+h1 {
+    text-align: center;
+    border-bottom: none;
+    color: var(--primary-accent-color);
+    font-size: 3em; /* Aumentado */
+    margin-bottom: 20px;
+    padding-bottom: 0;
+}
+
+h2 {
+    font-size: 2.2em; /* Aumentado */
+}
+
+h3 {
+    font-size: 1.8em; /* Aumentado */
+}
+
+h4 {
+    font-size: 1.5em; /* Aumentado */
+}
+
+p, li {
+    font-size: 1.15em; /* Aumentado */
+}
+
+ul {
+    list-style-type: square;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+ol {
+    list-style-type: decimal;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+/* Estilo unificado para todas as tabelas */
+.attribute-table, .proficiency-table, .equipment-table, .attribute-descriptions, .experience-table, .armor-table, .don-doff-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    overflow: hidden; /* Garante que o border-radius funcione nas tabelas */
+}
+
+.attribute-table th, .attribute-table td,
+.proficiency-table th, .proficiency-table td,
+.equipment-table th, .equipment-table td,
+.armor-table th, .armor-table td,
+.don-doff-table th, .don-doff-table td,
+.attribute-descriptions th, .attribute-descriptions td,
+.experience-table th, .experience-table td {
+    border: 1px solid var(--border-color);
+    padding: 12px;
+    text-align: left;
+}
+
+.attribute-table th, .proficiency-table th, .equipment-table th,
+.armor-table th, .don-doff-table th, .attribute-descriptions th, .experience-table th {
+    background-color: var(--table-header-bg);
+    color: var(--header-color);
+    font-weight: bold;
+}
+
+.attribute-descriptions td {
+    vertical-align: top;
+}
+
+/* Remove o fundo alternado para um visual mais limpo */
+.attribute-descriptions tbody tr:nth-child(odd) {
+    background-color: transparent;
+}
+body.dark-theme .attribute-descriptions tbody tr:nth-child(odd) {
+    background-color: rgba(255,255,255,0.02);
+}
+
+
+.note, .example, .info-note {
+    padding: 15px 20px;
+    margin: 20px 0;
+    border-radius: 4px;
+    border-left: 5px solid;
+}
+.note {
+    background-color: var(--note-bg);
+    border-color: var(--note-border);
+}
+.example, .info-note {
+    background-color: var(--example-bg);
+    border-color: var(--example-border);
+    color: var(--text-color);
+}
+.info-note {
+    font-style: italic;
+}
+
+/* --- ESTILOS CORRIGIDOS E REINTEGRADOS --- */
+.toggle-button {
+    background-color: var(--header-border-color);
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.toggle-button:hover {
+    background-color: var(--primary-accent-color);
+}
+.toggle-icon {
+    fill: var(--header-color);
+    transition: fill 0.2s, transform 0.3s ease;
+    width: 24px;
+    height: 24px;
+}
+.toggle-button:hover .toggle-icon {
+    fill: #fff;
+}
+.toggle-icon.rotated {
+    transform: rotate(180deg);
+}
+/* Regras para conteúdo expansível (essencial para a funcionalidade) */
+.collapsible-content {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    margin-bottom: 0;
+    transition: max-height 0.5s ease-out, opacity 0.5s ease-out, margin-bottom 0.5s ease-out;
+}
+.collapsible-content.open {
+    max-height: 3000px; /* Um valor alto para acomodar qualquer conteúdo */
+    opacity: 1;
+    margin-bottom: 20px;
+}
+.collapsible-content.closed-display-none {
+    display: none;
+}
+/* --- FIM DA CORREÇÃO --- */
+
+
+.hp-calculator {
+    background-color: transparent;
+    border: 1px dashed var(--border-color);
+    padding: 15px;
+}
+.hp-calculator input[type=&quot;number&quot;],
+.hp-calculator select {
+    background-color: var(--background-color);
+}
+.hp-calculator button {
+    background-color: var(--button-bg);
+    color: var(--button-text-color);
+}
+.hp-calculator button:hover {
+    background-color: var(--button-hover-bg);
+}
+.hp-calculator #hpResult {
+    background-color: var(--note-bg);
+    border: 1px solid var(--border-color);
+}
+
+.armor-category-header {
+    background-color: var(--table-header-bg);
+    color: var(--header-color);
+    font-weight: bold;
+    text-align: left;
+}
+
+#tableOfContents ul li a {
+    color: var(--link-color);
+    font-weight: normal;
+}
+#tableOfContents ul li a:hover {
+    color: var(--link-hover-color);
+}
+
+iframe {
+    width: 100%;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+#fichaIframe {
+    height: 1100px;
+}
+
+.back-to-top {
+    display: block;
+    width: fit-content;
+    margin: 40px auto 20px auto;
+    padding: 12px 25px;
+    background-color: var(--button-bg);
+    color: var(--button-text-color);
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.2s ease;
+    box-shadow: var(--card-shadow);
+    font-family: var(--font-primary);
+    font-weight: bold;
+}
+.back-to-top:hover {
+    background-color: var(--button-hover-bg);
+    transform: translateY(-2px);
+}
+</style>
+                </head>
+                <body>
+                    
 
 <div class=&quot;container&quot;>
   <h1>Armas (Weapons)</h1>
@@ -1381,9 +2444,26 @@ iframe {
 
 </div>
 
-</body>
-</html>
-" id="weaponListIframe"></iframe>
+
+                    
+        <script>
+            window.addEventListener('message', function(event) {
+                if (event.data && typeof event.data.theme !== 'undefined') {
+                    const theme = event.data.theme;
+                    if (theme === 'dark-theme') {
+                        document.body.classList.add('dark-theme');
+                    } else {
+                        document.body.classList.remove('dark-theme');
+                    }
+                }
+            });
+            // Avisa à página principal que o iframe está pronto para receber o tema.
+            window.parent.postMessage({ status: 'iframeReady' }, '*');
+        </script>
+    
+                </body>
+            </html>
+        " id="weaponListIframe"></iframe>
             </div>
             <p>Verifique o texto da arma, pode ter mais informações.</p>
 
@@ -1439,14 +2519,100 @@ iframe {
 
     </div>
 
+     <!-- BOTÃO DE TEMA ADICIONADO AQUI -->
+    <button id="theme-toggle-button" class="theme-toggle-button" title="Alternar tema">🌙</button>
+
     <!-- Botão Voltar ao Topo no final da página -->
     <a href="#top" class="back-to-top">Voltar ao Topo</a>
 
     
     <script>
 // global.js
-// Adicione aqui funções ou variáveis que você deseja compartilhar entre todas as suas páginas.
-// Exemplo: uma função para lidar com cookies, analytics, etc.
+// Este arquivo lida com funcionalidades globais como a troca de tema.
+
+document.addEventListener('DOMContentLoaded', function() {
+
+    // --- LÓGICA PARA O TEMA ESCURO/CLARO ---
+    const themeToggleButton = document.getElementById('theme-toggle-button');
+    
+    // Se o botão de tema não for encontrado na página, o script para aqui para evitar erros.
+    if (!themeToggleButton) {
+        return;
+    }
+
+    // Pega todo o CSS da página principal para injetar nos iframes.
+    let parentStyles = '';
+    document.querySelectorAll('style').forEach(styleTag => {
+        parentStyles += styleTag.textContent;
+    });
+
+    /**
+     * Aplica o tema visualmente ao corpo principal da página e a todos os iframes.
+     * @param {string} theme - O tema a ser aplicado ('dark-theme' ou 'light-theme').
+     */
+    function applyTheme(theme) {
+        // 1. Aplica a classe ao corpo da página principal.
+        if (theme === 'dark-theme') {
+            document.body.classList.add('dark-theme');
+            themeToggleButton.textContent = '☀️'; // Ícone de sol para o modo claro
+        } else {
+            document.body.classList.remove('dark-theme');
+            themeToggleButton.textContent = '🌙'; // Ícone de lua para o modo escuro
+        }
+
+        // 2. Encontra todos os iframes e aplica o tema e os estilos a eles.
+        const iframes = document.querySelectorAll('iframe');
+        iframes.forEach(iframe => {
+            const setupIframe = () => {
+                try {
+                    const iframeDoc = iframe.contentWindow.document;
+
+                    // INJEÇÃO DE ESTILOS: Injeta os estilos da página pai no iframe
+                    // apenas uma vez, para que ele entenda as regras de tema.
+                    if (!iframe.dataset.stylesInjected) {
+                        const styleElement = iframeDoc.createElement('style');
+                        styleElement.textContent = parentStyles;
+                        iframeDoc.head.appendChild(styleElement);
+                        iframe.dataset.stylesInjected = 'true'; // Marca como injetado
+                    }
+
+                    // APLICAÇÃO DO TEMA: Agora que o iframe tem os estilos, aplica a classe do tema.
+                    if (theme === 'dark-theme') {
+                        iframeDoc.body.classList.add('dark-theme');
+                    } else {
+                        iframeDoc.body.classList.remove('dark-theme');
+                    }
+                } catch (e) {
+                    console.warn("Não foi possível configurar o iframe:", iframe.id, e);
+                }
+            };
+
+            // Garante que o iframe esteja carregado antes de tentar manipulá-lo.
+            if (iframe.contentWindow && iframe.contentWindow.document.readyState === 'complete') {
+                setupIframe();
+            } else {
+                iframe.onload = setupIframe;
+            }
+        });
+    }
+
+    // 3. Ao carregar a página, verifica se há um tema salvo no navegador.
+    const currentTheme = localStorage.getItem('theme') || 'light-theme'; // Usa 'light-theme' como padrão.
+    applyTheme(currentTheme);
+
+    // 4. Adiciona o evento de clique ao botão para alternar os temas.
+    themeToggleButton.addEventListener('click', () => {
+        // Verifica qual é o tema atual para determinar o novo tema.
+        let newTheme = document.body.classList.contains('dark-theme') ? 'light-theme' : 'dark-theme';
+        
+        // Salva a nova preferência no armazenamento local do navegador.
+        localStorage.setItem('theme', newTheme);
+        
+        // Aplica o novo tema visualmente em toda a página e iframes.
+        applyTheme(newTheme);
+    });
+});
+
 
 // index.js
 document.addEventListener('DOMContentLoaded', function() {
@@ -1458,9 +2624,12 @@ document.addEventListener('DOMContentLoaded', function() {
         const icon = document.getElementById(iconId);
         const transitionDuration = 500; // Deve ser a mesma do CSS
 
-        if (!button || !content || !icon) return; // Se os elementos não existirem, não faz nada
+        if (!button || !content || !icon) return;
 
-        content.classList.add('closed-display-none');
+        // Garante que o conteúdo comece fechado
+        if (!content.classList.contains('open')) {
+            content.classList.add('closed-display-none');
+        }
 
         button.addEventListener('click', function(event) {
             event.preventDefault();
@@ -1472,7 +2641,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 }, transitionDuration);
             } else {
                 content.classList.remove('closed-display-none');
-                void content.offsetWidth; // Força o navegador a recalcular o layout
+                // Força o navegador a recalcular o layout para a transição funcionar
+                void content.offsetWidth; 
                 content.classList.add('open');
                 icon.classList.add('rotated');
             }
@@ -1505,19 +2675,24 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             const conModifier = Math.floor((conScore - 10) / 2);
-            let totalHp = 0;
+            // Garante que o modificador de constituição nunca seja negativo para o cálculo de vida, conforme solicitado.
+            const finalConModifier = Math.max(0, conModifier);
+
             const hitDieMap = {
                 'd12': { max: 12, avg: 7 },
                 'd10': { max: 10, avg: 6 },
                 'd8':  { max: 8,  avg: 5 },
                 'd6':  { max: 6,  avg: 4 }
             };
-
             const dice = hitDieMap[selectedClass];
-            totalHp = dice.max + conModifier; // Nível 1
 
+            // *** CÓDIGO CORRIGIDO E SIMPLIFICADO ***
+            // Nível 1: Máximo do dado + modificador "seguro".
+            let totalHp = dice.max + finalConModifier;
+
+            // Níveis subsequentes: Adiciona a média do dado + modificador "seguro" para cada nível acima do 1º.
             if (level > 1) {
-                totalHp += (level - 1) * (dice.avg + conModifier);
+                totalHp += (level - 1) * (dice.avg + finalConModifier);
             }
 
             hpResultDiv.textContent = `Seu PV Total: ${totalHp}`;
@@ -1542,7 +2717,6 @@ document.addEventListener('DOMContentLoaded', function() {
         };
 
         iframe.onload = setHeight;
-        // Caso o iframe já esteja carregado
         if (iframe.contentWindow && iframe.contentWindow.document.readyState === 'complete') {
             setHeight();
         }
@@ -1553,12 +2727,9 @@ document.addEventListener('DOMContentLoaded', function() {
     adjustIframeHeight('equipCardsIframe');
     adjustIframeHeight('weaponListIframe');
 
-      // LÓGICA ESPECIAL: Ajusta a altura do iframe de armas QUANDO ele se torna visível.
-    // Isso corrige o problema do iframe não aparecer quando está dentro de um container "collapsible".
     const weaponToggleButton = document.getElementById('toggleWeaponListButton');
     if (weaponToggleButton) {
         weaponToggleButton.addEventListener('click', () => {
-            // Um pequeno delay para permitir que o CSS comece a transição e o elemento se torne visível.
             setTimeout(() => {
                 adjustIframeHeight('weaponListIframe');
             }, 10); 
@@ -1570,21 +2741,20 @@ document.addEventListener('DOMContentLoaded', function() {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
             
+            if (targetId === '#top') {
+                 window.scrollTo({ top: 0, behavior: 'smooth' });
+                 return;
+            }
+            
+            const targetElement = document.querySelector(targetId);
             if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth'
-                });
-            } else if (targetId === '#top') {
-                 window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
+                targetElement.scrollIntoView({ behavior: 'smooth' });
             }
         });
     });
 });
+
 </script>
 </body>
 </html>

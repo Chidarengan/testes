@@ -95,3 +95,44 @@ body {
 .theme-toggle-button:hover {
     transform: scale(1.1);
 }
+
+/* Adicione esta classe para permitir que tabelas largas rolem lateralmente */
+.table-wrapper {
+    overflow-x: auto;
+    margin-bottom: 20px;
+}
+
+/* --- ESTILOS PARA MOBILE --- */
+/* Este bloco inteiro é novo. Ele só aplica os estilos em telas com 768px de largura ou menos. */
+@media (max-width: 768px) {
+    body {
+        /* Reduz o espaçamento nas laterais da página */
+        padding: 10px;
+    }
+
+    .section {
+        /* Reduz o espaçamento interno dos "cards" */
+        padding: 15px 20px;
+        margin-bottom: 25px;
+    }
+
+    /* Ajusta o tamanho das fontes para melhor leitura em telas pequenas */
+    h1 { font-size: 2.2em; }
+    h2 { font-size: 1.8em; }
+    h3 { font-size: 1.5em; }
+    h4 { font-size: 1.2em; }
+    p, li { font-size: 1em; }
+
+    /* Faz a calculadora de PV ficar vertical */
+    .hp-calculator {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .hp-calculator > div,
+    .hp-calculator button,
+    .hp-calculator #hpResult {
+        flex-basis: auto;
+        width: 100%;
+    }
+}

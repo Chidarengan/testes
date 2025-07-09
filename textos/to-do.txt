@@ -13,6 +13,8 @@ ajeitar a calculadora de pontos pra numeros negativos
 versao ingles
 (na parte de escolher atributos: E recomendado já ter uma noção da sua classe e subclasse antes de distribuir os pontos mas não é obrigatório)
 otimizar pra mobile
+o dark mode nao ta pegando pros iframes
+aumentar fontes
 
 
 ---
