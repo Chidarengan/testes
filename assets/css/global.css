@@ -12,6 +12,7 @@
   --background-color: #d7c7a9; /* Fundo de madeira/mesa */
   --text-color: #3a2e1f;
   --container-bg: #fdf9f3; /* Cor de pergaminho */
+  --table-bg: #f5efde; /* Novo tom para tabelas */
   --header-color: #8c3b00;
   --header-border-color: #c89f62;
   --primary-accent-color: #8c3b00;
@@ -34,6 +35,7 @@ body.dark-theme {
   --background-color: #1e1a14; /* Fundo de madeira escura */
   --text-color: #dcdcdc;
   --container-bg: #2a241c; /* Cor de pergaminho escuro */
+  --table-bg: #312c23; /* Novo tom para tabelas (escuro) */
   --header-color: #e8cda9;
   --header-border-color: #8c6f4c;
   --primary-accent-color: #e8cda9;

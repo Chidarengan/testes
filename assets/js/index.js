@@ -8,9 +8,12 @@ document.addEventListener('DOMContentLoaded', function() {
         const icon = document.getElementById(iconId);
         const transitionDuration = 500; // Deve ser a mesma do CSS
 
-        if (!button || !content || !icon) return; // Se os elementos não existirem, não faz nada
+        if (!button || !content || !icon) return;
 
-        content.classList.add('closed-display-none');
+        // Garante que o conteúdo comece fechado
+        if (!content.classList.contains('open')) {
+            content.classList.add('closed-display-none');
+        }
 
         button.addEventListener('click', function(event) {
             event.preventDefault();
@@ -22,7 +25,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 }, transitionDuration);
             } else {
                 content.classList.remove('closed-display-none');
-                void content.offsetWidth; // Força o navegador a recalcular o layout
+                // Força o navegador a recalcular o layout para a transição funcionar
+                void content.offsetWidth; 
                 content.classList.add('open');
                 icon.classList.add('rotated');
             }
@@ -55,19 +59,24 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             const conModifier = Math.floor((conScore - 10) / 2);
-            let totalHp = 0;
+            // Garante que o modificador de constituição nunca seja negativo para o cálculo de vida, conforme solicitado.
+            const finalConModifier = Math.max(0, conModifier);
+
             const hitDieMap = {
                 'd12': { max: 12, avg: 7 },
                 'd10': { max: 10, avg: 6 },
                 'd8':  { max: 8,  avg: 5 },
                 'd6':  { max: 6,  avg: 4 }
             };
-
             const dice = hitDieMap[selectedClass];
-            totalHp = dice.max + conModifier; // Nível 1
 
+            // *** CÓDIGO CORRIGIDO E SIMPLIFICADO ***
+            // Nível 1: Máximo do dado + modificador "seguro".
+            let totalHp = dice.max + finalConModifier;
+
+            // Níveis subsequentes: Adiciona a média do dado + modificador "seguro" para cada nível acima do 1º.
             if (level > 1) {
-                totalHp += (level - 1) * (dice.avg + conModifier);
+                totalHp += (level - 1) * (dice.avg + finalConModifier);
             }
 
             hpResultDiv.textContent = `Seu PV Total: ${totalHp}`;
@@ -92,7 +101,6 @@ document.addEventListener('DOMContentLoaded', function() {
         };
 
         iframe.onload = setHeight;
-        // Caso o iframe já esteja carregado
         if (iframe.contentWindow && iframe.contentWindow.document.readyState === 'complete') {
             setHeight();
         }
@@ -103,12 +111,9 @@ document.addEventListener('DOMContentLoaded', function() {
     adjustIframeHeight('equipCardsIframe');
     adjustIframeHeight('weaponListIframe');
 
-      // LÓGICA ESPECIAL: Ajusta a altura do iframe de armas QUANDO ele se torna visível.
-    // Isso corrige o problema do iframe não aparecer quando está dentro de um container "collapsible".
     const weaponToggleButton = document.getElementById('toggleWeaponListButton');
     if (weaponToggleButton) {
         weaponToggleButton.addEventListener('click', () => {
-            // Um pequeno delay para permitir que o CSS comece a transição e o elemento se torne visível.
             setTimeout(() => {
                 adjustIframeHeight('weaponListIframe');
             }, 10); 
@@ -120,17 +125,15 @@ document.addEventListener('DOMContentLoaded', function() {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
             
+            if (targetId === '#top') {
+                 window.scrollTo({ top: 0, behavior: 'smooth' });
+                 return;
+            }
+            
+            const targetElement = document.querySelector(targetId);
             if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth'
-                });
-            } else if (targetId === '#top') {
-                 window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
+                targetElement.scrollIntoView({ behavior: 'smooth' });
             }
         });
     });
