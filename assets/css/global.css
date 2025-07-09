@@ -1,5 +1,56 @@
 /* global.css */
-/* Estilos globais para o projeto. */
+/* Estilos globais para o projeto, incluindo variáveis de tema e fontes. */
+
+/* Importa uma fonte temática do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+
+:root {
+  --font-primary: 'Lora', serif;
+  --font-secondary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  /* Tema Claro (Padrão - Estilo Pergaminho) */
+  --background-color: #d7c7a9; /* Fundo de madeira/mesa */
+  --text-color: #3a2e1f;
+  --container-bg: #fdf9f3; /* Cor de pergaminho */
+  --header-color: #8c3b00;
+  --header-border-color: #c89f62;
+  --primary-accent-color: #8c3b00;
+  --table-header-bg: #eaddc7;
+  --note-bg: #f5f0e8;
+  --note-border: #c89f62;
+  --example-bg: #e6f7ff;
+  --example-border: #3399ff;
+  --button-bg: #8c3b00;
+  --button-hover-bg: #6b2d00;
+  --button-text-color: #fff;
+  --link-color: #8c3b00;
+  --link-hover-color: #b04a00;
+  --border-color: #d1bba2;
+  --card-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-theme {
+  /* Tema Escuro */
+  --background-color: #1e1a14; /* Fundo de madeira escura */
+  --text-color: #dcdcdc;
+  --container-bg: #2a241c; /* Cor de pergaminho escuro */
+  --header-color: #e8cda9;
+  --header-border-color: #8c6f4c;
+  --primary-accent-color: #e8cda9;
+  --table-header-bg: #3a3329;
+  --note-bg: #312b22;
+  --note-border: #8c6f4c;
+  --example-bg: #1f2937;
+  --example-border: #3b82f6;
+  --button-bg: #e8cda9;
+  --button-hover-bg: #fff;
+  --button-text-color: #3a2e1f;
+  --link-color: #e8cda9;
+  --link-hover-color: #fff;
+  --border-color: #4a4135;
+  --card-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+}
+
 
 html {
   box-sizing: border-box;
@@ -10,9 +61,35 @@ html {
 }
 
 body {
-  margin: 0; /* Remove a margem padrão */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fonte padrão */
-  line-height: 1.6;
-  background-color: #f4f4f4;
-  color: #333;
+  margin: 0;
+  font-family: var(--font-primary);
+  line-height: 1.7;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Botão de Tema */
+.theme-toggle-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: var(--container-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    font-size: 22px;
+    box-shadow: var(--card-shadow);
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s, transform 0.2s;
+}
+
+.theme-toggle-button:hover {
+    transform: scale(1.1);
 }

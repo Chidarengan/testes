@@ -1,48 +1,67 @@
 /* index.css */
-/* Estilos específicos para a página index.html */
+/* Estilos específicos para a página index.html com o novo tema de "cards". */
 
 body {
     padding: 20px;
+    background-image: url('https://www.transparenttextures.com/patterns/wood-pattern.png'); /* Textura sutil de madeira */
 }
 
+/* O container principal agora é transparente, servindo apenas para limitar a largura */
 .container {
     max-width: 900px;
     margin: auto;
-    background: #fff;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    background: transparent;
+    padding: 0;
+    box-shadow: none;
 }
 
-h1, h2, h3 {
-    color: #5a2e00;
-    border-bottom: 2px solid #deb887;
-    padding-bottom: 5px;
-    margin-top: 25px;
+/* Cada seção agora parece um "card" ou "pergaminho" */
+.section {
+    background: var(--container-bg);
+    padding: 25px 35px;
+    border-radius: 5px;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border-color);
+    margin-bottom: 35px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+h1, h2, h3, h4 {
+    color: var(--header-color);
+    border-bottom: 2px solid var(--header-border-color);
+    padding-bottom: 10px;
+    margin-top: 20px;
+    font-family: var(--font-primary);
+    font-weight: 700; /* Deixa os títulos mais fortes */
 }
 
 h1 {
     text-align: center;
     border-bottom: none;
-    color: #8b4513;
-    font-size: 2.5em;
-    margin-bottom: 30px;
+    color: var(--primary-accent-color);
+    font-size: 3em; /* Aumentado */
+    margin-bottom: 20px;
+    padding-bottom: 0;
 }
 
 h2 {
-    font-size: 1.8em;
+    font-size: 2.2em; /* Aumentado */
 }
 
 h3 {
-    font-size: 1.4em;
+    font-size: 1.8em; /* Aumentado */
 }
 
-p {
-    margin-bottom: 10px;
+h4 {
+    font-size: 1.5em; /* Aumentado */
+}
+
+p, li {
+    font-size: 1.15em; /* Aumentado */
 }
 
 ul {
-    list-style-type: disc;
+    list-style-type: square;
     margin-left: 20px;
     margin-bottom: 10px;
 }
@@ -53,14 +72,14 @@ ol {
     margin-bottom: 10px;
 }
 
-.section {
-    margin-bottom: 25px;
-}
-
+/* Estilo unificado para todas as tabelas */
 .attribute-table, .proficiency-table, .equipment-table, .attribute-descriptions, .experience-table, .armor-table, .don-doff-table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    overflow: hidden; /* Garante que o border-radius funcione nas tabelas */
 }
 
 .attribute-table th, .attribute-table td,
@@ -70,83 +89,79 @@ ol {
 .don-doff-table th, .don-doff-table td,
 .attribute-descriptions th, .attribute-descriptions td,
 .experience-table th, .experience-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
+    border: 1px solid var(--border-color);
+    padding: 12px;
     text-align: left;
 }
 
 .attribute-table th, .proficiency-table th, .equipment-table th,
 .armor-table th, .don-doff-table th, .attribute-descriptions th, .experience-table th {
-    background-color: #f2f2f2;
-    color: #5a2e00;
+    background-color: var(--table-header-bg);
+    color: var(--header-color);
+    font-weight: bold;
 }
 
 .attribute-descriptions td {
     vertical-align: top;
 }
 
+/* Remove o fundo alternado para um visual mais limpo */
 .attribute-descriptions tbody tr:nth-child(odd) {
-    background-color: #f9f9f9;
+    background-color: transparent;
+}
+body.dark-theme .attribute-descriptions tbody tr:nth-child(odd) {
+    background-color: rgba(255,255,255,0.02);
 }
 
+
+.note, .example, .info-note {
+    padding: 15px 20px;
+    margin: 20px 0;
+    border-radius: 4px;
+    border-left: 5px solid;
+}
 .note {
-    background-color: #fff8e1;
-    border-left: 5px solid #ffd700;
-    padding: 10px 15px;
-    margin: 15px 0;
-    border-radius: 4px;
+    background-color: var(--note-bg);
+    border-color: var(--note-border);
 }
-
-.example {
-    background-color: #e6f7ff;
-    border-left: 5px solid #3399ff;
-    padding: 10px 15px;
-    margin: 15px 0;
-    border-radius: 4px;
+.example, .info-note {
+    background-color: var(--example-bg);
+    border-color: var(--example-border);
+    color: var(--text-color);
 }
-
 .info-note {
-    background-color: #e6f7ff;
-    border-left: 5px solid #3399ff;
-    padding: 10px 15px;
-    margin: 15px 0;
-    border-radius: 4px;
-    color: #0056b3;
     font-style: italic;
 }
 
-.toggle-button-container {
-    text-align: center;
-    margin-top: 10px;
-    margin-bottom: 20px;
-}
-
+/* --- ESTILOS CORRIGIDOS E REINTEGRADOS --- */
 .toggle-button {
-    background-color: #deb887;
-    border: none;
+    background-color: var(--header-border-color);
+    border: 1px solid var(--border-color);
     cursor: pointer;
-    padding: 8px 12px;
+    padding: 8px;
     border-radius: 8px;
     transition: background-color 0.2s ease, transform 0.2s ease;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
-
 .toggle-button:hover {
-    background-color: #c2a078;
-    transform: translateY(-1px);
+    background-color: var(--primary-accent-color);
 }
-
 .toggle-icon {
-    display: inline-block;
-    transition: transform 0.3s ease;
-    vertical-align: middle;
-    color: #5a2e00;
+    fill: var(--header-color);
+    transition: fill 0.2s, transform 0.3s ease;
+    width: 24px;
+    height: 24px;
 }
-
+.toggle-button:hover .toggle-icon {
+    fill: #fff;
+}
 .toggle-icon.rotated {
     transform: rotate(180deg);
 }
-
+/* Regras para conteúdo expansível (essencial para a funcionalidade) */
 .collapsible-content {
     max-height: 0;
     opacity: 0;
@@ -154,178 +169,79 @@ ol {
     margin-bottom: 0;
     transition: max-height 0.5s ease-out, opacity 0.5s ease-out, margin-bottom 0.5s ease-out;
 }
-
 .collapsible-content.open {
-    max-height: 3000px;
+    max-height: 3000px; /* Um valor alto para acomodar qualquer conteúdo */
     opacity: 1;
     margin-bottom: 20px;
 }
-
 .collapsible-content.closed-display-none {
     display: none;
 }
+/* --- FIM DA CORREÇÃO --- */
 
-.experience-table {
-    width: 50%;
-    margin: 20px auto;
-}
-
-.experience-table th, .experience-table td {
-    text-align: center;
-}
-
-.calculator-title {
-    text-align: center;
-    color: #5a2e00;
-    font-size: 1.5em;
-    margin-top: 30px;
-    margin-bottom: 15px;
-    padding-bottom: 5px;
-    border-bottom: 2px solid #deb887;
-}
 
 .hp-calculator {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
+    background-color: transparent;
+    border: 1px dashed var(--border-color);
     padding: 15px;
-    border-radius: 8px;
-    margin-top: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    align-items: flex-end;
-    justify-content: center;
 }
-
-.hp-calculator label {
-    font-weight: bold;
-    margin-bottom: 5px;
-    width: 100%;
-}
-
-.hp-calculator div {
-    flex: 1;
-    min-width: 120px;
-}
-
 .hp-calculator input[type="number"],
 .hp-calculator select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+    background-color: var(--background-color);
 }
-
 .hp-calculator button {
-    background-color: #5a2e00;
-    color: #fff;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
+    background-color: var(--button-bg);
+    color: var(--button-text-color);
 }
-
 .hp-calculator button:hover {
-    background-color: #8b4513;
+    background-color: var(--button-hover-bg);
 }
-
 .hp-calculator #hpResult {
-    margin-top: 15px;
-    font-size: 1.2em;
-    font-weight: bold;
-    color: #5a2e00;
-    width: 100%;
-    text-align: center;
-    background-color: #e0f2f7;
-    padding: 10px;
-    border-radius: 4px;
-}
-
-.armor-table, .don-doff-table {
-    text-align: center;
+    background-color: var(--note-bg);
+    border: 1px solid var(--border-color);
 }
 
 .armor-category-header {
-    background-color: #deb887;
-    color: #5a2e00;
+    background-color: var(--table-header-bg);
+    color: var(--header-color);
     font-weight: bold;
     text-align: left;
 }
 
-#tableOfContents {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-}
-
-#tableOfContents h2 {
-    font-size: 1.5em;
-    margin-top: 0;
-    margin-bottom: 15px;
-}
-
-#tableOfContents ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    text-align: center;
-}
-
-#tableOfContents ul li {
-    margin-bottom: 8px;
-}
-
 #tableOfContents ul li a {
-    color: #5a2e00;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.1em;
-    transition: color 0.2s ease;
+    color: var(--link-color);
+    font-weight: normal;
 }
-
 #tableOfContents ul li a:hover {
-    color: #8b4513;
-    text-decoration: underline;
+    color: var(--link-hover-color);
 }
 
-#tableOfContents .sub-item {
-    margin-left: 0;
-    font-size: 1em;
-    font-weight: normal;
-}
-
-#tableOfContents .sub-item a {
-    font-size: 0.95em;
-    font-weight: normal;
-}
-
-/* Estilos para os iframes */
 iframe {
     width: 100%;
-    border: none;
-    overflow: hidden; /* weaponListIframe { height: 600px; } */
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    overflow: hidden;
 }
 
 #fichaIframe {
     height: 1100px;
-} /* #equipCardsIframe { height: auto; } */ /* A altura de equipCardsIframe e weaponListIframe é definida dinamicamente via JS */
+}
 
 .back-to-top {
     display: block;
     width: fit-content;
-    margin: 30px auto 10px auto;
-    padding: 10px 20px;
-    background-color: #5a2e00;
-    color: #fff;
+    margin: 40px auto 20px auto;
+    padding: 12px 25px;
+    background-color: var(--button-bg);
+    color: var(--button-text-color);
     text-decoration: none;
     border-radius: 5px;
-    transition: background-color 0.2s ease;
+    transition: all 0.2s ease;
+    box-shadow: var(--card-shadow);
+    font-family: var(--font-primary);
+    font-weight: bold;
 }
-
 .back-to-top:hover {
-    background-color: #8b4513;
+    background-color: var(--button-hover-bg);
+    transform: translateY(-2px);
 }
