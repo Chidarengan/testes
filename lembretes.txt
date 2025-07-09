@@ -1,0 +1,1 @@
+pra fazer o manual completo tem que usar node build.js

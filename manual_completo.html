@@ -1,0 +1,1590 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual de Criação de Ficha D&D 5e Simplificado</title>
+    
+    
+    <style>
+/* global.css */
+/* Estilos globais para o projeto. */
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0; /* Remove a margem padrão */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fonte padrão */
+  line-height: 1.6;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+/* index.css */
+/* Estilos específicos para a página index.html */
+
+body {
+    padding: 20px;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2, h3 {
+    color: #5a2e00;
+    border-bottom: 2px solid #deb887;
+    padding-bottom: 5px;
+    margin-top: 25px;
+}
+
+h1 {
+    text-align: center;
+    border-bottom: none;
+    color: #8b4513;
+    font-size: 2.5em;
+    margin-bottom: 30px;
+}
+
+h2 {
+    font-size: 1.8em;
+}
+
+h3 {
+    font-size: 1.4em;
+}
+
+p {
+    margin-bottom: 10px;
+}
+
+ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+ol {
+    list-style-type: decimal;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+.section {
+    margin-bottom: 25px;
+}
+
+.attribute-table, .proficiency-table, .equipment-table, .attribute-descriptions, .experience-table, .armor-table, .don-doff-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.attribute-table th, .attribute-table td,
+.proficiency-table th, .proficiency-table td,
+.equipment-table th, .equipment-table td,
+.armor-table th, .armor-table td,
+.don-doff-table th, .don-doff-table td,
+.attribute-descriptions th, .attribute-descriptions td,
+.experience-table th, .experience-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.attribute-table th, .proficiency-table th, .equipment-table th,
+.armor-table th, .don-doff-table th, .attribute-descriptions th, .experience-table th {
+    background-color: #f2f2f2;
+    color: #5a2e00;
+}
+
+.attribute-descriptions td {
+    vertical-align: top;
+}
+
+.attribute-descriptions tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+.note {
+    background-color: #fff8e1;
+    border-left: 5px solid #ffd700;
+    padding: 10px 15px;
+    margin: 15px 0;
+    border-radius: 4px;
+}
+
+.example {
+    background-color: #e6f7ff;
+    border-left: 5px solid #3399ff;
+    padding: 10px 15px;
+    margin: 15px 0;
+    border-radius: 4px;
+}
+
+.info-note {
+    background-color: #e6f7ff;
+    border-left: 5px solid #3399ff;
+    padding: 10px 15px;
+    margin: 15px 0;
+    border-radius: 4px;
+    color: #0056b3;
+    font-style: italic;
+}
+
+.toggle-button-container {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.toggle-button {
+    background-color: #deb887;
+    border: none;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.toggle-button:hover {
+    background-color: #c2a078;
+    transform: translateY(-1px);
+}
+
+.toggle-icon {
+    display: inline-block;
+    transition: transform 0.3s ease;
+    vertical-align: middle;
+    color: #5a2e00;
+}
+
+.toggle-icon.rotated {
+    transform: rotate(180deg);
+}
+
+.collapsible-content {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    margin-bottom: 0;
+    transition: max-height 0.5s ease-out, opacity 0.5s ease-out, margin-bottom 0.5s ease-out;
+}
+
+.collapsible-content.open {
+    max-height: 3000px;
+    opacity: 1;
+    margin-bottom: 20px;
+}
+
+.collapsible-content.closed-display-none {
+    display: none;
+}
+
+.experience-table {
+    width: 50%;
+    margin: 20px auto;
+}
+
+.experience-table th, .experience-table td {
+    text-align: center;
+}
+
+.calculator-title {
+    text-align: center;
+    color: #5a2e00;
+    font-size: 1.5em;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #deb887;
+}
+
+.hp-calculator {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.hp-calculator label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    width: 100%;
+}
+
+.hp-calculator div {
+    flex: 1;
+    min-width: 120px;
+}
+
+.hp-calculator input[type="number"],
+.hp-calculator select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.hp-calculator button {
+    background-color: #5a2e00;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.hp-calculator button:hover {
+    background-color: #8b4513;
+}
+
+.hp-calculator #hpResult {
+    margin-top: 15px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #5a2e00;
+    width: 100%;
+    text-align: center;
+    background-color: #e0f2f7;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.armor-table, .don-doff-table {
+    text-align: center;
+}
+
+.armor-category-header {
+    background-color: #deb887;
+    color: #5a2e00;
+    font-weight: bold;
+    text-align: left;
+}
+
+#tableOfContents {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+#tableOfContents h2 {
+    font-size: 1.5em;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+#tableOfContents ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+#tableOfContents ul li {
+    margin-bottom: 8px;
+}
+
+#tableOfContents ul li a {
+    color: #5a2e00;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: color 0.2s ease;
+}
+
+#tableOfContents ul li a:hover {
+    color: #8b4513;
+    text-decoration: underline;
+}
+
+#tableOfContents .sub-item {
+    margin-left: 0;
+    font-size: 1em;
+    font-weight: normal;
+}
+
+#tableOfContents .sub-item a {
+    font-size: 0.95em;
+    font-weight: normal;
+}
+
+/* Estilos para os iframes */
+iframe {
+    width: 100%;
+    border: none;
+    overflow: hidden; /* weaponListIframe { height: 600px; } */
+}
+
+#fichaIframe {
+    height: 1100px;
+} /* #equipCardsIframe { height: auto; } */ /* A altura de equipCardsIframe e weaponListIframe é definida dinamicamente via JS */
+
+.back-to-top {
+    display: block;
+    width: fit-content;
+    margin: 30px auto 10px auto;
+    padding: 10px 20px;
+    background-color: #5a2e00;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+}
+
+.back-to-top:hover {
+    background-color: #8b4513;
+}
+</style>
+</head>
+<body>
+    <div class="container">
+        <h1>Manual de Criação de Ficha D&D 5e Simplificado</h1>
+
+        <!-- Seção do Índice -->
+        <div id="tableOfContents" class="section">
+            <h2 class="calculator-title">Índice</h2>
+            <div class="toggle-button-container">
+                <button id="toggleIndexButton" class="toggle-button">
+                    <svg id="toggleIndexIcon" class="toggle-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24px" height="24px">
+                        <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+                    </svg>
+                </button>
+            </div>
+            <div id="indexContent" class="collapsible-content closed-display-none">
+                <ul>
+                    <li><a href="#info-basicas">1. Informações Básicas do Personagem</a></li>
+                    <li><a href="#atributos">2. Atributos</a>
+                        <ul>
+                            <li class="sub-item"><a href="#distribuicao-atributos">2.1. Distribuição de Atributos</a></li>
+                            <li class="sub-item"><a href="#modificadores-atributos">2.2. Modificadores de Atributo</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#pontos-vida">3. Pontos de Vida (PV)</a>
+                        <ul>
+                            <li class="sub-item"><a href="#calculadora-pv">3.1. Calculadora de Pontos de Vida</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#outras-informacoes">4. Outras Informações na Ficha</a>
+                        <ul>
+                            <li class="sub-item"><a href="#tabela-experiencia">4.1. Tabela de Pontos de Experiência por Nível</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#proficiencias-atributos">5. Proficiências de Atributo (Salvaguardas)</a></li>
+                    <li><a href="#pericias">6. Perícias</a></li>
+                    <li><a href="#equipamento-inicial">7. Equipamento Inicial</a>
+                        <ul>
+                            <li class="sub-item"><a href="#equipamento-classe">7.1. Equipamento por Classe</a></li>
+                            <li class="sub-item"><a href="#proficiencia-armaduras-armas">7.2. Proficiência em Armaduras e Armas</a></li>
+                            <li class="sub-item"><a href="#tabela-armaduras">7.3. Tabela de Armaduras</a></li>
+                            <li class="sub-item"><a href="#don-doff-time">7.4. Don/Doff Time (Tempo para Vestir/Remover Armadura)</a></li>
+                            <li class="sub-item"><a href="#proficiencias-armas-classe">7.5. Proficiências Agrupadas por Classe (Armas)</a></li>
+                            <li class="sub-item"><a href="#dano-armas">7.6. Dano das Armas (d4 a d12)</a></li>
+                            <li class="sub-item"><a href="#ferramentas-kits">7.7. Ferramentas e Kits</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#inspiracao-save-morte">8. Inspiração e Save de Morte</a></li>
+                    <li><a href="#habilidades-classe-raca">9. Habilidades de Classe, Raça e Outras</a></li>
+                    <li><a href="#magias">10. Magias</a></li>
+                    <li><a href="#notas-itens">11. Notas / Itens / Equipamentos</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section" id="info-basicas">
+            <h2>1. Informações Básicas do Personagem</h2>
+            <!-- O iframe carrega a ficha do personagem. -->
+            <iframe srcdoc="<!DOCTYPE html>
+<html lang=&quot;pt-BR&quot;>
+<head>
+    <meta charset=&quot;UTF-8&quot;>
+    <meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+    <title>Ficha de Personagem Interativa</title>
+    <link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;>
+    <link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin>
+    <link href=&quot;https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap&quot; rel=&quot;stylesheet&quot;>
+    <link rel=&quot;stylesheet&quot; href=&quot;../../assets/css/global.css&quot;>
+    <link rel=&quot;stylesheet&quot; href=&quot;ficha.css&quot;>
+</head>
+<body>
+    <div class=&quot;container&quot;>
+        <h1>FICHA DE PERSONAGEM</h1>
+        <div class=&quot;divider&quot;></div>
+
+        <!-- Informações Básicas do Personagem -->
+        <div class=&quot;row&quot;>
+            <div class=&quot;field&quot;>
+                <label for=&quot;char-name&quot;>Nome:</label>
+                <input type=&quot;text&quot; id=&quot;char-name&quot; class=&quot;text-input&quot;>
+            </div>
+            <div class=&quot;field&quot;>
+                <label for=&quot;char-class&quot;>Classe:</label>
+                <input type=&quot;text&quot; id=&quot;char-class&quot; class=&quot;text-input&quot;>
+            </div>
+            <div class=&quot;field&quot;>
+                <label for=&quot;char-race&quot;>Raça:</label>
+                <input type=&quot;text&quot; id=&quot;char-race&quot; class=&quot;text-input&quot;>
+            </div>
+        </div>
+        
+        <div class=&quot;row&quot;>
+            <div class=&quot;field&quot;>
+                <label for=&quot;char-level&quot;>Level:</label>
+                <input type=&quot;text&quot; id=&quot;char-level&quot; class=&quot;text-input&quot;>
+            </div>
+            <div class=&quot;field&quot;>
+                <label for=&quot;player-name&quot;>Jogador:</label>
+                <input type=&quot;text&quot; id=&quot;player-name&quot; class=&quot;text-input&quot;>
+            </div>
+            <div class=&quot;field&quot;>
+                <label for=&quot;char-exp&quot;>Exp:</label>
+                <input type=&quot;text&quot; id=&quot;char-exp&quot; class=&quot;text-input&quot;>
+            </div>
+        </div>
+        
+        <div class=&quot;divider&quot;></div>
+        
+        <!-- Atributos -->
+        <div class=&quot;section-title&quot;>ATRIBUTOS</div>
+        <div class=&quot;attributes&quot;>
+            <div class=&quot;attr&quot;>
+                <span class=&quot;circle&quot;></span>
+                <label for=&quot;attr-for&quot;>For:</label>
+                <input type=&quot;text&quot; id=&quot;attr-for&quot; class=&quot;text-input&quot;>
+            </div>
+            <div class=&quot;attr&quot;>
+                <span class=&quot;circle&quot;></span>
+                <label for=&quot;attr-des&quot;>Des:</label>
+                <input type=&quot;text&quot; id=&quot;attr-des&quot; class=&quot;text-input&quot;>
+            </div>
+            <div class=&quot;attr&quot;>
+                <span class=&quot;circle&quot;></span>
+                <label for=&quot;attr-con&quot;>Con:</label>
+                <input type=&quot;text&quot; id=&quot;attr-con&quot; class=&quot;text-input&quot;>
+            </div>
+            <div class=&quot;attr&quot;>
+                <span class=&quot;circle&quot;></span>
+                <label for=&quot;attr-int&quot;>Int:</label>
+                <input type=&quot;text&quot; id=&quot;attr-int&quot; class=&quot;text-input&quot;>
+            </div>
+            <div class=&quot;attr&quot;>
+                <span class=&quot;circle&quot;></span>
+                <label for=&quot;attr-sab&quot;>Sab:</label>
+                <input type=&quot;text&quot; id=&quot;attr-sab&quot; class=&quot;text-input&quot;>
+            </div>
+            <div class=&quot;attr&quot;>
+                <span class=&quot;circle&quot;></span>
+                <label for=&quot;attr-car&quot;>Car:</label>
+                <input type=&quot;text&quot; id=&quot;attr-car&quot; class=&quot;text-input&quot;>
+            </div>
+        </div>
+        
+        <div class=&quot;divider&quot;></div>
+        
+        <!-- Status de Combate -->
+        <div class=&quot;combat-stats&quot;>
+            <div class=&quot;field&quot;>
+                <label for=&quot;stat-prof&quot;>Prof:</label>
+                <input type=&quot;text&quot; id=&quot;stat-prof&quot; class=&quot;text-input&quot;>
+            </div>
+            <div class=&quot;field&quot;>
+                <label for=&quot;stat-ca&quot;>CA:</label>
+                <input type=&quot;text&quot; id=&quot;stat-ca&quot; class=&quot;text-input&quot;>
+            </div>
+            <div class=&quot;field&quot;>
+                <label for=&quot;stat-mov&quot;>Mov:</label>
+                <input type=&quot;text&quot; id=&quot;stat-mov&quot; class=&quot;text-input&quot;>
+            </div>
+            <div class=&quot;field&quot;>
+                <label for=&quot;stat-ini&quot;>Ini:</label>
+                <input type=&quot;text&quot; id=&quot;stat-ini&quot; class=&quot;text-input&quot;>
+            </div>
+            <div class=&quot;field&quot;>
+                <label for=&quot;stat-dvida&quot;>D-Vida:</label>
+                <input type=&quot;text&quot; id=&quot;stat-dvida&quot; class=&quot;text-input&quot;>
+            </div>
+            <div class=&quot;field&quot;>
+                <label for=&quot;stat-magdc&quot;>MagDC:</label>
+                <input type=&quot;text&quot; id=&quot;stat-magdc&quot; class=&quot;text-input&quot;>
+            </div>
+        </div>
+        <div class=&quot;row&quot;>
+             <div class=&quot;field&quot;>
+                <label for=&quot;stat-vida&quot;>Vida:</label>
+                <input type=&quot;text&quot; id=&quot;stat-vida&quot; class=&quot;text-input&quot;>
+            </div>
+        </div>
+        
+        <div class=&quot;divider&quot;></div>
+
+        <!-- Inspiração e Saves de Morte -->
+        <div class=&quot;section-title&quot;>
+            Inspiração: <span class=&quot;circle&quot;></span> 
+        </div>
+        <div class=&quot;section-title&quot;>
+            Save de morte: Sucesso: <span class=&quot;circle&quot;></span> <span class=&quot;circle&quot;></span> <span class=&quot;circle&quot;></span> / Falha: <span class=&quot;circle&quot;></span> <span class=&quot;circle&quot;></span> <span class=&quot;circle&quot;></span>
+        </div>
+        
+        <div class=&quot;divider&quot;></div>
+        
+        <!-- Perícias -->
+        <div class=&quot;section-title&quot;>PERÍCIAS</div>
+        <div class=&quot;skills-container&quot;>
+            <div class=&quot;skills-column&quot;>
+                <div class=&quot;skill&quot;><span class=&quot;circle&quot;></span><label for=&quot;skill-atletismo&quot;>Atletismo (For)</label><input type=&quot;text&quot; id=&quot;skill-atletismo&quot; class=&quot;text-input&quot;></div>
+                <div class=&quot;skill&quot;><span class=&quot;circle&quot;></span><label for=&quot;skill-acrobacia&quot;>Acrobacia (Des)</label><input type=&quot;text&quot; id=&quot;skill-acrobacia&quot; class=&quot;text-input&quot;></div>
+                <div class=&quot;skill&quot;><span class=&quot;circle&quot;></span><label for=&quot;skill-furtividade&quot;>Furtividade (Des)</label><input type=&quot;text&quot; id=&quot;skill-furtividade&quot; class=&quot;text-input&quot;></div>
+                <div class=&quot;skill&quot;><span class=&quot;circle&quot;></span><label for=&quot;skill-prestidigitacao&quot;>Prestidigitação (Des)</label><input type=&quot;text&quot; id=&quot;skill-prestidigitacao&quot; class=&quot;text-input&quot;></div>
+                <div class=&quot;skill&quot;><span class=&quot;circle&quot;></span><label for=&quot;skill-arcanismo&quot;>Arcanismo (Int)</label><input type=&quot;text&quot; id=&quot;skill-arcanismo&quot; class=&quot;text-input&quot;></div>
+                <div class=&quot;skill&quot;><span class=&quot;circle&quot;></span><label for=&quot;skill-historia&quot;>História (Int)</label><input type=&quot;text&quot; id=&quot;skill-historia&quot; class=&quot;text-input&quot;></div>
+                <div class=&quot;skill&quot;><span class=&quot;circle&quot;></span><label for=&quot;skill-investigacao&quot;>Investigação (Int)</label><input type=&quot;text&quot; id=&quot;skill-investigacao&quot; class=&quot;text-input&quot;></div>
+                <div class=&quot;skill&quot;><span class=&quot;circle&quot;></span><label for=&quot;skill-natureza&quot;>Natureza (Int)</label><input type=&quot;text&quot; id=&quot;skill-natureza&quot; class=&quot;text-input&quot;></div>
+                <div class=&quot;skill&quot;><span class=&quot;circle&quot;></span><label for=&quot;skill-religiao&quot;>Religião (Int)</label><input type=&quot;text&quot; id=&quot;skill-religiao&quot; class=&quot;text-input&quot;></div>
+            </div>
+            <div class=&quot;skills-column&quot;>
+                <div class=&quot;skill&quot;><span class=&quot;circle&quot;></span><label for=&quot;skill-intuicao&quot;>Intuição (Sab)</label><input type=&quot;text&quot; id=&quot;skill-intuicao&quot; class=&quot;text-input&quot;></div>
+                <div class=&quot;skill&quot;><span class=&quot;circle&quot;></span><label for=&quot;skill-animais&quot;>Lidar com Animais (Sab)</label><input type=&quot;text&quot; id=&quot;skill-animais&quot; class=&quot;text-input&quot;></div>
+                <div class=&quot;skill&quot;><span class=&quot;circle&quot;></span><label for=&quot;skill-medicina&quot;>Medicina (Sab)</label><input type=&quot;text&quot; id=&quot;skill-medicina&quot; class=&quot;text-input&quot;></div>
+                <div class=&quot;skill&quot;><span class=&quot;circle&quot;></span><label for=&quot;skill-percepcao&quot;>Percepção (Sab)</label><input type=&quot;text&quot; id=&quot;skill-percepcao&quot; class=&quot;text-input&quot;></div>
+                <div class=&quot;skill&quot;><span class=&quot;circle&quot;></span><label for=&quot;skill-sobrevivencia&quot;>Sobrevivência (Sab)</label><input type=&quot;text&quot; id=&quot;skill-sobrevivencia&quot; class=&quot;text-input&quot;></div>
+                <div class=&quot;skill&quot;><span class=&quot;circle&quot;></span><label for=&quot;skill-atuacao&quot;>Atuação (Car)</label><input type=&quot;text&quot; id=&quot;skill-atuacao&quot; class=&quot;text-input&quot;></div>
+                <div class=&quot;skill&quot;><span class=&quot;circle&quot;></span><label for=&quot;skill-enganacao&quot;>Enganação (Car)</label><input type=&quot;text&quot; id=&quot;skill-enganacao&quot; class=&quot;text-input&quot;></div>
+                <div class=&quot;skill&quot;><span class=&quot;circle&quot;></span><label for=&quot;skill-intimidacao&quot;>Intimidação (Car)</label><input type=&quot;text&quot; id=&quot;skill-intimidacao&quot; class=&quot;text-input&quot;></div>
+                <div class=&quot;skill&quot;><span class=&quot;circle&quot;></span><label for=&quot;skill-persuasao&quot;>Persuasão (Car)</label><input type=&quot;text&quot; id=&quot;skill-persuasao&quot; class=&quot;text-input&quot;></div>
+            </div>
+        </div>
+    </div>
+
+    <script src=&quot;../../assets/js/global.js&quot;></script>
+    <script src=&quot;ficha.js&quot;></script>
+</body>
+</html>
+" id="fichaIframe"></iframe>
+            <ul>
+                <li>Preencha seu <strong>Nome do Personagem</strong>, <strong>Classe</strong>, <strong>Raça</strong> e <strong>Nível</strong>.</li>
+                <li>Em <strong>Jogador</strong>, escreva seu próprio nome.</li>
+                <li>Em <strong>Exp</strong>, deixe em branco ou anote o valor inicial se o Mestre fornecer.</li>
+            </ul>
+        </div>
+
+        <div class="section" id="atributos">
+            <h2>2. Atributos</h2>
+            <p>Atributos são as características fundamentais do seu personagem. Cada um tem um modificador que influencia diversas ações no jogo.</p>
+            
+            <!-- Tabela para alinhar as descrições dos atributos -->
+            <table class="attribute-descriptions">
+                <thead>
+                    <tr>
+                        <th style="width: 15%;">Atributo</th>
+                        <th>Descrição e Uso</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Força (For)</strong></td>
+                        <td>Poder físico, força bruta (combate corpo a corpo, carregar peso, Atletismo...).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Destreza (Des)</strong></td>
+                        <td>Agilidade, reflexos, equilíbrio (CA, Iniciativa, armas à distância, Acrobacia, Furtividade...).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Constituição (Con)</strong></td>
+                        <td>Vigor, saúde, resistência (Pontos de Vida, resistência a venenos...).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Inteligência (Int)</strong></td>
+                        <td>Raciocínio, conhecimento, análise (magias de Mago, Arcanismo, História, Investigação, Natureza, Religião...).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sabedoria (Sab)</strong></td>
+                        <td>Percepção, intuição, força de vontade (magias de Clérigo/Druida, Percepção, Intuição, Medicina, Sobrevivência...).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Carisma (Car)</strong></td>
+                        <td>Personalidade, persuasão, liderança (magias de Bardo/Feiticeiro, Atuação, Enganação, Intimidação, Persuasão...).</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 id="distribuicao-atributos">2.1. Distribuição de Atributos (15, 14, 13, 12, 10, 8) + Bônus (+1 e +2)</h3>
+            <ol>
+                <li>Você tem seis números fixos: 15, 14, 13, 12, 10, 8. Atribua <strong>CADA UM DESSES NÚMEROS</strong> a <strong>UM ATRIBUTO</strong> diferente.</li>
+                <li>Você tem dois bônus adicionais: um <strong>+1</strong> e um <strong>+2</strong>. Adicione o <strong>+1</strong> a <strong>UM</strong> atributo e o <strong>+2</strong> a <strong>OUTRO</strong> atributo. Não pode adicionar ambos ao mesmo atributo.</li>
+                <li>Priorize colocar os bônus (+1 e +2) nos atributos mais importantes para sua classe e conceito de personagem. Constituição é sempre uma boa opção para um dos bônus, pois aumenta sua Vida.</li>
+                <li>Costuma ser vantajoso manter esses números em par quando possível.</li>
+            </ol>
+            <div class="example">
+                <h4>Exemplo (Mago):</h4>
+                <ul>
+                    <li>Números Fixos distribuídos: For 8, Des 10, Con 13, Int 14, Sab 12, Car 15.</li>
+                    <li>Adicionando Bônus:
+                        <ul>
+                            <li>Adicione +2 à Inteligência (14 + 2 = 16)</li>
+                            <li>Adicione +1 à Constituição (13 + 1 = 14)</li>
+                        </ul>
+                    </li>
+                    <li>Resultado: For 8, Des 10, Con 14, Int 16, Sab 12, Car 15.</li>
+                </ul>
+            </div>
+
+            <h3 id="modificadores-atributos">2.2. Modificadores de Atributo</h3>
+            <p>Após distribuir seus atributos, use a seguinte fórmula para determinar o modificador de cada um: <strong>(Valor do Atributo - 10) / 2, arredondado para baixo.</strong></p>
+            <div class="info-note">
+                <p>Lembre-se: 99% do tempo em D&D as coisas arredondam para baixo.</p>
+            </div>
+            <p>Se preferir, pode consultar a tabela.</p>
+            <div class="toggle-button-container">
+                <button id="toggleAttributeTableButton" class="toggle-button">
+                    <!-- Ícone de seta para baixo. Pode ser substituído por um SVG mais elaborado se desejar. -->
+                    <svg id="toggleAttributeIcon" class="toggle-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24px" height="24px">
+                        <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+                    </svg>
+                </button>
+            </div>
+            <!-- A tabela começa com a classe 'collapsible-content closed-display-none' para garantir que não ocupe espaço -->
+            <table class="attribute-table collapsible-content closed-display-none" id="attributeTable">
+                <thead>
+                    <tr>
+                        <th>Valor do Atributo</th>
+                        <th>Modificador</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>20</td><td>+5</td></tr>
+                    <tr><td>18 ou 19</td><td>+4</td></tr>
+                    <tr><td>16 ou 17</td><td>+3</td></tr>
+                    <tr><td>14 ou 15</td><td>+2</td></tr>
+                    <tr><td>12 ou 13</td><td>+1</td></tr>
+                    <tr><td>10 ou 11</td><td>+0</td></tr>
+                    <tr><td>8 ou 9</td><td>-1</td></tr>
+                </tbody>
+            </table>
+            <p>Preencha os modificadores nos campos correspondentes na ficha.</p>
+        </div>
+        
+        <div class="section" id="pontos-vida">
+            <h2>3. Pontos de Vida (PV)</h2>
+            <p>Seus Pontos de Vida (PV) representam quão vivo seu personagem está. Se chegarem a 0, você cai inconsciente.</p>
+            <ul>
+                <li><strong>Nível 1:</strong> A Vida é o valor máximo do dado de vida da sua classe + seu modificador de Constituição.</li>
+                <li><strong>Do Nível 2 em diante:</strong> A cada nível, você ganha um valor fixo (a média do dado de vida arredondada para cima, que é sempre metade do dado + 1) + seu modificador de Constituição.
+                    <div class="note">
+                        <p><strong>Aumento de Constituição:</strong> Se o seu modificador de Constituição aumentar em algum momento (por exemplo, de +2 para +3), você ganha Vida retroativamente. Você adiciona o novo bônus de Constituição para *todos* os níveis que já possui. Por exemplo, se você está no Nível 4 e seu modificador de Constituição aumenta em +1, você ganha +4 de Vida (1 Vida para cada um dos 4 níveis).</p>
+                    </div>
+                </li>
+            </ul>
+            <table class="proficiency-table">
+                <thead>
+                    <tr>
+                        <th>Dado</th>
+                        <th>Classes</th>
+                        <th>Nível 1 (PV)</th>
+                        <th>Nível 2 ou + (PV)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>d12</td><td>Bárbaro</td><td>12 + mod(Con)</td><td>7 + mod(Con)</td></tr>
+                    <tr><td>d10</td><td>Guerreiro, Paladino, Patrulheiro</td><td>10 + mod(Con)</td><td>6 + mod(Con)</td></tr>
+                    <tr><td>d8</td><td>Bardo, Clérigo, Druida, Ladino, Monge, Bruxo (Warlock), Artífice</td><td>8 + mod(Con)</td><td>5 + mod(Con)</td></tr>
+                    <tr><td>d6</td><td>Feiticeiro, Mago</td><td>6 + mod(Con)</td><td>4 + mod(Con)</td></tr>
+                </tbody>
+            </table>
+            <div class="example">
+                <h4>Exemplo: Guerreiro (d10) com Constituição 14 (+2 mod):</h4>
+                <ul>
+                    <li><strong>No Nível 1:</strong> O Guerreiro tem um d10 de Vida. Com Constituição 14, seu modificador de Constituição é +2.
+                        Assim, sua Vida no Nível 1 é: 10 (d10 máximo) + 2 (mod de Con) = 12 PV.
+                    </li>
+                    <li><strong>Do Nível 2 em diante:</strong> A cada novo nível, você soma o valor fixo do dado de Vida da sua classe (para d10, é 6) e seu modificador de Constituição.
+                        <br/>No Nível 2, você ganha: 6 (valor fixo d10) + 2 (mod de Con) = 8 PV adicionais.
+                        <br/>Seu total de PV no Nível 2 seria: 12 (PV Nível 1) + 8 (PV Nível 2) = 20 PV totais.
+                    </li>
+                </ul>
+            </div>
+
+            <h4 class="calculator-title" id="calculadora-pv">3.1. Calculadora de Pontos de Vida</h4>
+            <div class="hp-calculator">
+                <div>
+                    <label for="hpClass">Classe:</label>
+                    <select id="hpClass">
+                        <option value="d12">Bárbaro</option>
+                        <option value="d10">Guerreiro</option>
+                        <option value="d10">Paladino</option>
+                        <option value="d10">Patrulheiro</option>
+                        <option value="d8">Bardo</option>
+                        <option value="d8">Clérigo</option>
+                        <option value="d8">Druida</option>
+                        <option value="d8">Ladino</option>
+                        <option value="d8">Monge</option>
+                        <option value="d8">Bruxo (Warlock)</option>
+                        <option value="d8">Artífice</option>
+                        <option value="d6">Feiticeiro</option>
+                        <option value="d6">Mago</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="hpLevel">Nível:</label>
+                    <input type="number" id="hpLevel" min="1" max="20" value="1">
+                </div>
+                <div>
+                    <label for="hpCon">Constituição:</label>
+                    <input type="number" id="hpCon" min="1" max="30" value="14">
+                </div>
+                <button id="calculateHp">Calcular PV</button>
+                <div id="hpResult">Seu PV Total: 0</div>
+            </div>
+
+            <p>Preencha o campo "<strong>Vida</strong>" na ficha.</p>
+            <p>Preencha também o campo "<strong>D-Vida</strong>" com o tipo de dado de Vida da sua classe (ex: d10).</p>
+        </div>
+
+        <div class="section" id="outras-informacoes">
+            <h2>4. Outras Informações na Ficha</h2>
+            <ul>
+                <li><strong>Prof (Proficiência):</strong> Seu bônus de proficiência. Representa sua aptidão em algo. No momento, todos têm <strong>+2</strong>. Este bônus aumenta em +1 nos Níveis 5, 9, 13 e 17.</li>
+                <li><strong>CA (Classe de Armadura):</strong> Dificuldade para te acertar em combate. Normalmente depende da sua armadura. Quando não se usa armadura, sua CA é 10 + seu modificador de Destreza. Você a calculará com base no equipamento inicial.</li>
+                <li><strong>Mov (Movimento):</strong> Distância que você anda por turno. Costuma ser <strong>30 pés</strong> (6 quadrados no mapa). Um quadrado no mapa equivale a 5 pés. Usamos "pés" porque os materiais originais são americanos e a tradução para "metros" pode soar estranha. Exceções incluem raças pequenas (como anões e halflings, que geralmente têm 25 pés) ou raças com habilidades de voo.</li>
+                <li><strong>Ini (Iniciativa):</strong> Quem age primeiro no combate. É igual ao seu <strong>modificador de Destreza</strong>.</li>
+                <li><strong>MagDC (CD de Magia):</strong> Dificuldade para resistir às suas magias (se sua classe usar magia). Calcule como: 8 + prof + atributo de conjuração.
+                </li>
+                <li><strong>D-Vida (Dados de Vida):</strong> São os dados que você usa para recuperar Pontos de Vida durante um Descanso Curto. O tipo de dado (d6, d8, d10, d12) é determinado pela sua classe. Você tem um número de Dados de Vida igual ao seu nível de personagem.
+                    <br/>Durante um Descanso Curto, você pode gastar quantos Dados de Vida quiser, um de cada vez. Para cada dado gasto, role-o e some seu modificador de Constituição ao resultado para recuperar PV. Em um Descanso Longo, você recupera metade do total de D-Vidas gastos (arredondado para cima).
+                </li>
+                <div class="note">
+                    <p>O Mestre permite que seu atributo de conjuração seja o que você preferir desde que seja um dos atributos mentais (Int, Sab, Car), não necessariamente o padrão da classe. </p>
+                </div>
+            </ul>
+
+            <h3 id="tabela-experiencia">4.1. Tabela de Pontos de Experiência por Nível</h3>
+            <p>Se preferir, pode consultar a tabela de experiência.</p>
+            <div class="toggle-button-container">
+                <button id="toggleExperienceTableButton" class="toggle-button">
+                    <svg id="toggleExperienceIcon" class="toggle-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24px" height="24px">
+                        <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+                    </svg>
+                </button>
+            </div>
+            <table class="experience-table collapsible-content closed-display-none" id="experienceTable">
+                <thead>
+                    <tr>
+                        <th>Pontos de Experiência</th>
+                        <th>Nível</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>0</td><td>1</td></tr>
+                    <tr><td>300</td><td>2</td></tr>
+                    <tr><td>900</td><td>3</td></tr>
+                    <tr><td>2,700</td><td>4</td></tr>
+                    <tr><td>6,500</td><td>5</td></tr>
+                    <tr><td>14,000</td><td>6</td></tr>
+                    <tr><td>23,000</td><td>7</td></tr>
+                    <tr><td>34,000</td><td>8</td></tr>
+                    <tr><td>48,000</td><td>9</td></tr>
+                    <tr><td>64,000</td><td>10</td></tr>
+                    <tr><td>85,000</td><td>11</td></tr>
+                    <tr><td>100,000</td><td>12</td></tr>
+                    <tr><td>120,000</td><td>13</td></tr>
+                    <tr><td>140,000</td><td>14</td></tr>
+                    <tr><td>165,000</td><td>15</td></tr>
+                    <tr><td>195,000</td><td>16</td></tr>
+                    <tr><td>225,000</td><td>17</td></tr>
+                    <tr><td>265,000</td><td>18</td></tr>
+                    <tr><td>305,000</td><td>19</td></tr>
+                    <tr><td>355,000</td><td>20</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section" id="proficiencias-atributos">
+            <h2>5. Proficiências de Atributo (Salvaguardas)</h2>
+            <p>As "bolinhas" ao lado de cada atributo na sua ficha representam proficiência nas salvaguardas (testes de resistência) daquele atributo. Você é proficiente em dois atributos.</p>
+            <ul>
+                <li>Você vai escolher <strong>2</strong> atributos para ser proficiente.</li>
+                <li>Um deve ser entre: <strong>Força (For)</strong>, <strong>Inteligência (Int)</strong>, ou <strong>Carisma (Car)</strong>.</li>
+                <li>O outro deve ser entre: <strong>Destreza (Des)</strong>, <strong>Sabedoria (Sab)</strong>, ou <strong>Constituição (Con)</strong>.</li>
+                <li>Marque as bolinhas correspondentes na ficha.</li>
+            </ul>
+        </div>
+
+        <div class="section" id="pericias">
+            <h2>6. Perícias</h2>
+            <p>Perícias representam sua aptidão em diversas áreas. Marque a bolinha ao lado da perícia se você é proficiente nela. Se você é proficiente, adicione seu bônus de proficiência ao modificador de atributo da perícia.</p>
+
+            <table class="proficiency-table">
+                <thead>
+                    <tr>
+                        <th>Número de Perícias</th>
+                        <th>Classe(s)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>4 Perícias</td><td>Ladino</td></tr>
+                    <tr><td>3 Perícias</td><td>Bardo, Patrulheiro</td></tr>
+                    <tr><td>2 Perícias</td><td>Bárbaro, Clérigo, Druida, Guerreiro, Monge, Paladino, Bruxo, Feiticeiro, Mago</td></tr>
+                </tbody>
+            </table>
+            <p><strong>ALÉM DESSAS:</strong> ganhe duas perícias da sua escolha substituindo as que viriam do background (antecedente), se quiser algo que normalmente viria de antecedente peça ao Mestre. </p>
+            <p>Preencha os valores calculados para cada perícia na ficha. (opcional)</p>
+        </div>
+
+        <div class="section" id="equipamento-inicial">
+            <h2>7. Equipamento Inicial</h2>
+            <p>Você começa com o seguinte equipamento básico universal, além do equipamento concedido pela sua classe (veja tabela abaixo).</p>
+            <ul>
+                <li>Mochila, Saco de Dormir, Kit de Cozinha, Caixa com Material para Fazer Fogo, Tochas (10), Cantil, Corda de Cânhamo (50 pés), Pé de Cabra, Martelo, Velas (10), Lampião, Frascos de Óleo (2), Rolo de Barbante, Sino, Pá, 10 Pergaminhos, Tinta (garrafa de ink), Caneta de Tinta (ink pen), Cobertor, 2 Blocos de Incenso, uma segunda muda de roupas, um espelho, bússola, giz.</li>
+                <li>Um <strong>instrumento musical</strong> e um <strong>set de dados</strong>.</li>
+                <li>Para determinar seu dinheiro role 1d20 vezes 10 esse resultado é seu ouro, multiplique por 2 para ter sua prata, e novamente por 2 para ter o cobre. </li>
+                <li>Se quiser algo mais peça ao Mestre</li>
+            </ul>
+
+            <h3 id="equipamento-classe">7.1. Equipamento por Classe</h3>
+            <p>Consulte a tabela para o equipamento inicial da sua classe.</p>
+                <!-- O iframe carrega o equip-cards.html -->
+            <iframe srcdoc="<!DOCTYPE html>
+<html lang=&quot;pt-BR&quot;>
+<head>
+    <meta charset=&quot;UTF-8&quot;>
+    <meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+    <title>Equipamentos Iniciais de Classes</title>
+    <link rel=&quot;stylesheet&quot; href=&quot;../../assets/css/global.css&quot;>
+    <link rel=&quot;stylesheet&quot; href=&quot;equip-cards.css&quot;>
+</head>
+<body>
+
+    <!-- Texto introdutório comum, fora dos cards individuais -->
+    <div class=&quot;intro-text&quot;>
+        <div class=&quot;section-title&quot;>EQUIPAMENTO</div>
+        <p>Você escolhe entre os seguintes equipamentos de acordo com sua classe, além do já concedido. No caso dos pacotes, se houver repetição você não pega dobrado.</p>
+    </div>
+
+    <!-- Container para todos os cards de classes -->
+    <div class=&quot;cards-container&quot;>
+        <!-- Card para BÁRBARO -->
+        <div class=&quot;card&quot;>
+            <h2>BÁRBARO</h2>
+            <ul>
+                <li>(a) um machado grande ou (b) qualquer arma marcial corpo-a-corpo</li>
+                <li>(a) dois machados de mão ou (b) qualquer arma simples</li>
+                <li> quatro azagaias</li>
+            </ul>
+        </div>
+
+        <!-- Card para BARDO -->
+        <div class=&quot;card&quot;>
+            <h2>BARDO</h2>
+            <ul>
+                <li>(a) uma rapieira, (b) uma espada longa ou (c) qualquer arma simples</li>
+                <li>(a) um pacote de diplomata ou (b) um pacote de artista</li>
+                <li>(a) um alaúde ou (b) qualquer outro instrumento musical</li>
+                <li>Armadura de couro e uma adaga</li>
+            </ul>
+        </div>
+
+        <!-- Card para BRUXO -->
+        <div class=&quot;card&quot;>
+            <h2>BRUXO</h2>
+            <ul>
+                <li>(a) uma besta leve e 20 virotes ou (b) qualquer arma simples</li>
+                <li>(a) uma bolsa de componentes ou (b) um foco arcano</li>
+                <li> um pacote de estudioso </li>
+                <li>Armadura de couro, qualquer arma simples e duas adagas</li>
+            </ul>
+        </div>
+
+        <!-- Card para CLÉRIGO -->
+        <div class=&quot;card&quot;>
+            <h2>CLÉRIGO</h2>
+            <ul>
+                <li>(a) uma maça ou (b) um martelo de guerra (se for proficiente)</li>
+                <li>(a) Brunea, (b) armadura de couro ou (c) cota de malha (se for proficiente)</li>
+                <li>(a) um besta leve e 20 virotes ou (b) qualquer arma simples</li>
+                <li> um pacote de sacerdote </li>
+                <li>Um escudo e um símbolo sagrado</li>
+            </ul>
+        </div>
+
+        <!-- Card para DRUIDA -->
+        <div class=&quot;card&quot;>
+            <h2>DRUIDA</h2>
+            <ul>
+                <li>(a) um escudo de madeira ou (b) qualquer arma simples</li>
+                <li>(a) uma cimitarra ou (b) qualquer arma corpo-a-corpo</li>
+                <li> um pacote de estudioso </li>
+                <li>Armadura de couro, um foco druídico</li>
+            </ul>
+        </div>
+
+        <!-- Card para FEITICEIRO -->
+        <div class=&quot;card&quot;>
+            <h2>FEITICEIRO</h2>
+            <ul>
+                <li>(a) uma besta leve e 20 virotes ou (b) qualquer arma simples</li>
+                <li>(a) uma bolsa de componentes ou (b) um foco arcano</li>
+            </ul>
+        </div>
+
+        <!-- Card para GUERREIRO -->
+        <div class=&quot;card&quot;>
+            <h2>GUERREIRO</h2>
+            <ul>
+                <li>(a) cota de malha ou (b) gibão de pelos, arco longo e 20 flechas</li>
+                <li>(a) uma arma marcial e um escudo ou (b) duas armas marciais</li>
+                <li>(a) uma besta leve e 20 virotes ou (b) duas machadas de arremesso</li>
+            </ul>
+        </div>
+
+        <!-- Card para LADINO -->
+        <div class=&quot;card&quot;>
+            <h2>LADINO</h2>
+            <ul>
+                <li>(a) uma rapieira ou (b) uma espada longa</li>
+                <li>(a) um arco curto e uma aljava com 20 flechas ou (b) uma espada curta</li>
+                <li> um pacote de assaltante </li>
+                <li>Armadura de couro, duas adagas e ferramentas de ladrão</li>
+            </ul>
+        </div>
+
+        <!-- Card para MAGO -->
+        <div class=&quot;card&quot;>
+            <h2>MAGO</h2>
+            <ul>
+                <li>(a) um bordão ou (b) uma adaga</li>
+                <li>(a) uma bolsa de componentes ou (b) um foco arcano</li>
+                <li> um pacote de estudioso</li>
+                <li>Um grimório</li>
+            </ul>
+        </div>
+
+        <!-- Card para MONGE -->
+        <div class=&quot;card&quot;>
+            <h2>MONGE</h2>
+            <ul>
+                <li>(a) uma espada curta ou (b) qualquer arma simples</li>
+                <li>10 dardos</li>
+            </ul>
+        </div>
+
+        <!-- Card para PALADINO -->
+        <div class=&quot;card&quot;>
+            <h2>PALADINO</h2>
+            <ul>
+                <li>(a) uma arma marcial e um escudo ou (b) duas armas marciais</li>
+                <li>(a) cinco azagaias ou (b) qualquer arma simples corpo-a-corpo</li>
+                <li> um pacote de sacerdote </li>
+                <li>Cota de malha e um símbolo sagrado</li>
+            </ul>
+        </div>
+
+        <!-- Card para RANGER -->
+        <div class=&quot;card&quot;>
+            <h2>PATRULHEIRO</h2>
+            <ul>
+                <li>(a) brunea ou (b) armadura de couro</li>
+                <li>(a) duas espadas curtas ou (b) duas armas simples corpo-a-corpo</li>
+                <li>Um arco longo e uma aljava com 20 flechas</li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+</html>" id="equipCardsIframe"></iframe>
+
+            <h3 id="proficiencia-armaduras-armas">7.2. Proficiência em Armaduras e Armas</h3>
+            <p>Sua CA será calculada com base na sua armadura e modificador de Destreza (em alguns casos). Abaixo, as proficiências gerais:</p>
+            <h4>Proficiências de Armadura por Classe:</h4>
+            <table class="proficiency-table">
+                <thead>
+                    <tr>
+                        <th>Tipo de Proficiência</th>
+                        <th>Classes</th>
+                        <th>Observações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Nenhuma</td><td>Feiticeiro, Mago, Monge</td><td>Monges têm "Defesa sem Armadura" para calcular a CA.</td></tr>
+                    <tr><td>Leves</td><td>Bardo, Ladino, Bruxo</td><td></td></tr>
+                    <tr><td>Leves, Médias, Escudos</td><td>Bárbaro, Clérigo, Druida, Patrulheiro</td><td>Bárbaros também têm "Defesa sem Armadura" para calcular a CA.</td></tr>
+                    <tr><td>Todas as Armaduras, Escudos</td><td>Guerreiro, Paladino</td><td>Proficiência em armaduras Leves, Médias, Pesadas e Escudos.</td></tr>
+                </tbody>
+            </table>
+
+            <h4 id="tabela-armaduras">7.3. Tabela de Armaduras:</h4>
+            <table class="armor-table">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Classe de Armadura (CA)</th>
+                        <th>Força</th>
+                        <th>Furtividade</th>
+                        <th>Peso</th>
+                        <th>Custo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td colspan="6" class="armor-category-header">Armadura Leve</td></tr>
+                    <tr><td>Acolchoada</td><td>11 + Mod. Des.</td><td>-</td><td>Desvantagem</td><td>8 lb.</td><td>5 po</td></tr>
+                    <tr><td>Couro</td><td>11 + Mod. Des.</td><td>-</td><td>-</td><td>10 lb.</td><td>10 po</td></tr>
+                    <tr><td>Couro Batido</td><td>12 + Mod. Des.</td><td>-</td><td>-</td><td>13 lb.</td><td>45 po</td></tr>
+                    <tr><td colspan="6" class="armor-category-header">Armadura Média</td></tr>
+                    <tr><td>Pele</td><td>12 + Mod. Des. (máx 2)</td><td>-</td><td>-</td><td>12 lb.</td><td>10 po</td></tr>
+                    <tr><td>Camisa de Cota de Malha</td><td>13 + Mod. Des. (máx 2)</td><td>-</td><td>-</td><td>20 lb.</td><td>50 po</td></tr>
+                    <tr><td>Cota de Malha</td><td>14 + Mod. Des. (máx 2)</td><td>-</td><td>Desvantagem</td><td>45 lb.</td><td>50 po</td></tr>
+                    <tr><td>Peitoral</td><td>14 + Mod. Des. (máx 2)</td><td>-</td><td>-</td><td>20 lb.</td><td>400 po</td></tr>
+                    <tr><td>Meia Placa</td><td>15 + Mod. Des. (máx 2)</td><td>-</td><td>Desvantagem</td><td>40 lb.</td><td>750 po</td></tr>
+                    <tr><td colspan="6" class="armor-category-header">Armadura Pesada</td></tr>
+                    <tr><td>Cota de Anéis</td><td>14</td><td>Str 13</td><td>Desvantagem</td><td>40 lb.</td><td>30 po</td></tr>
+                    <tr><td>Cota de Malha</td><td>16</td><td>Str 13</td><td>Desvantagem</td><td>55 lb.</td><td>50 po</td></tr>
+                    <tr><td>Splint</td><td>17</td><td>Str 15</td><td>Desvantagem</td><td>60 lb.</td><td>200 po</td></tr>
+                    <tr><td>Placa</td><td>18</td><td>Str 15</td><td>Desvantagem</td><td>65 lb.</td><td>1,500 po</td></tr>
+                    <tr><td colspan="6" class="armor-category-header">Escudo</td></tr>
+                    <tr><td>Escudo</td><td>+2</td><td>-</td><td>-</td><td>6 lb.</td><td>10 po</td></tr>
+                </tbody>
+            </table>
+
+            <h4 id="don-doff-time">7.4. Don/Doff Time (Tempo para Vestir/Remover Armadura):</h4>
+            <table class="don-doff-table">
+                <thead>
+                    <tr>
+                        <th>Categoria</th>
+                        <th>Vestir (Don)</th>
+                        <th>Remover (Doff)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Armadura Leve</td><td>1 minuto</td><td>1 minuto</td></tr>
+                    <tr><td>Armadura Média</td><td>5 minutos</td><td>1 minuto</td></tr>
+                    <tr><td>Armadura Pesada</td><td>10 minutos</td><td>5 minutos</td></tr>
+                    <tr><td>Escudo</td><td>1 ação</td><td>1 ação</td></tr>
+                </tbody>
+            </table>
+
+            <h4 id="proficiencias-armas-classe">7.5. Proficiências Agrupadas por Classe (Armas):</h4>
+            <table class="proficiency-table">
+                <thead>
+                    <tr>
+                        <th>Tipo de Proficiência</th>
+                        <th>Classes</th>
+                        <th>Observações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Armas Simples</td><td>Bardo, Clérigo, Druida, Feiticeiro, Ladino, Mago, Bruxo</td><td>Ladinos e Bardos também têm proficiência com armas marciais específicas (ex: espada longa, rapieira, besta de mão).</td></tr>
+                    <tr><td>Armas Simples e Marciais</td><td>Bárbaro, Guerreiro, Monge, Paladino, Patrulheiro</td><td>Monges têm proficiência com certas armas marciais (espada curta, espada longa) além das simples.</td></tr>
+                </tbody>
+            </table>
+            <h4 id="dano-armas">7.6. Dano das Armas (d4 a d12):</h4>
+            <p>Se precisar saber o dado de dano de alguma arma:</p>
+            <div class="toggle-button-container">
+                <button id="toggleWeaponListButton" class="toggle-button">
+                    <svg id="toggleWeaponListIcon" class="toggle-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24px" height="24px">
+                        <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+                    </svg>
+                </button>
+            </div>
+            <div id="weaponListContent" class="collapsible-content closed-display-none">
+                <iframe srcdoc="<!DOCTYPE html>
+<html lang=&quot;pt-br&quot;>
+<head>
+<meta charset=&quot;UTF-8&quot;>
+<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+<title>Lista de Armas</title>
+<link rel=&quot;stylesheet&quot; href=&quot;../../assets/css/global.css&quot;>
+<link rel=&quot;stylesheet&quot; href=&quot;lista-armas.css&quot;>
+</head>
+<body>
+
+<div class=&quot;container&quot;>
+  <h1>Armas (Weapons)</h1>
+
+  <h2>Armas Simples Corpo a Corpo (Simple Melee Weapons)</h2>
+  <ul class=&quot;weapon-list&quot;>
+    <li>
+      <span class=&quot;weapon-name&quot;>Clava (Club)</span>
+      <span class=&quot;weapon-details&quot;>
+        <span class=&quot;weapon-damage&quot;>1d4</span>
+        <span class=&quot;damage-type&quot;>Contusão</span>
+        <span class=&quot;property&quot;>Leve</span>
+      </span>
+    </li>
+    <li>
+      <span class=&quot;weapon-name&quot;>Adaga (Dagger)</span>
+      <span class=&quot;weapon-details&quot;>
+        <span class=&quot;weapon-damage&quot;>1d4</span>
+        <span class=&quot;damage-type&quot;>Perfurante</span>
+        <span class=&quot;property&quot;>Leve</span>
+        <span class=&quot;property special&quot;>(Destreza)</span>
+        <span class=&quot;property special&quot;>Arremesso (20/60)</span>
+      </span>
+    </li>
+    <li>
+      <span class=&quot;weapon-name&quot;>Martelo Leve (Light Hammer)</span>
+      <span class=&quot;weapon-details&quot;>
+        <span class=&quot;weapon-damage&quot;>1d4</span>
+        <span class=&quot;damage-type&quot;>Contusão</span>
+        <span class=&quot;property&quot;>Leve</span>
+        <span class=&quot;property special&quot;>Arremesso (20/60)</span>
+      </span>
+    </li>
+    <li>
+      <span class=&quot;weapon-name&quot;>Lança (Spear)</span>
+      <span class=&quot;weapon-details&quot;>
+        <span class=&quot;weapon-damage&quot;>1d6 / 1d8</span>
+        <span class=&quot;damage-type&quot;>Perfurante</span>
+        <span class=&quot;property special&quot;>Versátil</span>
+        <span class=&quot;property special&quot;>Arremesso (20/60)</span>
+      </span>
+    </li>
+    <li>
+      <span class=&quot;weapon-name&quot;>Maça (Mace)</span>
+      <span class=&quot;weapon-details&quot;>
+        <span class=&quot;weapon-damage&quot;>1d6</span>
+        <span class=&quot;damage-type&quot;>Contusão</span>
+      </span>
+    </li>
+    <li>
+      <span class=&quot;weapon-name&quot;>Foice (Sickle)</span>
+      <span class=&quot;weapon-details&quot;>
+        <span class=&quot;weapon-damage&quot;>1d4</span>
+        <span class=&quot;damage-type&quot;>Cortante</span>
+        <span class=&quot;property&quot;>Leve</span>
+      </span>
+    </li>
+    <li>
+      <span class=&quot;weapon-name&quot;>Machadinha (Handaxe)</span>
+      <span class=&quot;weapon-details&quot;>
+        <span class=&quot;weapon-damage&quot;>1d6</span>
+        <span class=&quot;damage-type&quot;>Cortante</span>
+        <span class=&quot;property&quot;>Leve</span>
+        <span class=&quot;property special&quot;>Arremesso (20/60)</span>
+      </span>
+    </li>
+    <li>
+      <span class=&quot;weapon-name&quot;>Azagaia (Javelin)</span>
+      <span class=&quot;weapon-details&quot;>
+        <span class=&quot;weapon-damage&quot;>1d6</span>
+        <span class=&quot;damage-type&quot;>Perfurante</span>
+        <span class=&quot;property special&quot;>Arremesso (30/120)</span>
+      </span>
+    </li>
+    <li>
+      <span class=&quot;weapon-name&quot;>Bordão (Quarterstaff)</span>
+      <span class=&quot;weapon-details&quot;>
+        <span class=&quot;weapon-damage&quot;>1d6 / 1d8</span>
+        <span class=&quot;damage-type&quot;>Contusão</span>
+        <span class=&quot;property special&quot;>Versátil</span>
+      </span>
+    </li>
+    <li>
+      <span class=&quot;weapon-name&quot;>Clava Grande (Greatclub)</span>
+      <span class=&quot;weapon-details&quot;>
+        <span class=&quot;weapon-damage&quot;>1d8</span>
+        <span class=&quot;damage-type&quot;>Contusão</span>
+        <span class=&quot;property&quot;>Duas Mãos</span>
+      </span>
+    </li>
+  </ul>
+
+  <h2>Armas Marciais Corpo a Corpo (Martial Melee Weapons)</h2>
+  <ul class=&quot;weapon-list&quot;>
+    <li>
+      <span class=&quot;weapon-name&quot;>Cimitarra (Scimitar)</span>
+      <span class=&quot;weapon-details&quot;>
+        <span class=&quot;weapon-damage&quot;>1d6</span>
+        <span class=&quot;damage-type&quot;>Cortante</span>
+        <span class=&quot;property&quot;>Leve</span>
+        <span class=&quot;property special&quot;>(Destreza)</span>
+      </span>
+    </li>
+    <li>
+      <span class=&quot;weapon-name&quot;>Espada Curta (Shortsword)</span>
+      <span class=&quot;weapon-details&quot;>
+        <span class=&quot;weapon-damage&quot;>1d6</span>
+        <span class=&quot;damage-type&quot;>Perfurante</span>
+        <span class=&quot;property&quot;>Leve</span>
+        <span class=&quot;property special&quot;>(Destreza)</span>
+      </span>
+    </li>
+    <li>
+      <span class=&quot;weapon-name&quot;>Rapieira (Rapier)</span>
+      <span class=&quot;weapon-details&quot;>
+        <span class=&quot;weapon-damage&quot;>1d8</span>
+        <span class=&quot;damage-type&quot;>Perfurante</span>
+        <span class=&quot;property special&quot;>(Destreza)</span>
+      </span>
+    </li>
+    <li>
+      <span class=&quot;weapon-name&quot;>Mangual (Flail)</span>
+      <span class=&quot;weapon-details&quot;>
+        <span class=&quot;weapon-damage&quot;>1d8</span>
+        <span class=&quot;damage-type&quot;>Contusão</span>
+      </span>
+    </li>
+    <li>
+      <span class=&quot;weapon-name&quot;>Estrela da Manhã (Morningstar)</span>
+      <span class=&quot;weapon-details&quot;>
+        <span class=&quot;weapon-damage&quot;>1d8</span>
+        <span class=&quot;damage-type&quot;>Perfurante</span>
+      </span>
+    </li>
+    <li>
+      <span class=&quot;weapon-name&quot;>Machado de Batalha (Battleaxe)</span>
+      <span class=&quot;weapon-details&quot;>
+        <span class=&quot;weapon-damage&quot;>1d8 / 1d10</span>
+        <span class=&quot;damage-type&quot;>Cortante</span>
+        <span class=&quot;property special&quot;>Versátil</span>
+      </span>
+    </li>
+    <li>
+      <span class=&quot;weapon-name&quot;>Martelo de Guerra (Warhammer)</span>
+      <span class=&quot;weapon-details&quot;>
+        <span class=&quot;weapon-damage&quot;>1d8 / 1d10</span>
+        <span class=&quot;damage-type&quot;>Contusão</span>
+        <span class=&quot;property special&quot;>Versátil</span>
+      </span>
+    </li>
+    <li>
+      <span class=&quot;weapon-name&quot;>Espada Longa (Longsword)</span>
+      <span class=&quot;weapon-details&quot;>
+        <span class=&quot;weapon-damage&quot;>1d8 / 1d10</span>
+        <span class=&quot;damage-type&quot;>Cortante</span>
+        <span class=&quot;property special&quot;>Versátil</span>
+      </span>
+    </li>
+     <li>
+      <span class=&quot;weapon-name&quot;>Malho (Maul)</span>
+      <span class=&quot;weapon-details&quot;>
+        <span class=&quot;weapon-damage&quot;>2d6</span>
+        <span class=&quot;damage-type&quot;>Contusão</span>
+        <span class=&quot;property&quot;>Duas Mãos</span>
+      </span>
+    </li>
+    <li>
+      <span class=&quot;weapon-name&quot;>Espada Grande (Greatsword)</span>
+      <span class=&quot;weapon-details&quot;>
+        <span class=&quot;weapon-damage&quot;>2d6</span>
+        <span class=&quot;damage-type&quot;>Cortante</span>
+        <span class=&quot;property&quot;>Duas Mãos</span>
+      </span>
+    </li>
+     <li>
+      <span class=&quot;weapon-name&quot;>Glaive/Alabarda (Glaive/Halb.)</span>
+      <span class=&quot;weapon-details&quot;>
+        <span class=&quot;weapon-damage&quot;>1d10</span>
+        <span class=&quot;damage-type&quot;>Cortante</span>
+        <span class=&quot;property&quot;>Duas Mãos</span>
+        <span class=&quot;property special&quot;>Alcance</span>
+      </span>
+    </li>
+    <li>
+      <span class=&quot;weapon-name&quot;>Pique (Pike)</span>
+      <span class=&quot;weapon-details&quot;>
+        <span class=&quot;weapon-damage&quot;>1d10</span>
+        <span class=&quot;damage-type&quot;>Perfurante</span>
+        <span class=&quot;property&quot;>Duas Mãos</span>
+        <span class=&quot;property special&quot;>Alcance</span>
+      </span>
+    </li>
+    <li>
+      <span class=&quot;weapon-name&quot;>Lança de Montaria (Lance)</span>
+      <span class=&quot;weapon-details&quot;>
+        <span class=&quot;weapon-damage&quot;>1d12</span>
+        <span class=&quot;damage-type&quot;>Perfurante</span>
+        <span class=&quot;property special&quot;>Alcance</span>
+      </span>
+    </li>
+    <li>
+      <span class=&quot;weapon-name&quot;>Machado Grande (Greataxe)</span>
+      <span class=&quot;weapon-details&quot;>
+        <span class=&quot;weapon-damage&quot;>1d12</span>
+        <span class=&quot;damage-type&quot;>Cortante</span>
+        <span class=&quot;property&quot;>Duas Mãos</span>
+      </span>
+    </li>
+  </ul>
+
+  <h2>Armas Simples à Distância (Simple Ranged Weapons)</h2>
+  <ul class=&quot;weapon-list&quot;>
+    <li>
+      <span class=&quot;weapon-name&quot;>Arco Curto (Shortbow)</span>
+      <span class=&quot;weapon-details&quot;>
+        <span class=&quot;weapon-damage&quot;>1d6</span>
+        <span class=&quot;damage-type&quot;>Perfurante</span>
+        <span class=&quot;property&quot;>Duas Mãos</span>
+        <span class=&quot;property special&quot;>Alcance (80/320)</span>
+      </span>
+    </li>
+    <li>
+      <span class=&quot;weapon-name&quot;>Besta Leve (Crossbow, Light)</span>
+      <span class=&quot;weapon-details&quot;>
+        <span class=&quot;weapon-damage&quot;>1d8</span>
+        <span class=&quot;damage-type&quot;>Perfurante</span>
+        <span class=&quot;property&quot;>Duas Mãos</span>
+        <span class=&quot;property special&quot;>Alcance (80/320)</span>
+      </span>
+    </li>
+  </ul>
+
+  <h2>Armas Marciais à Distância (Martial Ranged Weapons)</h2>
+  <ul class=&quot;weapon-list&quot;>
+    <li>
+      <span class=&quot;weapon-name&quot;>Besta de Mão (Crossbow, Hand)</span>
+      <span class=&quot;weapon-details&quot;>
+        <span class=&quot;weapon-damage&quot;>1d6</span>
+        <span class=&quot;damage-type&quot;>Perfurante</span>
+        <span class=&quot;property&quot;>Leve</span>
+        <span class=&quot;property special&quot;>Alcance (30/120)</span>
+      </span>
+    </li>
+    <li>
+      <span class=&quot;weapon-name&quot;>Besta Pesada (Crossbow, Heavy)</span>
+      <span class=&quot;weapon-details&quot;>
+        <span class=&quot;weapon-damage&quot;>1d10</span>
+        <span class=&quot;damage-type&quot;>Perfurante</span>
+        <span class=&quot;property&quot;>Duas Mãos</span>
+        <span class=&quot;property special&quot;>Alcance (100/400)</span>
+      </span>
+    </li>
+    <li>
+      <span class=&quot;weapon-name&quot;>Arco Longo (Longbow)</span>
+      <span class=&quot;weapon-details&quot;>
+        <span class=&quot;weapon-damage&quot;>1d8</span>
+        <span class=&quot;damage-type&quot;>Perfurante</span>
+        <span class=&quot;property&quot;>Duas Mãos</span>
+        <span class=&quot;property special&quot;>Alcance (150/600)</span>
+      </span>
+    </li>
+  </ul>
+
+</div>
+
+</body>
+</html>
+" id="weaponListIframe"></iframe>
+            </div>
+            <p>Verifique o texto da arma, pode ter mais informações.</p>
+
+            <h3 id="ferramentas-kits">7.7. Ferramentas e Kits</h3>
+            <p>Escolha uma proficiência em um kit de ferramentas da lista abaixo. Se quiser, pode trocar uma das perícias que o Mestre concedeu por proficiência em mais um kit ou ferramenta.</p>
+            <ul>
+                <li>Suprimentos de Alquimista</li>
+                <li>Suprimentos de Cervejeiro</li>
+                <li>Suprimentos de Calígrafo</li>
+                <li>Ferramentas de Carpinteiro</li>
+                <li>Ferramentas de Cartógrafo</li>
+                <li>Ferramentas de Sapateiro</li>
+                <li>Utensílios de Cozinha</li>
+                <li>Ferramentas de Sopro de Vidro</li>
+                <li>Ferramentas de Joalheiro</li>
+                <li>Ferramentas de Coureiro</li>
+                <li>Ferramentas de Pedreiro</li>
+                <li>Suprimentos de Pintor</li>
+                <li>Ferramentas de Oleiro</li>
+                <li>Ferramentas de Ferreiro</li>
+                <li>Ferramentas de Funileiro/Engenhoqueiro</li>
+                <li>Ferramentas de Tecelão</li>
+                <li>Ferramentas de Escultor de Madeira</li>
+                <li>Ferramentas de Navegador</li>
+                <li>Ferramentas de Ladrão</li>
+            </ul>
+        </div>
+
+        <div class="section" id="inspiracao-save-morte">
+            <h2>8. Inspiração e Save de Morte</h2>
+            <ul>
+                <li><strong>Inspiração:</strong> A bolinha de "Inspiração" é preenchida quando o Mestre concede um ponto de inspiração ao seu personagem por boas interpretações ou atos heroicas, ela te permite re-rolar um d20 e pegar o novo resultado, você pode presentear seus aliados com isso.</li>
+                <li><strong>Save de Morte:</strong> Marque os sucessos e falhas. Se acumular 3 falhas, seu personagem morre. Se acumular 3 sucessos, você estabiliza e para de correr risco de morte (mas permanece inconsciente).</li>
+            </ul>
+        </div>
+
+        <div class="section" id="habilidades-classe-raca">
+            <h2>9. Habilidades de Classe, Raça e Outras</h2>
+            <p>Esta seção na ficha é para anotar as habilidades especiais que sua classe e raça concedem, assim como quaisquer outras características importantes que seu personagem possua. Consulte o Mestre caso precise de alguma informação de raça ou antecedente que não foi coberta aqui.</p>
+            <p>pretendo colocar algo aqui pra facilitar mas no momento pesquise online sua classe e subclasse para as informações, cuidado com sites com tradução duvidosa. <p>
+        </div>
+
+        <div class="section" id="magias">
+            <h2>10. Magias</h2>
+            <p>Se sua classe for um conjurador, esta seção é para listar suas magias conhecidas ou preparadas. Preencha conforme as regras da sua classe e o atributo de conjuração que você escolheu.</p>
+            <p> Esse site pode te ajudar a encontrar magias, magias de fora do livro basico do jogador precisam ser consultadas com o Mestre. <a href="https://simpleskans.com.br/dnd/5e/magias" target="_blank" >clica aqui</a> </p>
+        </div>
+
+        <div class="section" id="notas-itens">
+            <h2>11. Notas / Itens / Equipamentos</h2>
+            <p>Use esta seção para detalhar seus itens e equipamentos, bem como para quaisquer notas adicionais sobre seu personagem, o mundo, ou a campanha que você queira registrar.</p>
+        </div>
+
+    </div>
+
+    <!-- Botão Voltar ao Topo no final da página -->
+    <a href="#top" class="back-to-top">Voltar ao Topo</a>
+
+    
+    <script>
+// global.js
+// Adicione aqui funções ou variáveis que você deseja compartilhar entre todas as suas páginas.
+// Exemplo: uma função para lidar com cookies, analytics, etc.
+
+// index.js
+document.addEventListener('DOMContentLoaded', function() {
+
+    // --- LÓGICA PARA CONTEÚDO EXPANSÍVEL (COLLAPSIBLE) ---
+    function setupCollapsible(buttonId, contentId, iconId) {
+        const button = document.getElementById(buttonId);
+        const content = document.getElementById(contentId);
+        const icon = document.getElementById(iconId);
+        const transitionDuration = 500; // Deve ser a mesma do CSS
+
+        if (!button || !content || !icon) return; // Se os elementos não existirem, não faz nada
+
+        content.classList.add('closed-display-none');
+
+        button.addEventListener('click', function(event) {
+            event.preventDefault();
+            if (content.classList.contains('open')) {
+                content.classList.remove('open');
+                icon.classList.remove('rotated');
+                setTimeout(() => {
+                    content.classList.add('closed-display-none');
+                }, transitionDuration);
+            } else {
+                content.classList.remove('closed-display-none');
+                void content.offsetWidth; // Força o navegador a recalcular o layout
+                content.classList.add('open');
+                icon.classList.add('rotated');
+            }
+        });
+    }
+
+    // Configura todos os botões de toggle
+    setupCollapsible('toggleAttributeTableButton', 'attributeTable', 'toggleAttributeIcon');
+    setupCollapsible('toggleExperienceTableButton', 'experienceTable', 'toggleExperienceIcon');
+    setupCollapsible('toggleIndexButton', 'indexContent', 'toggleIndexIcon');
+    setupCollapsible('toggleWeaponListButton', 'weaponListContent', 'toggleWeaponListIcon');
+
+
+    // --- LÓGICA PARA A CALCULADORA DE PONTOS DE VIDA (PV) ---
+    const calculateHpButton = document.getElementById('calculateHp');
+    if (calculateHpButton) {
+        const hpClassSelect = document.getElementById('hpClass');
+        const hpLevelInput = document.getElementById('hpLevel');
+        const hpConInput = document.getElementById('hpCon');
+        const hpResultDiv = document.getElementById('hpResult');
+
+        calculateHpButton.addEventListener('click', function() {
+            const selectedClass = hpClassSelect.value;
+            const level = parseInt(hpLevelInput.value);
+            const conScore = parseInt(hpConInput.value);
+
+            if (isNaN(level) || level < 1 || isNaN(conScore)) {
+                hpResultDiv.textContent = "Por favor, insira valores válidos.";
+                return;
+            }
+
+            const conModifier = Math.floor((conScore - 10) / 2);
+            let totalHp = 0;
+            const hitDieMap = {
+                'd12': { max: 12, avg: 7 },
+                'd10': { max: 10, avg: 6 },
+                'd8':  { max: 8,  avg: 5 },
+                'd6':  { max: 6,  avg: 4 }
+            };
+
+            const dice = hitDieMap[selectedClass];
+            totalHp = dice.max + conModifier; // Nível 1
+
+            if (level > 1) {
+                totalHp += (level - 1) * (dice.avg + conModifier);
+            }
+
+            hpResultDiv.textContent = `Seu PV Total: ${totalHp}`;
+        });
+    }
+
+
+    // --- LÓGICA PARA AJUSTE DE ALTURA DOS IFRAMES ---
+    function adjustIframeHeight(iframeId) {
+        const iframe = document.getElementById(iframeId);
+        if (!iframe) return;
+
+        const setHeight = () => {
+            try {
+                const iframeDoc = iframe.contentWindow.document;
+                const height = iframeDoc.documentElement.scrollHeight;
+                iframe.style.height = height + 'px';
+                iframe.style.overflow = 'hidden';
+            } catch (e) {
+                console.warn(`Não foi possível ajustar a altura do iframe '${iframeId}' devido a restrições de segurança (CORS).`, e);
+            }
+        };
+
+        iframe.onload = setHeight;
+        // Caso o iframe já esteja carregado
+        if (iframe.contentWindow && iframe.contentWindow.document.readyState === 'complete') {
+            setHeight();
+        }
+    }
+
+    // Ajusta a altura de todos os iframes na página
+    adjustIframeHeight('fichaIframe');
+    adjustIframeHeight('equipCardsIframe');
+    adjustIframeHeight('weaponListIframe');
+
+      // LÓGICA ESPECIAL: Ajusta a altura do iframe de armas QUANDO ele se torna visível.
+    // Isso corrige o problema do iframe não aparecer quando está dentro de um container "collapsible".
+    const weaponToggleButton = document.getElementById('toggleWeaponListButton');
+    if (weaponToggleButton) {
+        weaponToggleButton.addEventListener('click', () => {
+            // Um pequeno delay para permitir que o CSS comece a transição e o elemento se torne visível.
+            setTimeout(() => {
+                adjustIframeHeight('weaponListIframe');
+            }, 10); 
+        });
+    }
+
+    // --- LÓGICA PARA ROLAGEM SUAVE (SMOOTH SCROLL) ---
+    document.querySelectorAll('#tableOfContents a, .back-to-top').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            } else if (targetId === '#top') {
+                 window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+});
+</script>
+</body>
+</html>
