@@ -1,4 +1,4 @@
-na ficha fazer algo a respeito da linha enorme
+na ficha fazer algo a respeito da linha enorme na vida
 teu stat de conjuracao
 tirar o lvl up do formato de tabela
 efeitos de armas (light, reach, etc)
@@ -10,3 +10,8 @@ voce pode tirar um print dessa parte pressionando ao mesmo tempo o botao windows
 organizar mais
 otimizar pra celular
 ajeitar a calculadora de pontos pra numeros negativos
+versao ingles
+
+
+---
+plugin pras ias?
